@@ -1,0 +1,22 @@
+* ビュー
+
+次に、投稿記事（post）に対するビュー（コントローラ）を作成します。
+ビュークラスは、 /library/view/BlogViews.php に配置します．．．が、場所は library 内ならどこでも良いです。
+
+まずは、記事一覧を表示するためのビューを作成してみましょう。
+
+>|php|
+<?php
+Rhaco::import("generic.Views");
+Rhaco::import("model.Post");
+/**
+ * 投稿管理を行うViews
+ */
+class BlogViews extends Views{
+	function index(){
+		return $this->read(new Post());
+	}
+}
+?>
+||<
+
