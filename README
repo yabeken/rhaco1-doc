@@ -1,14 +1,14 @@
 * 概要
 
 rhaco 1.x は既に機能の新規開発は行われておらず、バグフィックス等のメンテナンスと周辺ユーティリティ開発のみが行われています。
-現在の開発メインストリームは [[rhaco2|http://rhaco.org]] に移っています。
+現在の開発メインストリームは rhaco2 に移っています。
 
-このwikiは [[yabeken|http://wassr.jp/user/yabeken]] が主に編集管理しています。
-お問い合わせは、IRCチャンネルの [[rhaco-ja@freenode|http://webchat.freenode.net/]] までどうぞ。
+このwikiは http://wassr.jp/user/yabeken が主に編集管理しています。
+お問い合わせは、IRCチャンネルの rhaco-ja@freenode までどうぞ。
 
 * チュートリアル
 
-あまり、いいチュートリアルが思いつかなかったので、cake phpの[[チュートリアル|http://book.cakephp.org/ja/view/219/Blog]]をなぞってみます。
+あまり、いいチュートリアルが思いつかなかったので、cake phpの [[http://book.cakephp.org/ja/view/219/Blog:チュートリアル]] をなぞれるだけなぞってみます。
 そこから、さらに追加でいろいろな機能を追加していこうと思う。
 
 + [[tutorial/installation]]

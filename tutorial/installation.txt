@@ -29,12 +29,13 @@ rhaco は、 rhaco 1.x と表されており、バージョンという概念が
 
 rhaco をDocumentRoot内に展開してください。
 
-  /DocumentRoot
-    /rhaco
-      :              rhacoのライブラリ群
-      LICENCE        ライセンスファイル
-      Rhaco.php      rhaco本体
-      setup.php      セットアップフレームワーク
-
+>|
+/DocumentRoot
+  /rhaco
+    :              rhacoのライブラリ群
+    LICENCE        ライセンスファイル
+    Rhaco.php      rhaco本体
+    setup.php      セットアップフレームワーク
+|<
 
 チュートリアルではDocumentRoot内に展開していますが、実際の場面では適当な箇所に配置してください。
