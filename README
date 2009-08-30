@@ -11,9 +11,9 @@ rhaco 1.x は既に機能の新規開発は行われておらず、バグフィ�
 あまり、いいチュートリアルが思いつかなかったので、cake phpの [[http://book.cakephp.org/ja/view/219/Blog:チュートリアル]] をなぞれるだけなぞってみます。
 そこから、さらに追加でいろいろな機能を追加していこうと思う。
 
-+ [[tutorial/installation]]
-+ [[tutorial/setup]]
-+ [[tutorial/model]]
++ [[tutorial/01-install]]
++ [[tutorial/02-setup]]
++ [[tutorial/03-model]]
 + [[tutorial/view]]
 + [[tutorial/routing]]
 
