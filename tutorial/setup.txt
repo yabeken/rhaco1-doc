@@ -1,0 +1,99 @@
+* セットアップ
+
+では、ブログアプリケーションのセットアップを行いましょう。
+
+rhaco はセットアップフレームワークとも呼ばれており、全ての開発作業をGUIから行うことが可能です。
+
+** 初期設定
+
+まずは、ブログアプリケーションを配置するディレクトリを作成し、rhaco ディレクトリからsetup.php をコピーしてきてください。
+
+  /DocumentRoot
+    /rhaco
+    /blog
+      setup.php
+
+ブラウザから、 http://localhost/blog/setup.php にアクセスしてみてください。
+すると、rhaco の場所を聞かれますので、指定します。
+
+セットアップフレームワークが起動し、アプリケーションの初期構造が生成されます。
+
+  /DocumentRoot
+    /rhaco
+    /blog
+      /library    
+      /resources
+        /templates
+      /setup
+        .htaccess
+        project.xml
+      __init__.php
+      __settings__.php
+      setup.php
+
+アプリケーション用の設定画面が表示されますが、今は特にいじる必要がありません。
+
+** データベース設計
+
+次に、データベースの設計を行います。
+project.xml をエディタで開き、以下のようにブログと記事のコメントのモデル設計を記述してください。
+
+
+  <project rhacover="1.6.1" version="0.0.1" name="blog" xmlns="http://rhaco.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://rhaco.org http://m.rhaco.org/xsd/project_1_6_x.xsd">
+  	<database name="blog">
+  		<table name="post">
+  			<description>記事</description>
+  			<column name="id" type="serial"/>
+  			<column name="created" type="timestamp" default="sysdate"/>
+  			<column name="modified" type="timestamp" default="sysdate"/>
+  			<column name="title" type="string" max="50"/>
+  			<column name="body" type="text"/>
+  			<default>
+  				<!-- テスト用に記事をいくつか入れておきます。 -->
+  				<data>
+  					<column name="title" value="タイトル"/>
+  					<column name="body" value="これは、記事の本文です。"/>
+  				</data>
+  				<data>
+  					<column name="title" value="またタイトル"/>
+  					<column name="body" value="そこに本文が続きます。"/>
+  				</data>
+  				<data>
+  					<column name="title" value="タイトルの逆襲"/>
+  					<column name="body" value="こりゃ本当に面白そう！うそ。"/>
+  				</data>
+  			</default>
+  		</table>
+  	</database>
+  </project>
+
+
+テーブル名とフィールド名は適当です。アプリケーションの都合に合わせて作成してください。
+特に煩雑な命名規則を用いなくても、開発速度には全く影響がありません。
+
+
+** データベース設定
+
+project.xmlを保存したら、 http://localhost/blog/setup.php に再度アクセスしてください。
+データベース[BLOG]という設定項目が増えています。ここで、project.xml に記述したテーブルモデルの接続先データベース設定を行うことができます。
+
+- データベースサーバ
+-- データベースの種類を指定します。 （MySQL、PostgreSQL、Oracle、SQLiteが利用可能です。）
+- データベースサーバのホスト名
+-- データベースサーバが動作しているサーバのアドレスを指定します。SQLiteの場合にはファイルパスを指定します。
+- データベース名
+- データベースパスワード
+- データベースのポート番号
+-- 空白の場合には各データベースサーバのデフォルト値が使用されます。
+- エンコード
+-- データベースサーバのエンコードを指定します。デフォルトはUTF8です。
+- テーブル接頭語
+-- 同じデータベースに複数のアプリケーションデータを格納する場合に、テーブル名が衝突しないように接頭語を指定できます。
+
+設定を入力後、setting をクリックして設定を保存します。
+データベース設定が終わると、実際にデータベースの作成を行います。
+メニューに database が現れますので、アクセスして、「作成」をクリックします。
+
+以上でブログアプリケーションのデータベース設定が完了です。
+
+
