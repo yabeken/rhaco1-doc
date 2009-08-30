@@ -1,0 +1,35 @@
+* モデル
+
+モデルは、rhaco アプリケーションの基本中の基本です。
+モデルを介してデータベースとデータをやり取りするだけでなく、一覧（read）、表示(detail)、追加（create）、編集（update）、削除（drop）といった操作に必要な土台となります。
+さらに、project.xml内で拡張（ext）を宣言することにより、自己参照や様々な処理を内包したモデルの作成ができます。
+
+rhacoのモデルクラスのファイルは /library/model の中にあり、セットアップ画面で settings をクリックすることにより自動的に生成されます。
+今回作成されたファイルは以下の通りです。
+
+>|
+/DocumentRoot
+  /blog
+    /library
+      /model
+        /table
+          PostTable.php
+        Post.php
+|<
+
+PostTableクラスはproject.xmlでpostテーブルの情報やアクセッサ等を実装したクラスで、セットアップ画面で settings をクリックする毎に自動的に再生成されます。
+
+>|php|
+<?php
+Rhaco::import("model.table.PostTable");
+/**
+ * 記事モデル
+ */
+class Post extends PostTable{
+
+}
+
+?>
+||<
+
+Postクラスは、PostTableを継承しており、ファイルが存在しない場合にのみ settings 時に自動的に生成されます。table内のファイルは全くいじることがありません。
