@@ -1,16 +1,32 @@
 * 概要
 
-rhaco 1.x は既に機能の新規開発は行われておらず、バグフィックス等のメンテナンスと周辺ユーティリティ開発のみが行われています。
-現在の開発メインストリームは rhaco2 に移っています。
+rhaco 1.x は既に新機能の開発は行われておらず、バグフィックスを主としたメンテナンスと周辺ユーティリティ開発のみが行われています。
+現在の開発メインストリームは [http://rhaco.org:rhaco2] に移っています。
 
-このwikiは http://wassr.jp/user/yabeken が主に編集管理しています。
+この wiki は [http://wassr.jp/user/yabeken:yabeken] が主に編集しています。
+ですので、独断と偏見が含まれている可能性があります点、了承の上見てください。
+
 お問い合わせは、IRCチャンネルの rhaco-ja@freenode までどうぞ。
 
 * チュートリアル
 
-あまり、いいチュートリアルが思いつかなかったので、cake phpの [[http://book.cakephp.org/ja/view/219/Blog:チュートリアル]] をなぞれるだけなぞってみます。
+あまり、いいチュートリアルが思いつかなかったので、cake phpの [http://book.cakephp.org/ja/view/219/Blog:チュートリアル] をなぞれるだけなぞってみます。
 そこから、さらに追加でいろいろな機能を追加していこうと思う。
 
-+ [[tutorial/01-install]]
-+ [[tutorial/02-setup]]
-+ [[tutorial/03-model-view-template]]
+ツリーメニューからどうぞ。
+
+** 外部情報
+
+[http://riaf.jp:riaf] さんが技術評論社で [http://gihyo.jp/dev/serial/01/rhaco:rhaco の連載]を行いましたので、まずは、そちらを見ると良いでしょう。
+
+- [http://gihyo.jp/dev/serial/01/rhaco/0001:第1回 rhacoの魅力]
+- [http://gihyo.jp/dev/serial/01/rhaco/0002:第2回 ライブラリとして使うrhaco]
+- [http://gihyo.jp/dev/serial/01/rhaco/0003:第3回 アプリケーションの開発をはじめる]
+- [http://gihyo.jp/dev/serial/01/rhaco/0004:第4回 rhacoアプリの基礎 Flow を学ぶ]
+- [http://gihyo.jp/dev/serial/01/rhaco/0005:第5回 Viewsで開発をもっと手軽に]
+- [http://gihyo.jp/dev/serial/01/rhaco/0006:第6回 クールなURLを実現する Urls]
+- [http://gihyo.jp/dev/serial/01/rhaco/0007:第7回 拡張不要の国際化と外部ライブラリ集]
+
+また、[http://blog.shigepon.com:shigepon] による[http://blog.shigepon.com/snippet0:逆引きrhaco] で目的別に rhaco の利用法を知ることもできます。
+
+私が作ったライブラリについては、[http://d.hatena.ne.jp:はてなブログ] にて情報を綴っています。
