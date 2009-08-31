@@ -13,8 +13,4 @@ rhaco 1.x は既に機能の新規開発は行われておらず、バグフィ�
 
 + [[tutorial/01-install]]
 + [[tutorial/02-setup]]
-+ [[tutorial/03-model]]
-+ [[tutorial/view]]
-+ [[tutorial/routing]]
-
-
++ [[tutorial/03-model-view-template]]
