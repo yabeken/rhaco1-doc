@@ -99,3 +99,29 @@ project.xmlを保存したら、 http://localhost/blog/setup.php に再度アク
 メニューに database が現れますので、アクセスして、「作成」をクリックします。
 
 以上でブログアプリケーションのデータベース設定が完了です。
+
+
+** mod_rewrite について
+
+rhaco は mod_rewrite を使えなくても動作しますが、クールなURLを実装するためには是非有効にしてください。
+
+[google:mod_rewrite]
+
+後はmod_rewrite の設定を .htaccess に記述するだけですが、これも自分で各必要はありません。
+project.xml の project 要素の属性に以下のように pathinfo="index.php" 書き加えてください。
+
+>|xml|
+<project pathinfo="index.php" rhacover="1.6.1" version="0.0.1" name="blog" xmlns="http://rhaco.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://rhaco.org http://m.rhaco.org/xsd/project_1_6_x.xsd">
+  :
+</project>
+||<
+
+書き換えたら、http://localhost/blog/setup.php に再度アクセスしてください。
+「アプリケーションの初期化」という項目が増えていますので、クリックすると自動的に .htaccess が生成されます。
+
+* 参考
+
+- http://book.cakephp.org/ja/view/330/Creating-the-Blog-Database
+- http://book.cakephp.org/ja/view/331/Cake-Database-Configuration
+- http://book.cakephp.org/ja/view/332/Optional-Configuration
+- http://book.cakephp.org/ja/view/333/A-Note-on-mod_rewrite

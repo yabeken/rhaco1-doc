@@ -1,0 +1,87 @@
+* モデル
+
+モデルは、rhaco アプリケーションの基本中の基本です。
+モデルを介してデータベースとデータをやり取りするだけでなく、一覧（read）、表示(detail)、追加（create）、編集（update）、削除（drop）といった操作に必要な土台となります。
+さらに、project.xml 内で拡張（ext）を宣言することにより、自己参照や様々な処理を内包したモデルの作成ができます。
+
+rhaco のモデルクラスのファイルは /library/model の中にあり、セットアップ画面で settings をクリックすることにより自動的に生成されます。
+今回作成されたファイルは以下の通りです。
+
+>|
+/DocumentRoot
+  /blog
+    /library
+      /model
+        /table
+          PostTable.php
+        Post.php
+|<
+
+PostTable クラスは project.xml で post テーブルの情報やアクセッサ等を実装したクラスで、セットアップ画面で settings をクリックする度に自動的に再生成されます。
+
+Post クラスは、PostTable を継承しており、ファイルが存在しない場合にのみ settings クリック時に自動的に生成されます。
+様々な機能をモデルに付加する際には、この Post モデルを変更します。
+
+>|php|
+<?php
+Rhaco::import("model.table.PostTable");
+/**
+ * 記事モデル
+ */
+class Post extends PostTable{
+
+}
+
+?>
+||<
+
+* ビュー
+
+次に、投稿記事（post）に対するビュー（View）を作成...しません。
+今回は、作成しなくてもできる内容ですので、まずは汎用 View を用いて投稿記事の一覧を表示しましょう。
+例えば、ユーザが www.example.com/post/index ( www.example.com/post と同じです。)をリクエストした場合、投稿記事の一覧が表示されると期待するでしょう。
+
+これを実現するために、 /DocumentRoot/index.php を作成し、以下のように記述してください。
+
+>|php|
+<?php
+include_once dirname(__FILE__)."__init__.php";
+Rhaco::import("generic.Urls");
+Rhaco::import("model.Post");
+
+$db = new Dbutil(Post::connection());
+$pattern = array(
+	//投稿記事の一覧を表示
+	"^posts(?:/index)?/?$"=>array("method"=>"read","args"=>array(new Post())),
+);
+$parser = Urls::parser($pattern,$db);
+$parser->write();
+?>
+||<
+
+ここでは、汎用 Views の read メソッドをビューとして指定し、その引数として Post インスタンスを渡しています。
+
+このコードについて少し説明しましょう。
+
++ アプリケーションの初期設定ファイルを読み込みます。これは、setup.php で生成された設定を読み込んだり、独自の設定を追加したりできます。
++ URL ルーティングを行うためのライブラリと Post モデルを読み込みます。
++ データベース操作ライブラリをインスタンス化し、その接続先はPostモデルから取得します。
++ URLの正規表現をキーとしてルーティングの設定連想配列を作成します。
++ Urls::parser() にこれらを渡して、出力するテンプレートがセットされたテンプレートパーサーを取得します。
++ テンプレートを出力する。
+
+あるURLに特定のビューを割り当てたいという誘惑には大いに負けてください。
+
+* テンプレート
+
+現在、モデルにはデータが入り、ビューは汎用Viewsを用いてますので作っていません。
+今回は、記事投稿一覧ビューのテンプレートを作成...する必要はありません。
+
+rhaco では、汎用 Views を用いた場合には、デフォルトのテンプレートが使用されるため、開発初期段階ではテンプレートを作る必要が全くありません。
+
+* 参考
+
+- http://book.cakephp.org/ja/view/334/Create-a-Post-Model
+- http://book.cakephp.org/ja/view/335/Create-a-Posts-Controller
+- http://book.cakephp.org/ja/view/336/Creating-Post-Views
+
