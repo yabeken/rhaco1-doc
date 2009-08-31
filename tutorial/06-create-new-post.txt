@@ -1,0 +1,22 @@
+* 記事の追加
+
+データベースを読み、記事の一覧を表示・検索できるようになりました。今度は、新しい投稿ができるようにしてみましょう。
+
+今回も汎用 Views を用いますので、Viewは作成しません。
+index.php に記述しているURLに以下の記述を追加してください。
+
+>|php|
+:
+$pattern = array(
+	//投稿記事の一覧を表示
+	"^posts(?:/index)?/?$"=>array("method"=>"read","args"=>array(new Post())),
+	//新しい記事の投稿
+	"^posts/add/?"=>array("method"=>"create","args"=>array(new Post(),array(Rhaco::url("posts")))),
+);
+:
+||<
+
+
+* 参考
+
+- http://book.cakephp.org/ja/view/337/Adding-Posts
