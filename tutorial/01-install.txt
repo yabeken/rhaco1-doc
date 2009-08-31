@@ -46,7 +46,7 @@ rhaco を DocumentRoot 内((実際の運用場面では適当な箇所))に展�
 
 * 参考
 
-- rhaco http://rhaco.org
-- rhaco-users http://rhaco-users.jp
-- http://book.cakephp.org/ja/view/219/Blog
-- http://book.cakephp.org/ja/view/329/Getting-Cake
+- [http://rhaco.org]
+- [http://rhaco-users.jp]
+- [http://book.cakephp.org/ja/view/219/Blog]
+- [http://book.cakephp.org/ja/view/329/Getting-Cake]

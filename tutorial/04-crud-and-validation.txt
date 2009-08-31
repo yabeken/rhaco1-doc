@@ -61,6 +61,6 @@ $pattern = array(
 
 * 参考
 
-- http://book.cakephp.org/ja/view/337/Adding-Posts
-- http://book.cakephp.org/ja/view/338/Data-Validation
-- http://book.cakephp.org/ja/view/340/Editing-Posts
+- [http://book.cakephp.org/ja/view/337/Adding-Posts]
+- [http://book.cakephp.org/ja/view/338/Data-Validation]
+- [http://book.cakephp.org/ja/view/340/Editing-Posts]

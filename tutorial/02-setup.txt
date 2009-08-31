@@ -121,7 +121,7 @@ project.xml の project 要素の属性に以下のように pathinfo="index.php
 
 * 参考
 
-- http://book.cakephp.org/ja/view/330/Creating-the-Blog-Database
-- http://book.cakephp.org/ja/view/331/Cake-Database-Configuration
-- http://book.cakephp.org/ja/view/332/Optional-Configuration
-- http://book.cakephp.org/ja/view/333/A-Note-on-mod_rewrite
+- [http://book.cakephp.org/ja/view/330/Creating-the-Blog-Database[
+- [http://book.cakephp.org/ja/view/331/Cake-Database-Configuration]
+- [http://book.cakephp.org/ja/view/332/Optional-Configuration]
+- [http://book.cakephp.org/ja/view/333/A-Note-on-mod_rewrite]
