@@ -1,16 +1,19 @@
 * 汎用 Views
 
-rhaco では、汎用 Views ( generic.Views )を用いることにより、一覧、詳細、作成、更新、削除のためのコードは各必要が無いことを学びました。
+rhaco では、汎用 Views ( generic.Views )を用いることにより、一覧、詳細、作成、更新、削除のためのコードを記述する必要が無いことを学びました。
 
 汎用ビューには次のものがあります。
 
-:read:ページング付一覧、検索
-:detail:詳細表示
-:create:新規作成
-:confirmedCreate:確認画面付き新規作成
-:update:更新
-:confirmedUpdate:確認画面付き更新
-:drop:削除 ( 確認画面付き削除にも対応 )
+|*ビュー|*動作|
+|read|ページング付一覧、検索|
+|detail|詳細表示|
+|create|新規作成|
+|confirmedCreate|確認画面付き新規作成|
+|update|更新|
+|confirmedUpdate|確認画面付き更新|
+|drop|削除 ( 確認画面付き削除にも対応 )|
+|import|CSV形式のデータの取り込み|
+|export|テーブルをCSV形式で出力|
 
 これらのビューにモデルを渡すことによって、モデルに対応するレコードへの処理となります。簡単ですね！
 
@@ -31,8 +34,22 @@ rhaco では、汎用 Views ( generic.Views )を用いることにより、一�
 
 ** 連携の規則
 
-後で書く
+規則は非常に単純です。
 
-* 参考
+>||
+全て小文字にしたモデルクラス名 + "_" + ページタイプ + ".html"
+||<
 
-後で書く
+としたファイルを、 /DocumentRoot/blog/resources/templates/generic/ 以下に配置するだけです。
+
+ページタイプには、以下のものがあります。
+
+|*ページタイプ|*ビュー|
+|list|read|
+|detail|detail|
+|form|create, confirmedCreate, update, confirmedUpdate|
+|confirm|confirmedCreate, confirmedUpdate|
+|confirm_delete|drop|
+
+このように、テンプレートの差し替えが非常に簡単にできます。
+
