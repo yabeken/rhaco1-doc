@@ -1,0 +1,38 @@
+* 汎用 Views
+
+rhaco では、汎用 Views ( generic.Views )を用いることにより、一覧、詳細、作成、更新、削除のためのコードは各必要が無いことを学びました。
+
+汎用ビューには次のものがあります。
+
+:read:ページング付一覧、検索
+:detail:詳細表示
+:create:新規作成
+:confirmedCreate:確認画面付き新規作成
+:update:更新
+:confirmedUpdate:確認画面付き更新
+:drop:削除 ( 確認画面付き削除にも対応 )
+
+これらのビューにモデルを渡すことによって、モデルに対応するレコードへの処理となります。簡単ですね！
+
+* テンプレートの連携
+
+さて、投稿記事の一覧・検索、投稿、削除、編集と一通りできるようになりましたが、現在はそれぞれの処理は URL を直接たたかないとできません。
+これでは、使い物になりませんよね？rhaco では、汎用 Views を用いている場合には、これを簡単に差し替える方法があります。
+
+次のようにファイルをコピーしてください。
+
++ /DocumentRoot/rhaco/resources/templates/generic/views/main.html -> /DocumentRoot/blog/resources/templates/generic/main.html
++ /DocumentRoot/rhaco/resources/templates/generic/views/confirm.html -> /DocumentRoot/blog/resources/templates/generic/post_confirm.html
++ /DocumentRoot/rhaco/resources/templates/generic/views/form.html -> /DocumentRoot/blog/resources/templates/generic/post_form.html
++ /DocumentRoot/rhaco/resources/templates/generic/views/list.html -> /DocumentRoot/blog/resources/templates/generic/post_list.html
+
+これで、テンプレートの差し替えが完了しました。簡単ですね！
+といっても、表示は変わりませんけどね。
+
+** 連携の規則
+
+後で書く
+
+* 参考
+
+後で書く
