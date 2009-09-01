@@ -36,7 +36,7 @@ rhaco を使うと、その作業を簡単、高速に片付けることがで�
 次に、ユーザが投稿記事を削除できるようにする機能を作りましょう。
 今回も汎用Viewsを用いますので、ルーティング設定を追加するだけです。
 
-もう、面倒なので、記事の編集も同時に作ります。
+もう、面倒なので、記事の編集と詳細も同時に作ります。
 
 >|php|
 :
@@ -45,6 +45,8 @@ $pattern = array(
 	"^posts(?:/index)?/?$"=>array("class"=>"generic.Views","method"=>"read","args"=>array(new Post())),
 	//新しい記事の投稿
 	"^posts/add"=>array("class"=>"generic.Views","method"=>"create","args"=>array(new Post(),array(Rhaco::url("posts")))),
+	//記事の詳細
+	"^posts/view/(\d+)$"=>array("class"=>"generic.Views","method"=>"detail","args"=>array(new Post())),
 	//記事の削除
 	"^posts/delete/(\d+)$"=>array("class"=>"generic.Views","method"=>"drop","args"=>array(new Post(),array(Rhaco::url("posts")))),
 	//記事の編集
@@ -55,7 +57,7 @@ $pattern = array(
 
 ここで、共通しているのは、正規表現で数値をキャプチャしていることです。
 はい、ご察しの通りここが削除・編集したい記事の id になります。
-このように、id のキャプチャを指定することにより、どのようなURL設計でも可能となっています。
+このように、id のキャプチャを指定することにより、どのようなURL設計でも同じ処理の実装が可能です。
 
 では、それぞれの URL にアクセスして動作していることを確認してください。
 
