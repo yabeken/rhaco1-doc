@@ -1,0 +1,123 @@
+* テンプレートとモデルの連携
+
+さて、テンプレートの差し替えができるようになりましたので、一覧画面から記事の新規投稿や編集、削除を行えるようにします。
+
+まずは、一覧画面から各処理へのリンクを作成します。
+その前に、それぞれの処理のリンクは、次のような感じになることを確認しておきましょう。
+
+:新規作成:http://localhost/blog/posts/add
+:更新:http://localhost/blog/posts/update/1
+:削除:http://localhost/blog/posts/delete/1
+
+では、 resources/templates/post_list.html をエディタで開きます。
+
+>|html|
+<rt:extends href="./main.html" />
+
+<rt:block name="title">
+	<title>_("list")</title>
+</rt:block>
+
+<rt:block name="content">
+	<fieldset>
+		<form method="get" name="views_search_form" rt:reference="true">
+			<input type="hidden" name="page" value="1"  rt:reference="false" />
+			<input type="hidden" name="o" />
+			<input type="hidden" name="a" />			
+			<input type="text" name="q" />
+			<input type="submit" value="_('search')" />
+		</form>
+		
+		<div class="paging_field">
+			<rt:pager param="pager" />
+		</div>
+		<table border="1" width="80%">
+			<thead>
+			<tr>
+				<rt:loop param="{$tableObject.models('views','list_display')}" var="column">
+				<th align="center" scope="col"><a href="{$rhaco.uri()}?{$sortorder.query($key)}">{$tableObject.label($column)}</a></th>
+				</rt:loop>
+			</tr>
+			</thead>
+			<tbody>
+			<rt:loop param="object_list" var="obj" counter="counter">
+			<tr class="{$f.evenodd($counter)}">
+				<rt:loop param="{$tableObject.models('views','list_display')}" var="column">
+				<Td>{$f.text2html($obj.value($column,true))}&nbsp;</td>
+				</rt:loop>
+			</tr>
+			</rt:loop>
+			</tbody>
+		</table>
+		<div class="paging_field">
+			<rt:pager param="pager" />
+		</div>
+		
+		<rt:invalid />
+	</fieldset>
+	<br />
+</rt:block>
+||<
+
+さて、大量に見たことの無いタグがありますね！
+ここでは、さらっと流して、あまり詳しいことは説明しません。
+
+** テンプレート構文
+
+rhaco のテンプレートエンジンは XML をベースとしていますので、テンプレートの制御はは全て "rt:" という名前空間付きのタグが用いられます。
+
+>||
+<rt:extends href="./main.html"/>
+||<
+
+テンプレートパーサに格納されている変数へのアクセスは、次のような構文です。
+
+>||
+{$hoge}
+||<
+
+詳しくは、参考サイトを見てね。
+
+** モデルとの連携
+
+現在、一覧画面には、post テーブルの全列情報が出ていますが、id、title、created の順で表示したいと思います。
+この場合に修正する箇所は、テンプレート...ではありません。モデルを修正します。
+
+>||
+<?php
+Rhaco::import("model.table.PostTable");
+/**
+ * 記事モデル
+ */
+class Post extends PostTable{
+	function views(){
+		return array(
+			"list_display"=>"id,title,created"
+		);
+	}
+}
+
+?>
+||<
+
+じっくり、テンプレートと見比べてください。
+ここで、対応づけられている箇所は、次の部分です。
+
+>||
+<rt:loop param="{$tableObject.models('views','list_display')}" var="column">
+||<
+
+このように、テンプレートでは、何をどこに表示するかを制御するだけで、どのように表示するかはモデルから取得する形になります。
+こうしておくと、順番の変更等もあっという間にできますね！
+
+*** フォーマット
+
+*** 列のHTML表現
+
+次に、タイトルには
+
+* 参考
+
+- [http://tokushimakazutaka.com/ref_tag_HtmlParser]
+- [http://tokushimakazutaka.com/ref_tag_TemplateParser]
+
