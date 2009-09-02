@@ -1,0 +1,73 @@
+* CSVを出力する
+
+CSVの出力って面倒ですよね。
+何が面倒って IE のバグでヘッダをいじらないといけないし、CSV 形式へのフォーマットもしないといけないし・・・
+
+というわけで、単一テーブル（＋αもできるけど）に対するCSV出力については、次のように行います。
+
+>||
+<?php
+Rhaco::import("arbo.generic.FileViews");
+Rhaco::import("model.Post");
+/**
+ * ブログの情報を出力用Views
+ */
+class BlogFile extends FileViews{
+    function postCsv(){
+    	return $this->csv(new Post());
+    }
+}
+?>
+||<
+
+** 出力する条件を指定する
+
+出力する情報を制御したい場合がある場合には、次のようにします。
+
+>||
+<?php
+Rhaco::import("arbo.generic.FileViews");
+Rhaco::import("model.Post");
+/**
+ * ブログの情報を出力用Views
+ */
+class BlogFile extends FileViews{
+    function postCsv(){
+    	return $this->csv(new Post(),new C(Q::eq(Post::columnId(),1)));
+    }
+}
+?>
+||<
+
+** 出力列を制御する
+
+出力する列、順番を制御する場合には、次のようにします。
+
+>||
+<?php
+Rhaco::import("model.table.PostTable");
+class Post extends PostTable{
+	function views(){
+		return array(
+			"csv"=>"id,created,title"
+		);
+	}
+}
+
+||<
+
+** API
+
+|*引数|*説明|
+|$tableObject|出力するテーブルのモデル|
+|$criteria|検索条件|
+|$filename|ダウンロードファイル名|
+|$confkey|出力列制御キー|
+|$confmethod|出力列制御メソッド|
+
+** 注意点
+
+IE のバグに対応するために、header や session_cache_limiter をいじっている関係で、generic.Views の View との併存はできません。
+
+* 参考
+
