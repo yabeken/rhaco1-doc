@@ -4,8 +4,9 @@
 
 いろんな方が情報を公開していますので、外部へのリンクも多分に含まれます。
 
-- [http://wikihub.org/wiki/rhaco1-doc/reverse/001.required-form-label:title=必須項目に※をつける]
-- [http://wikihub.org/wiki/rhaco1-doc/reverse/002.csv:title=CSVの出力]
-- [http://wikihub.org/wiki/rhaco1-doc/reverse/003.project.xml-optimization:title=project.xmlを最適化する]
+- [http://wikihub.org/wiki/rhaco1-doc/reference/001.required-form-label:title=必須項目に※をつける]
+- [http://wikihub.org/wiki/rhaco1-doc/reference/002.class-import:title=クラスの読み込み]
+- [http://wikihub.org/wiki/rhaco1-doc/reference/004.csv:title=CSVの出力]
+- [http://wikihub.org/wiki/rhaco1-doc/reference/005.project.xml-optimization:title=project.xmlを最適化する]
 - [http://d.hatena.ne.jp/yabeken/20090716/1247732456:title=Viewsにまとめてログイン制限をかける際のセキュリティ]
 
