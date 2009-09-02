@@ -1,0 +1,34 @@
+* 必須項目に※をつける
+
+入力画面で良くあるやつです。
+テンプレートで全項目をべた書きしている場合には、そのまま記述すればいいのですが、 models を使っている場合には、そういうわけにはいきません。
+
+というわけで以下のようにしたらOK。
+
+>||
+<rt:extends href="./main.html" />
+
+<rt:block name="content">
+<form method="post" name="views_form">
+<table>
+<rt:loop param="{$object.models('views','form_display')}" var="column">
+	<rt:if param="{$column.isSerial()}">
+		{$viewutil.columnString($object,$column)}
+	<rt:else />
+		<tr>
+			<th>{$object.label($column)} <rt:if param="{$column.isRequire()}"><span class="require">※</span></rt:if></th>
+			<td>
+				{$viewutil.columnString($object,$column,true,true,'views')}
+			</td>
+		</tr>
+	</rt:if>
+</rt:loop>
+</table>
+
+<input type="submit" name="save_create" value="{$generic_button}" />
+</form>
+
+<rt:invalid />
+
+</rt:block>
+||<
