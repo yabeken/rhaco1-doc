@@ -1,0 +1,44 @@
+* メールアドレス確認のための再入力処理
+
+これも、個人情報登録処理ではよくありますね！
+
+まずは、個人情報テーブルを設計してみましょう。
+
+>||
+<Project>
+	<database name="sample">
+		  <table name="member">
+		  	 <column name="id" type="serial"/>
+			 <column name="name" type="string" require="true"/>
+			 <column name="email" type="email" require="true"/>
+			 <extra name="email_confirm" type="string"/>
+		  </table>
+	</database>
+</project>
+||<
+
+で、モデルを以下のようにすればOK
+
+>||
+Rhaco::import("model.table.MemberTable");
+Rhaco::import("exception.ExceptionTrigger");
+/**
+ * 個人情報
+ */
+class Member extends MemberTable{
+      /**
+       * メールアドレスを確認する
+       * @return boolean
+       */
+      function verifyEmail(){
+      	       if($this->getEmail()!=$this->getEmailConfirm()){
+			return ExceptionTrigger(new GenericException("メールアドレスを確認してください"));
+	       }
+      	       return true;
+      }
+}
+||<
+
+* 参考
+
+- [http://blog.shigepon.com/snippet61]
