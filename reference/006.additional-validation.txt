@@ -9,6 +9,7 @@ rhaco では、そのための方法が用意されています。
 モデルに verifyHoge というように、"verify" がつくメソッドがあれば、検証時に自動的に呼び出されます。
 
 >||
+<?php
 Rhaco::import("model.table.HogeTable");
 class Hoge extends HogeTable{
       /**
@@ -20,7 +21,9 @@ class Hoge extends HogeTable{
       	       return false;
       }
 }
-||< 
+
+?>
+||<
 
 ** メールアドレス確認のための再入力処理
 
@@ -28,7 +31,7 @@ class Hoge extends HogeTable{
 こういう場合には、extra という仮想列を利用します。
 
 >||
-<Project>
+<project>
 	<database name="sample">
 		  <table name="member">
 		  	 <column name="id" type="serial"/>
@@ -43,6 +46,7 @@ class Hoge extends HogeTable{
 で、モデルに検証のための追加メソッドを宣言します。
 
 >||
+<?php
 Rhaco::import("model.table.MemberTable");
 Rhaco::import("exception.ExceptionTrigger");
 /**
@@ -60,6 +64,8 @@ class Member extends MemberTable{
       	       return true;
       }
 }
+
+?>
 ||<
 
 これで、メールアドレスの正当性のチェックは全て email で行い、email_confirm では、email と同じかどうかだけをチェックするだけになります。
