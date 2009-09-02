@@ -10,7 +10,8 @@
 + [http://wikihub.org/wiki/rhaco1-doc/reference/004.template-tag:title=テンプレート制御タグ]
 + [http://wikihub.org/wiki/rhaco1-doc/reference/004.csv-output:title=CSVの出力]
 + [http://wikihub.org/wiki/rhaco1-doc/reference/005.project.xml:title=project.xmlを知る]
-+ [http://wikihub.org.wiki/rhaco1-doc/reference/006.additional-validation:title=検証処理を追加する]
++ [http://wikihub.org/wiki/rhaco1-doc/reference/006.additional-validation:title=検証処理を追加する]
++ [http://wikihub.org/wiki/rhaco1-doc/reference/007.rhaco-constructor:title=rhacoのコンストラクタ]
 
 ** 外部情報
 
