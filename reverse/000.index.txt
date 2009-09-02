@@ -2,3 +2,5 @@
 
 [http://blog.shigepon.com/snipet0:title=shigepon] さんのパクリです。
 
+
+* [http://wikihub.org/wiki/rhaco1-doc/reverse/001.required-form-label:title=必須項目に※をつける]
