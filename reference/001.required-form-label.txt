@@ -32,3 +32,11 @@
 
 </rt:block>
 ||<
+
+多すぎてわかりませんね。以下のところです。
+
+>||
+<th>{$object.label($column)} <rt:if param="{$column.isRequire()}"><span class="require">※</span></rt:if></th>
+||<
+
+テーブルモデルから表示対象の列モデルを取得できていますので、その列モデルの必須条件から表示を制御しています。
