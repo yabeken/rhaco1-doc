@@ -6,24 +6,24 @@ rhaco 1.x は既に新機能の開発は行われておらず、バグフィッ�
 この wiki は [http://wassr.jp/user/yabeken:title=yabeken] が主に編集しています。
 ですので、独断と偏見が含まれている可能性があります点、了承の上見てください。
 
-* チュートリアル
+** チュートリアル
 
 あまり、いいチュートリアルが思いつかなかったので、cake phpの [http://book.cakephp.org/ja/view/219/Blog:title=チュートリアル] をなぞれるだけなぞってみます。
 そこから、さらに追加でいろいろな機能を追加していこうと思う。
 
 ツリーメニューからどうぞ。
 
+** 逆引き
+
+元は [http://blog.shigepon.com:title=shigepon] さんですが、分散するのもの問題なので、できる限りの情報をここに集約できればいいかなと思っています。
+
+** 外部情報
+
 - [http://d.hatena.ne.jp/sotarok/20080202/1201979419:title=環境作り(PDT)] - [http://d.hatena.ne.jp/sotarok/:title=id:sotarok] さん
 - [http://d.hatena.ne.jp/nazone/20080121/p1:title=rhacoでTwitterのBOTを作るチュートリアル] - [http://d.hatena.ne.jp/anatoo/:title=id:anatoo] さん
 - [http://d.hatena.ne.jp/sotarok/20080209/1202537686:title=サンプルアプリblogkitを見る] - [http://d.hatena.ne.jp/sotarok/:title=id:sotarok] さん
 - [http://blog.shigepon.com/snippet22:title=逆引きrhaco22: rhacoのチュートリアル] - [http://blog.shigepon.com:title=shigepon] さん
 - [http://d.hatena.ne.jp/nazone/20080121/p1:title=rhacoでTwitterのBOTを作るチュートリアル] - [http://d.hatena.ne.jp/nazone/:title=id:nazo] さん
-
-* 逆引き
-
-元は [http://blog.shigepon.com:title=shigepon] さんですが、分散するのもの問題なので、できる限りの情報をここに集約できればいいかなと思っています。
-
-** 外部情報
 
 [http://riaf.jp:title=riaf] さんが技術評論社で [http://gihyo.jp/dev/serial/01/rhaco:title=rhaco の連載]を行いましたので、まずは、そちらを見ると良いでしょう。
 
