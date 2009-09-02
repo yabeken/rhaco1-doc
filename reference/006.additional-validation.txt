@@ -67,3 +67,4 @@ class Member extends MemberTable{
 * 参考
 
 - [http://blog.shigepon.com/snippet61]
+- [http://d.hatena.ne.jp/yabeken/20090818/1250572513]
