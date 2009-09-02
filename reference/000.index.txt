@@ -1,17 +1,18 @@
-* 逆引き
+* 逆引きやらリファレンスやら
 
 [http://blog.shigepon.com/snippet0:title=shigepon] さんのパクリです。
 
 いろんな方が情報を公開していますので、外部へのリンクも多分に含まれます。
+また、思いつくままに書いているので順不同です。悪しからず。
 
-- [http://wikihub.org/wiki/rhaco1-doc/reference/001.required-form-label:title=必須項目に※をつける]
-- [http://wikihub.org/wiki/rhaco1-doc/reference/002.class-import:title=クラスの読み込み]
-- [http://wikihub.org/wiki/rhaco1-doc/reference/004.template-tag:title=テンプレート制御タグ]
-- [http://wikihub.org/wiki/rhaco1-doc/reference/004.csv-output:title=CSVの出力]
-- [http://wikihub.org/wiki/rhaco1-doc/reference/005.project.xml-optimization:title=project.xmlを最適化する]
-- [http://wikihub.org.wiki/rhaco1-doc/reference/006.additional-validation:title=検証処理を追加する]
++ [http://wikihub.org/wiki/rhaco1-doc/reference/001.required-form-label:title=必須項目に※をつける]
++ [http://wikihub.org/wiki/rhaco1-doc/reference/002.class-import:title=クラスの読み込み]
++ [http://wikihub.org/wiki/rhaco1-doc/reference/004.template-tag:title=テンプレート制御タグ]
++ [http://wikihub.org/wiki/rhaco1-doc/reference/004.csv-output:title=CSVの出力]
++ [http://wikihub.org/wiki/rhaco1-doc/reference/005.project.xml:title=project.xmlを知る]
++ [http://wikihub.org.wiki/rhaco1-doc/reference/006.additional-validation:title=検証処理を追加する]
 
-* 外部情報
+** 外部情報
 
 - [http://d.hatena.ne.jp/yabeken/20090716/1247732456:title=Viewsにまとめてログイン制限をかける際のセキュリティ]
 - [http://blog.shigepon.com/snippet79:title=project.xmlのinput要素のみ設定する画面を作る]
