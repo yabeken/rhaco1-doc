@@ -2,6 +2,7 @@
 
 [http://blog.shigepon.com/snippet0:title=shigepon] さんのパクリです。
 
+いろんな方が情報を公開していますので、外部へのリンクも多分に含まれます。
 
 - [http://wikihub.org/wiki/rhaco1-doc/reverse/001.required-form-label:title=必須項目に※をつける]
 - [http://wikihub.org/wiki/rhaco1-doc/reverse/002.csv:title=CSVの出力]
