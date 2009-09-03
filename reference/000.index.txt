@@ -12,6 +12,7 @@
 + [http://wikihub.org/wiki/rhaco1-doc/reference/005.project.xml:title=project.xmlを知る]
 + [http://wikihub.org/wiki/rhaco1-doc/reference/006.additional-validation:title=検証処理を追加する]
 + [http://wikihub.org/wiki/rhaco1-doc/reference/007.rhaco-constructor:title=rhacoのコンストラクタ]
++ [http://wikihub.org/wiki/rhaco1-doc/reference/008.setup.php:title=setup.php]
 
 ** 外部情報
 
