@@ -21,3 +21,6 @@
 - [http://blog.shigepon.com/snippet79:title=project.xmlのinput要素のみ設定する画面を作る]
 - [http://d.hatena.ne.jp/yabeken/20090710/1247220042:title=テンプレートの継承]
 - [http://blog.shigepon.com/snippet63:title=テーブルの初期データを作る]
+- [http://blog.shigepon.com/snippet82:title=セットアップ画面に認証機能を追加する]
+- [http://blog.shigepon.com/snippet80:title=認証機能を手軽に導入する]
+- [http://blog.shigepon.com/snippet73:title=認証をDBで行う]
