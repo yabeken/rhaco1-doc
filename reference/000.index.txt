@@ -12,9 +12,9 @@
 + [http://wikihub.org/wiki/rhaco1-doc/reference/005.project.xml:title=project.xmlを知る]
 + [http://wikihub.org/wiki/rhaco1-doc/reference/006.additional-validation:title=検証処理を追加する]
 + [http://wikihub.org/wiki/rhaco1-doc/reference/007.rhaco-constructor:title=rhacoのコンストラクタ]
-+ [http://wikihub.org/wiki/rhaco1-doc/reference/008.setup.php:title=setup.php]
++ [http://wikihub.org/wiki/rhaco1-doc/reference/008.setup-framework:title=セットアップフレームワーク]
 + [http://wikihub.org/wiki/rhaco1-doc/reference/011.csv-utility:title=CSVを扱う]
-+ [http://wikihub.org/wiki/rhaco1-doc/reference/013.one-file-script:title=１ファイルスクリプト]
++ [http://wikihub.org/wiki/rhaco1-doc/reference/013.one-file-script:title=テンプレートを内蔵した１ファイルスクリプト]
 
 ** 外部情報
 
