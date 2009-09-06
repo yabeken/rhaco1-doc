@@ -1,9 +1,0 @@
-* テンプレートで使えるタグ
-
-また今度書く
-
-* 参考
-
-- [http://tokushimakazutaka.com/ref_tag_HtmlParser]
-- [http://tokushimakazutaka.com/ref_tag_TemplateParser]
-- [http://www.sharkpp.net/php/rhaco/template-syntax-memo.html]
