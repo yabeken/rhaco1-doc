@@ -1,0 +1,16 @@
+* テンプレートエンジン
+
+
+rhaco のテンプレートエンジンはシンプルです。Smarty 等のようにプラグイン機構を持たないため、テンプレートエンジン自身は全く拡張性を持っていません。
+だからといって、低機能という訳ではありません。開発する上で、必要十分な機能は全て持っています。
+また、多機能でない分、無意識のうちにやってしまいがちな、Template ( View ) への ロジック記述がなくなるでしょう！
+
+詳しく書こうと思ったけど、参考リンク先を見てください。
+そちらの方がはやいです。
+
+* 参考
+
+- [http://tokushimakazutaka.com/ref_tag_HtmlParser]
+- [Http://tokushimakazutaka.com/ref_tag_TemplateParser]
+- [http://www.sharkpp.net/php/rhaco/template-syntax-memo.html]
+- [http://d.hatena.ne.jp/yabeken/20090710/1247220042:title=テンプレートの継承]
