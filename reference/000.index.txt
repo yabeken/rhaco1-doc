@@ -25,3 +25,4 @@
 - [http://blog.shigepon.com/snippet82:title=セットアップ画面に認証機能を追加する]
 - [http://blog.shigepon.com/snippet80:title=認証機能を手軽に導入する]
 - [http://blog.shigepon.com/snippet73:title=認証をDBで行う]
+- [http://d.hatena.ne.jp/yabeken/20090908/1252400661:title=postgresql 8.2 以降で rhaco1 を使う際の注意点]
