@@ -14,10 +14,11 @@
 + [http://wikihub.org/wiki/rhaco1-doc/reference/007.rhaco-constructor:title=rhacoのコンストラクタ]
 + [http://wikihub.org/wiki/rhaco1-doc/reference/008.setup-framework:title=セットアップフレームワーク]
 + [http://wikihub.org/wiki/rhaco1-doc/reference/011.csv-utility:title=CSVを扱う]
-+ [012.authentication:title=認証]
++ [reference/012.authentication:title=認証]
 + [http://wikihub.org/wiki/rhaco1-doc/reference/013.one-file-script:title=テンプレートを内蔵した１ファイルスクリプト]
-+ [014.build-query:title=SQL クエリの組み立て方]
-+ [015.fill-in-form-values:title=入力フォームの自動補完]
++ [reference/014.build-query:title=SQL クエリの組み立て方]
++ [reference/015.fill-in-form-values:title=入力フォームの自動補完]
++ [reference/016.usefule-template-utilities:title=テンプレートで使えるユーティリティ]
 
 ** 外部情報
 

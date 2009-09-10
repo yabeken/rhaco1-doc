@@ -23,6 +23,6 @@ TODO
 
 * 参考
 
-- [Http://blog.shigepon.com/snippet82:title=セットアップ画面に認証機能を追加する]
+- [http://blog.shigepon.com/snippet82:title=セットアップ画面に認証機能を追加する]
 - [http://blog.shigepon.com/snippet80:title=認証機能を手軽に導入する]
 - [http://blog.shigepon.com/snippet73:title=認証をDBで行う]
