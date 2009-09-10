@@ -11,7 +11,7 @@ rhaco 1.x は既に新機能の開発は行われておらず、バグフィッ�
 あまり、いいチュートリアルが思いつかなかったので、cake phpの [http://book.cakephp.org/ja/view/219/Blog:title=チュートリアル] をなぞれるだけなぞってみます。
 そこから、さらに追加でいろいろな機能を追加していこうと思う。
 
-ツリーメニューからどうぞ。
+[tutorial/001-install:title=こちら]からどうぞ。
 
 ** 逆引き
 
@@ -42,7 +42,7 @@ rhaco 1.x は既に新機能の開発は行われておらず、バグフィッ�
 
 ** コミュニティ
 
-現在、rhaco のコミュニティは IRC チャンネル [http://freenode.net:title=#rhaco-ja@freenode] で活動しています。
+現在、rhaco のコミュニティは IRC チャンネル [http://webchat.freenode.net/:title=#rhaco-ja@freenode] で活動しています。
 ぜひ、お気軽に参加ください。
 
 なお、発言のログはすべて [http://wassr.jp/user/rhacoja:title=rhacoja@wassr] に記録されています。
