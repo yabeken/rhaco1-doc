@@ -108,7 +108,7 @@ $db->select(new Post(),$c);
 ** 前方一不致 / not like , not ilike
 
 >||
-//select * from post where post.name like 'hoge%'
+//select * from post where post.name not like 'hoge%'
 $c = new C(Q::like(Post::columnId(),1,"w*"));
 $db->select(new Post(),$c);
 ||<
