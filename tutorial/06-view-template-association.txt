@@ -12,28 +12,28 @@ rhaco では、汎用 Views ( generic.Views )を用いることにより、一�
 |update|更新|
 |confirmedUpdate|確認画面付き更新|
 |drop|削除 ( 確認画面付き削除にも対応 )|
-|import|CSV形式のデータの取り込み|
-|export|テーブルをCSV形式で出力|
+|import|CSV形式のデータの取り込み(UTF-8)|
+|export|テーブルをCSV形式で出力(UTF-8)|
 
-これらのビューにモデルを渡すことによって、モデルに対応するレコードへの処理となります。簡単ですね！
-日本国内では、確認画面付きのシステムを求められる場面が多いですが、それらは標準で用意されています。
+これらのビューにモデルを渡すことによって、モデルに対応するデータベースのテーブルレコードへの処理となります。
+日本国内では、確認画面付きのシステムを求められる場面が多いですが、それらは標準で用意されていることも特徴です。
 
 * テンプレートの連携
 
 さて、投稿記事の一覧・検索、投稿、削除、編集と一通りできるようになりましたが、現在はそれぞれの処理は URL を直接たたかないとできません。
-これでは、使い物になりませんよね？rhaco では、汎用 Views を用いている場合には、これを簡単に差し替えられます。
+これでは、使い物になりませんよね？ rhaco では、汎用 Views を用いている場合には、これを簡単に差し替えられます。
 
-次のようにファイルをコピーしてください。
+では、次のようにファイルをコピーしてください。
 
 + /DocumentRoot/rhaco/resources/templates/generic/views/main.html -> /DocumentRoot/blog/resources/templates/generic/main.html
 + /DocumentRoot/rhaco/resources/templates/generic/views/confirm.html -> /DocumentRoot/blog/resources/templates/generic/post_confirm.html
 + /DocumentRoot/rhaco/resources/templates/generic/views/form.html -> /DocumentRoot/blog/resources/templates/generic/post_form.html
 + /DocumentRoot/rhaco/resources/templates/generic/views/list.html -> /DocumentRoot/blog/resources/templates/generic/post_list.html
 
-これで、テンプレートの差し替えが完了しました。簡単ですね！
+これで、テンプレートの差し替えが完了しました。
 といっても、中身をいじってませんので、表示は変わりませんけどね。
 
-** 連携の規則
+** 汎用ビューとテンプレートの連携の規則
 
 規則は非常に単純です。ファイル名は、次の通りです。
 
@@ -53,4 +53,6 @@ rhaco では、汎用 Views ( generic.Views )を用いることにより、一�
 
 このようにして、テンプレートの差し替えは非常に簡単にできます。
 いつでも差し替えることができるとわかっていれば、先にロジックに集中できますね！
+
+* 参考
 
