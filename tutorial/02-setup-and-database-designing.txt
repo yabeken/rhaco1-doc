@@ -17,7 +17,7 @@ rhaco はセットアップフレームワークとも呼ばれており、全�
 
 ブラウザから、 http://localhost/blog/setup.php にアクセスしてみてください。
 
-[http://wikihub.org/wiki/rhaco1-doc/tutorial/path-to-rhao.png:image]
+[http://wikihub.org/wiki/rhaco1-doc/tutorial/path-to-rhaco.png:image]
 
 rhaco の場所を聞かれますので、指定します。
 
@@ -86,7 +86,7 @@ project.xml をエディタで開き、次のようにブログ投稿記事の�
 project.xmlを保存したら、 http://localhost/blog/setup.php に再度アクセスしてください。
 「データベース[BLOG]」という設定項目が増えています。ここで、project.xml に記述したテーブルモデルの接続先データベース設定を行うことができます。
 
-[http://wikihub.oorg/wiki/rhaco1-doc/tutorial/database-settings.png:image]
+[http://wikihub.org/wiki/rhaco1-doc/tutorial/database-settings.png:image]
 
 :データベースサーバ:データベースの種類を指定します。 （MySQL、PostgreSQL、Oracle、SQLiteが利用可能です。）
 :データベースサーバのホスト名:データベースサーバが動作しているサーバのアドレスを指定します。SQLiteの場合にはファイルパスを指定します。
