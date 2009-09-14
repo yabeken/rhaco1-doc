@@ -27,9 +27,9 @@ rhaco のモデルクラスはわざわざ手を動かして作成する必要�
         Post.php
 |<
 
-PostTable クラスは project.xml で post テーブルの列情報（型や制限値、ラベル等）やアクセッサを実装したクラスで、 settings をクリックする度に自動的に再生成されます。
+PostTable クラスは project.xml で post テーブルの列情報（型や制限値、ラベル等）やアクセッサを実装したクラスで、 settings 時に自動的に再生成されます。
 
-Post クラスは、PostTable を継承しており、ファイルが存在しない場合にのみ settings クリック時に自動的に生成されます。
+Post クラスは、PostTable を継承しており、ファイルが存在しない場合にのみ settings 時に自動的に生成されます。
 様々な機能をモデルに付加する際には、この Post モデルを変更します。
 
 >|php|
@@ -57,6 +57,7 @@ class Post extends PostTable{
 <?php
 include_once dirname(__FILE__)."__init__.php";
 Rhaco::import("generic.Urls");
+Rhaco::import("database.DbUtil");
 Rhaco::import("model.Post");
 
 $db = new Dbutil(Post::connection());
