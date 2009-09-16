@@ -1,7 +1,6 @@
 * テンプレートとモデルの連携
 
 さて、テンプレートの差し替えができるようになりましたので、一覧画面から記事の新規投稿や編集、削除を行えるようにします。
-この節はちょっと長めです。
 
 まずは、一覧画面から各処理へのリンクを作成します。
 その前に、それぞれの処理のリンクは、次のような感じになることを確認しておきましょう。
@@ -156,6 +155,99 @@ class Post extends PostTable{
 			</tbody>
 		</table>
 ||<
+
+*** モデルへのリンク出力の移動
+
+※ この節は、開発スタイルや考え方によって大きく異なってきますので、必ずしも参考にはならないかもしれません。
+
+モデルに対して、詳細、更新、削除などのアクションが存在する場合、それらの URL は、そのモデルの ID と紐付きになります。
+先ほどは、テンプレート側にこの URL の生成コードを書きましたが、突き詰めた考え方をすると、テンプレート側で URL を生成するロジックを記述しているといえます。
+さらに、この URL は、モデルが保持している ID に依存するので、この URL もしくは、リンクをモデルが持っているべきと考えることもできます。
+
+rhaco では、このような考え方に基づいた構築も可能としています。
+
+まず、project.xml に、更新と削除のリンクを生成する仮想列 ( extra ) を記述します。
+
+>||
+<table name="post">
+	<description>記事</description>
+	<column name="id" type="serial" label="記事番号"/>
+	<column name="created" type="timestamp" default="sysdate" label="投稿日"/>
+	<column name="modified" type="timestamp" default="sysdate" label="最終更新日"/>
+	<column name="title" type="string" require="true" max="50" label="タイトル"/>
+	<column name="body" type="text" require="true" label="本文"/>
+	<extra name="update_link" label="更新"/>
+	<extra name="delete_link" label="削除"/>
+	<default>
+		<!-- テスト用に記事をいくつか入れておきます。 -->
+		<data>
+			<column name="title" value="タイトル"/>
+			<column name="body" value="これは、記事の本文です。"/>
+		</data>
+		<data>
+			<column name="title" value="またタイトル"/>
+			<column name="body" value="そこに本文が続きます。"/>
+		</data>
+		<data>
+			<column name="title" value="タイトルの逆襲"/>
+			<column name="body" value="こりゃ本当に面白そう！うそ。"/>
+		</data>
+	</default>
+</table>
+||<
+
+次に、二箇所テンプレートを変更します。
+
+>||
+<td>{$viewutil.columnString($obj,"update_link")}</td>
+<td>{$viewutil.columnString($obj,"delete_link")}</td>
+||<
+
+テンプレートから、URL 生成ロジックを削除します。
+考え方に依りますが、URL の生成でとどめるもよし、HTML を含めた出力までさせるもよしかと思います。
+
+リンクを生成するように、モデルを変更します。
+
+>||
+<?php
+Rhaco::import("model.table.PostTable");
+/**
+ * 記事モデル
+ */
+class Post extends PostTable{
+	function views(){
+		return array(
+			"list_display"=>"id,title,created"
+		);
+	}
+	
+	/**
+	 * update_link 仮想列の HTML 表現
+	 *
+	 * @return string
+	 */
+	function toStringUpdateLink(){
+		return sprintf('<a href="%s">更新</a>',Rhaco::url("posts/update/".$this->getId()));
+	}
+	
+	/**
+	 * delete_link 仮想列の HTML 表現
+	 *
+	 * @return string
+	 */
+	function toStringDeleteLink(){
+		return sprintf('<a href="%s">削除</a>',Rhaco::url("posts/delete/".$this->getId()));
+	}
+}
+
+?>
+||<
+
+このようにして仮想的な列をモデルに付与できるというのも、rhaco の非常に大きな特徴ともいえます。
+つまり、テンプレートはモデルに対して、「ここに、XXX を表示したい。ここに、XXX の HTML 表現を表示したい。」という問い合わせを行うだけとなります。
+必然的にロジックはモデルに集中することになります。
+
+タイトルはどうするの？っていうのは残りますが、それはまた後で説明します。
 
 * 参考
 
