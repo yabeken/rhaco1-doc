@@ -8,6 +8,8 @@ rhaco を早速使ってみましょう。このチュートリアルを読ん�
 さらに、実際の場面では周辺ユーティリティの利用が必須となってきますので、それらを利用した開発を行います。
 rhaco を取得してインストールし、ブログの投稿記事の一覧表示・詳細表示（select）、追加（insert）、編集（update）、削除（delete）などのアプリケーションロジックを作成します。
 
+また、[http://twitter.com/yabeken:title=@yabeken] の思想が入っている箇所もありますので悪しからず。
+
 ** 必要なもの
 
 +Apache
@@ -29,7 +31,7 @@ rhaco は、 バージョンという概念が存在しません。
 このため必然的に最新版が安定版となります。
 
 最新の rhaco のダウンロードは http://download.rhaco-users.jp より行います。
-また、SVNリポジトリからチェックアウト／エクスポートすることもできます。 http://rhaco.googlecode.com/svn/rhaco_1_x/trunk/
+また、[http://rhaco.googlecode.com/svn/rhaco_1_x/trunk/:title=SVNリポジトリ]からチェックアウト／エクスポートすることもできます。
 
 rhaco を DocumentRoot 内((実際の運用場面では適当な箇所))に展開してください。
 
