@@ -7,9 +7,9 @@
 MTV は Django で使われ始めた用語(([http://michilu.com/django/doc-ja/faq/#django-mvc-controller-view-view-template]))のようです。
 ごくごく簡単に言うと、MVC とは次のような対応になります。
 
-* Model -> Model
-* View -> Template
-* Controller -> View
+- Model -> Model
+- View -> Template
+- Controller -> View
 
 イメージはこんな感じ。
 
