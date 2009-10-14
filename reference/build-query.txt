@@ -51,7 +51,7 @@ $db->select(new Post(),$c);
 ** 以下 / <=
 
 >||
-//select * from post where post.id < 10
+//select * from post where (post.id < 10)
 $c = new C(Q::lte(Post::columnId(),10));
 //$c = new Criteria(Criterion::lessEquals(Post::columnId(),10));
 $db->select(new Post(),$c);
@@ -60,12 +60,12 @@ $db->select(new Post(),$c);
 ** 前方一致 / like , ilike
 
 >||
-//select * from post where post.name like 'hoge%'
+//select * from post where (post.name like 'hoge%')
 $c = new C(Q::like(Post::columnName(),"hoge","w*"));
 $db->select(new Post(),$c);
 
 //大文字小文字を区別しない場合
-//select * from post where post.name ilike 'hoge%'
+//select * from post where (post.name ilike 'hoge%')
 $c = new C(Q::ilike(Post::columnName(),"hoge","w*"));
 $db->select(new Post(),$c);
 ||<
@@ -73,12 +73,12 @@ $db->select(new Post(),$c);
 ** 前方一致 / startswith, istartswith
 
 >||
-//select * from post where post.name like 'hoge%'
+//select * from post where (post.name like 'hoge%')
 $c = new C(Q::startswith(Post::columnName(),"hoge"));
 $db->select(new Post(),$c);
 
 //大文字小文字を区別しない場合
-//select * from post where post.name ilike 'hoge%'
+//select * from post where (post.name ilike 'hoge%')
 $c = new C(Q::istartswith(Post::columnName(),"hoge"));
 $db->select(new Post(),$c);
 ||<
@@ -101,12 +101,12 @@ $db->select(new Post(),$c);
 ** 後方一致 / like, ilike
 
 >||
-//select * from post where post.name like '%hoge'
+//select * from post where (post.name like '%hoge')
 $c = new C(Q::like(Post::columnName(),"hoge","*w"));
 $db->select(new Post(),$c);
 
 //大文字小文字を区別しない場合
-//select * from post where post.name ilike '%hoge'
+//select * from post where (post.name ilike '%hoge')
 $c = new C(Q::ilike(Post::columnName(),"hoge","*w"));
 $db->select(new Post(),$c);
 ||<
@@ -114,12 +114,12 @@ $db->select(new Post(),$c);
 ** 後方一致 / endswith, iendswith
 
 >||
-//select * from post where post.name like '%hoge'
+//select * from post where (post.name like '%hoge')
 $c = new C(Q::endswith(Post::columnName(),"hoge"));
 $db->select(new Post(),$c);
 
 //大文字小文字を区別しない場合
-//select * from post where post.name ilike '%hoge'
+//select * from post where (post.name ilike '%hoge')
 $c = new C(Q::iendswith(Post::columnName(),"hoge"));
 $db->select(new Post(),$c);
 ||<
@@ -142,12 +142,12 @@ $db->select(new Post(),$c);
 ** 部分一致 / like, ilike
 
 >||
-//select * from post where post.name like '%hoge%'
+//select * from post where (post.name like '%hoge%')
 $c = new C(Q::like(Post::columnName(),"hoge","*"));
 $db->select(new Post(),$c);
 
 //大文字小文字を区別しない場合
-//select * from post where post.name ilike '%hoge%'
+//select * from post where (post.name ilike '%hoge%')
 $c = new C(Q::ilike(Post::columnName(),"hoge","*"));
 $db->select(new Post(),$c);
 ||<
@@ -155,12 +155,12 @@ $db->select(new Post(),$c);
 ** 部分一致 / contains, icontains
 
 >||
-//select * from post where post.name like '%hoge%'
+//select * from post where (post.name like '%hoge%')
 $c = new C(Q::contains(Post::columnName(),"hoge"));
 $db->select(new Post(),$c);
 
 //大文字小文字を区別しない場合
-//select * from post where post.name ilike '%hoge%'
+//select * from post where (post.name ilike '%hoge%')
 $c = new C(Q::icontains(Post::columnName(),"hoge"));
 $db->select(new Post(),$c);
 ||<
@@ -183,12 +183,12 @@ $db->select(new Post(),$c);
 ** 前方不一致 / not like , not ilike
 
 >||
-//select * from post where post.name not like 'hoge%'
+//select * from post where (post.name not like 'hoge%')
 $c = new C(Q::notLike(Post::columnName(),"hoge","w*"));
 $db->select(new Post(),$c);
 
 //大文字小文字を区別しない場合
-//select * from post where post.name not ilike 'hoge%'
+//select * from post where (post.name not ilike 'hoge%')
 $c = new C(Q::notiLike(Post::columnName(),"hoge","w*"));
 $db->select(new Post(),$c);
 ||<
@@ -196,12 +196,12 @@ $db->select(new Post(),$c);
 ** 前方不一致 / startswith, istartswith
 
 >||
-//select * from post where post.name not like 'hoge%'
+//select * from post where (post.name not like 'hoge%')
 $c = new C(Q::startswith(Post::columnName(),"hoge",true));
 $db->select(new Post(),$c);
 
 //大文字小文字を区別しない場合
-//select * from post where post.name not ilike 'hoge%'
+//select * from post where (post.name not ilike 'hoge%')
 $c = new C(Q::istartswith(Post::columnName(),"hoge",true));
 $db->select(new Post(),$c);
 ||<
@@ -224,12 +224,12 @@ $db->select(new Post(),$c);
 ** 後方不一致 / not like, not ilike
 
 >||
-//select * from post where post.name not like '%hoge'
+//select * from post where (post.name not like '%hoge')
 $c = new C(Q::notLike(Post::columnName(),"hoge","*w"));
 $db->select(new Post(),$c);
 
 //大文字小文字を区別しない場合
-//select * from post where post.name not ilike '%hoge'
+//select * from post where (post.name not ilike '%hoge')
 $c = new C(Q::notiLike(Post::columnName(),"hoge","*w"));
 $db->select(new Post(),$c);
 ||<
@@ -237,12 +237,12 @@ $db->select(new Post(),$c);
 ** 後方不一致 / endswith, iendswith
 
 >||
-//select * from post where post.name not like '%hoge'
+//select * from post where (post.name not like '%hoge')
 $c = new C(Q::endswith(Post::columnName(),"hoge",true));
 $db->select(new Post(),$c);
 
 //大文字小文字を区別しない場合
-//select * from post where post.name not ilike '%hoge'
+//select * from post where (post.name not ilike '%hoge')
 $c = new C(Q::iendswith(Post::columnName(),"hoge",true));
 $db->select(new Post(),$c);
 ||<
