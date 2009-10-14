@@ -111,7 +111,7 @@ $c = new C(Q::ilike(Post::columnName(),"hoge","*w"));
 $db->select(new Post(),$c);
 ||<
 
-*** 後方一致 / endswith, iendswith
+** 後方一致 / endswith, iendswith
 
 >||
 //select * from post where post.name like '%hoge'
@@ -152,7 +152,7 @@ $c = new C(Q::ilike(Post::columnName(),"hoge","*"));
 $db->select(new Post(),$c);
 ||<
 
-*** 部分一致 / contains, icontains
+** 部分一致 / contains, icontains
 
 >||
 //select * from post where post.name like '%hoge%'
@@ -165,7 +165,7 @@ $c = new C(Q::icontains(Post::columnName(),"hoge"));
 $db->select(new Post(),$c);
 ||<
 
-*** 部分一致リスト / contains, icontains
+** 部分一致リスト / contains, icontains
 
 >||
 //select * from post where ( (post.name like '%hoge%') or (post.name like '%fuga%') )
@@ -234,7 +234,7 @@ $c = new C(Q::notiLike(Post::columnName(),"hoge","*w"));
 $db->select(new Post(),$c);
 ||<
 
-*** 後方不一致 / endswith, iendswith
+** 後方不一致 / endswith, iendswith
 
 >||
 //select * from post where post.name not like '%hoge'
@@ -275,7 +275,7 @@ $c = new C(Q::notiLike(Post::columnName(),"hoge","*"));
 $db->select(new Post(),$c);
 ||<
 
-*** 部分不一致 / contains, icontains
+** 部分不一致 / contains, icontains
 
 >||
 //select * from post where post.name not like '%hoge%'
@@ -288,7 +288,7 @@ $c = new C(Q::icontains(Post::columnName(),"hoge",true));
 $db->select(new Post(),$c);
 ||<
 
-*** 部分不一致リスト / contains, icontains
+** 部分不一致リスト / contains, icontains
 
 >||
 //select * from post where ( (post.name not like '%hoge%') or (post.name not like '%fuga%') )
