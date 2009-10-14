@@ -1,0 +1,166 @@
+* SQL クエリの組み立て方
+
+rhaco では、クエリの組み立てに、Criteria ( C ) クラス と Criterion ( Q ) クラス という二つのクラスを組み合わせています。
+これらの組み合わせにより、ある程度複雑な条件を含む SQL を発行することができます。
+
+** 等号 / =
+
+>||
+//select * from post where post.id = 1
+$c = new C(Q::eq(Post::columnId(),1));
+//$c = new Criteria(Criterion::equal(Post::columnId(),1));
+$db->select(new Post(),$c);
+||<
+
+** 不等号 / <>
+
+>||
+//select * from post where post.id <> 1
+$c = new C(Q::neq(Post::columnId(),1));
+//$c = new Criteria(Criterion::notEqual(Post::columnId(),1));
+$db->select(new Post(),$c);
+||<
+
+** 大なり / >
+
+>||
+//select * from post where post.id > 1
+$c = new C(Q::gt(Post::columnId(),1));
+//$c = new Criteria(Criterion::greater(Post::columnId(),1));
+$db->select(new Post(),$c);
+||<
+
+** 以上 / >=
+
+>||
+//select * from post where post.id >= 1
+$c = new C(Q::gte(Post::columnId(),10));
+//$c = new Criteria(Criterion::greaterEquals(Post::columnId(),10));
+$db->select(new Post(),$c);
+||<
+
+** 小なり / <
+
+>||
+//select * from post where post.id < 10
+$c = new C(Q::lt(Post::columnId(),1));
+//$c = new Criteria(Criterion::less(Post::columnId(),1));
+$db->select(new Post(),$c);
+||<
+
+** 以下 / <=
+
+>||
+//select * from post where post.id < 10
+$c = new C(Q::lte(Post::columnId(),1));
+//$c = new Criteria(Criterion::lessEquals(Post::columnId(),1));
+$db->select(new Post(),$c);
+||<
+
+** 前方一致 / like , ilike
+
+>||
+//select * from post where post.name like 'hoge%'
+$c = new C(Q::like(Post::columnId(),1,"w*"));
+$db->select(new Post(),$c);
+||<
+
+大文字小文字を区別しない場合
+
+>||
+//select * from post where post.name ilike 'hoge%'
+$c = new C(Q::ilike(Post::columnId(),1,"w*"));
+$db->select(new Post(),$c);
+||<
+
+** 後方一致 / like, ilike
+
+>||
+//select * from post where post.name like '%hoge'
+$c = new C(Q::like(Post::columnId(),1,"*w"));
+$db->select(new Post(),$c);
+||<
+
+大文字小文字を区別しない場合
+
+>||
+//select * from post where post.name ilike '%hoge'
+$c = new C(Q::ilike(Post::columnId(),1,"*w"));
+$db->select(new Post(),$c);
+||<
+
+** 部分一致 / like, ilike
+
+>||
+//select * from post where post.name like '%hoge%'
+$c = new C(Q::like(Post::columnId(),1,"*"));
+$db->select(new Post(),$c);
+||<
+
+大文字小文字を区別しない場合
+
+>||
+//select * from post where post.name like '%hoge%'
+$c = new C(Q::like(Post::columnId(),1,"*"));
+$db->select(new Post(),$c);
+||<
+
+** 前方一不致 / not like , not ilike
+
+>||
+//select * from post where post.name not like 'hoge%'
+$c = new C(Q::like(Post::columnId(),1,"w*"));
+$db->select(new Post(),$c);
+||<
+
+大文字小文字を区別しない場合
+
+>||
+//select * from post where post.name ilike 'hoge%'
+$c = new C(Q::ilike(Post::columnId(),1,"w*"));
+$db->select(new Post(),$c);
+||<
+
+
+
+** 後方一致 / like, ilike
+
+>||
+//select * from post where post.name like '%hoge'
+$c = new C(Q::like(Post::columnId(),1,"*w"));
+$db->select(new Post(),$c);
+||<
+
+大文字小文字を区別しない場合
+
+>||
+//select * from post where post.name ilike '%hoge'
+$c = new C(Q::ilike(Post::columnId(),1,"*w"));
+$db->select(new Post(),$c);
+||<
+
+** 部分一致 / like, ilike
+
+>||
+//select * from post where post.name like '%hoge%'
+$c = new C(Q::like(Post::columnId(),1,"*"));
+$db->select(new Post(),$c);
+||<
+
+大文字小文字を区別しない場合
+
+>||
+//select * from post where post.name like '%hoge%'
+$c = new C(Q::like(Post::columnId(),1,"*"));
+$db->select(new Post(),$c);
+||<
+
+* 参考
+
+- [http://blog.shigepon.com/snippet36:title=データベースから値を取り出す(select)]
+- [http://blog.shigepon.com/snippet37:title=テーブルの操作対象行を絞りこむ(where句をつくる)]
+- [http://blog.shigepon.com/snippet38:title=Criteriaの設定にショートカットを使う]
+- [http://blog.shigepon.com/snippet39:title=OR検索を行う]
+- [http://blog.shigepon.com/snippet41:title=select結果を検索条件に使用する]
+- [http://d.hatena.ne.jp/yabeken/20080313/1205393218:title=dbutilで複雑な条件式のSQLを組んでみるComments]
+
