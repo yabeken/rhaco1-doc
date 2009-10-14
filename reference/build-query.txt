@@ -65,7 +65,7 @@ $c = new C(Q::in(Post::columnName(),array("hoge","fuga")));
 $db->select(new Post(),$c);
 ||<
 
-** 不一致リスト / in
+** 不一致リスト / not in
 
 >||
 //select * from post where (post.name not in ('hoge','fuga'))
