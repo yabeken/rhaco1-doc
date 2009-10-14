@@ -42,4 +42,55 @@ Rhaco::end();
 ここでは、"&lt;rt:template/&gt;" タグが肝です。このタグがある場合には、その中身だけがテンプレートとして処理されます。
 ちょっとした入力画面付きスクリプトを書くときなんかには重宝しますね。
 
-* 参考
+* テンプレートを内蔵した１ファイルライブラリ
+
+お前何言ってるんだ？って感じですね．私もそう思います．この節は，ほんと参考程度です．
+
+例えば，[http://code.google.com/p/rhaco/source/browse/#svn/arbo/trunk/generic/ExSetupViews:title=arbo.generic.ExSetupViews] は，リソース（テンプレート）付きのパッケージライブラリです．これは，コードとテンプレートを分離していますが，テンプレートが１つしかない場合には，やろうと思えば１ファイルにまとめることができます．
+
+>||
+<?php
+Rhaco::import("network.http.Header");
+Rhaco::import("setup.util.SetupView");
+Rhaco::import("setup.model.ProjectModel");
+
+/**
+ * project.xml で指定した設定項目を変更するView
+ *
+ * @author Naoki
+ * @license New BSD License
+ * @copyright Copyright 2009- rhaco project. All rights reserved.
+ */
+class ExSetupViews extends SetupView
+{
+        /**
+         * setup
+         *
+         * @param mixed
+         * @return HtmlParser
+         */
+        function setup()
+        {
+		//略
+                return $this->parser(FileUtil::exist(Rhaco::templatepath("setup/setup.html")) ?
+                                                                Rhaco::templatepath("setup/setup.html") :
+                                                                __FILE__
+                                                        );
+        }
+}
+/*
+<rt:template>
+<html>
+<head>
+<!-- 略 -->
+</head>
+<body>
+<!-- 略 -->
+</body>
+</html>
+</rt:template>
+*/
+?>
+||<
+
+はい，できました．
