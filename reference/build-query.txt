@@ -339,5 +339,5 @@ $db->select(new Post(),$c);
 - [http://blog.shigepon.com/snippet38:title=Criteriaの設定にショートカットを使う]
 - [http://blog.shigepon.com/snippet39:title=OR検索を行う]
 - [http://blog.shigepon.com/snippet41:title=select結果を検索条件に使用する]
-- [http://d.hatena.ne.jp/yabeken/20080313/1205393218:title=dbutilで複雑な条件式のSQLを組んでみるComments]
+- [http://d.hatena.ne.jp/yabeken/20080313/1205393218:title=dbutilで複雑な条件式のSQLを組んでみる]
 
