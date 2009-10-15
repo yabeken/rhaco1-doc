@@ -8,7 +8,6 @@ rhaco では、クエリの組み立てに、Criteria ( C ) クラス と Criter
 >||
 //select * from post where (post.id = 10)
 $c = new C(Q::eq(Post::columnId(),10));
-//$c = new Criteria(Criterion::equal(Post::columnId(),10));
 $db->select(new Post(),$c);
 ||<
 
@@ -17,7 +16,6 @@ $db->select(new Post(),$c);
 >||
 //select * from post where (post.id <> 10)
 $c = new C(Q::neq(Post::columnId(),10));
-//$c = new Criteria(Criterion::notEqual(Post::columnId(),10));
 $db->select(new Post(),$c);
 ||<
 
@@ -26,7 +24,6 @@ $db->select(new Post(),$c);
 >||
 //select * from post where (post.id > 10)
 $c = new C(Q::gt(Post::columnId(),10));
-//$c = new Criteria(Criterion::greater(Post::columnId(),10));
 $db->select(new Post(),$c);
 ||<
 
@@ -35,7 +32,6 @@ $db->select(new Post(),$c);
 >||
 //select * from post where (post.id >= 10)
 $c = new C(Q::gte(Post::columnId(),10));
-//$c = new Criteria(Criterion::greaterEquals(Post::columnId(),10));
 $db->select(new Post(),$c);
 ||<
 
@@ -44,7 +40,6 @@ $db->select(new Post(),$c);
 >||
 //select * from post where (post.id < 10)
 $c = new C(Q::lt(Post::columnId(),10));
-//$c = new Criteria(Criterion::less(Post::columnId(),10));
 $db->select(new Post(),$c);
 ||<
 
@@ -53,7 +48,6 @@ $db->select(new Post(),$c);
 >||
 //select * from post where (post.id < 10)
 $c = new C(Q::lte(Post::columnId(),10));
-//$c = new Criteria(Criterion::lessEquals(Post::columnId(),10));
 $db->select(new Post(),$c);
 ||<
 
