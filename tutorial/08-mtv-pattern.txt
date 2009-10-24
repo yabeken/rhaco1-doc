@@ -11,14 +11,14 @@ MTV は Django で使われ始めた用語(([http://michilu.com/django/doc-ja/fa
 - View -> Template
 - Controller -> View
 
-イメージはこんな感じ。
+イメージはこんな感じ。ただし、MVC とはそれぞれの持つ役割が大きく異なります。
 
 [http://wikihub.org/wiki/rhaco1-doc/tutorial/mtv-pattern.png:image]
 
 *** Model
 
 Model は、大概の場合テーブルを指しますよね。フックメソッドで処理を追加したり、cakephp でしたら ビヘイビア を追加しますね。
-rhaco では、ビヘイビアは無いですが、project.xml を記述することで、テーブルモデル + alpha だけではなく様々な付加機能が利用可能です。
+rhaco では、ビヘイビアは無いですが、project.xml を記述することで、テーブルモデル + alpha だけではなく次のような様々な付加機能が利用可能です。
 
 + DbUtil と連携したフックメソッド
 + 汎用 Views と連携したフックメソッド
@@ -93,3 +93,4 @@ project.xml で、"&lt;ext /&gt;" タグを用いることによって、テー�
 
 * 参考
 
+- [http://michilu.com/django/doc-ja/faq/#django-mvc-controller-view-view-template]
