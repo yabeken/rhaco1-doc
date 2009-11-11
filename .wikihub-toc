@@ -1,0 +1,11 @@
+[ja_JP]
+tutorial=チュートリアル
+tutorial/01-install=インストール
+tutorial/02-setup-and-database-designing=セットアップとDBテーブル設計
+tutorial/03-model-view-template.txt=MTVパターン（１）
+tutorial/04-crud-and-vilidation=CRUDとデータ検証
+tutorial/05-midterm-summary=中間まとめ
+tutorial/06-view-template-association=ビューとテンプレートの連携
+tutorial/07-template-model-association=テンプレートとモデルの連携
+tutorial/08-mtv-pattern=MTVパターン（２）
+
