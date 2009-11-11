@@ -1,5 +1,5 @@
 [ja_JP]
-tutorial=チュートリアル
+tutorial/=チュートリアル
 tutorial/01-install=インストール
 tutorial/02-setup-and-database-designing=セットアップとDBテーブル設計
 tutorial/03-model-view-template.txt=MTVパターン（１）
