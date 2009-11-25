@@ -3,7 +3,7 @@
 rhaco 1.x は既に新機能の開発は行われておらず、バグフィックスを主としたメンテナンスと周辺ユーティリティ開発のみが行われています。
 現在の開発メインストリームは [http://rhaco.org:title=rhaco2] に移っています。
 
-この wiki は [http://wassr.jp/user/yabeken:title=yabeken] が主に編集しています。
+この wiki は [http://twitter.com/yabeken:title=@yabeken] が主に編集しています。
 ですので、独断と偏見が含まれている可能性があります点、了承の上見てください。
 
 ** チュートリアル
@@ -55,9 +55,7 @@ rhaco 1.x は既に新機能の開発は行われておらず、バグフィッ�
 
 ** コミュニティ
 
-現在、rhaco のコミュニティは IRC チャンネル [http://webchat.freenode.net/:title=#rhaco-ja@freenode] で活動しています。
+現在、rhaco のコミュニティは <del>IRC チャンネル [http://webchat.freenode.net/:title=#rhaco-ja@freenode] で活動しています。</del> [http://lingr.com/user/signup?letmein=rhaco_ja:title=lingr] で活動しています．
 ぜひ、お気軽に参加ください。
 
-なお、発言のログはすべて [http://wassr.jp/user/rhacoja:title=rhacoja@wassr] に記録されています。
-
-または、[http://twitter.com/yabeken:title=@yabeken] に直接いってください。
+<del>なお、発言のログはすべて [http://wassr.jp/user/rhacoja:title=rhacoja@wassr] に記録されています。</del>
