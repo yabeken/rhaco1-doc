@@ -9,3 +9,12 @@ tutorial/06-view-template-association=ビューとテンプレートの連携
 tutorial/07-template-model-association=テンプレートとモデルの連携
 tutorial/08-mtv-pattern=MTVパターン（２）
 
+reference/=リファレンス
+reference/01-rhaco/=rhaco
+reference/02-database/=データベース
+reference/03-template/=テンプレート
+reference/04-view/=ビュー
+reference/05-project/=プロジェクト
+reference/06-utility/=ユーティリティ
+reference/99-tips/=Tips
+
