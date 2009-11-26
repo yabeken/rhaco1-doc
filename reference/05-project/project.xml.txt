@@ -1,0 +1,113 @@
+* project.xml
+
+rhaco でのアプリケーション開発の基本中の基本です。
+これを書き上げれば仕事は半分終わったと思いましょう！
+
+project.xml では、次のようなことができます。
+
++ データベース定義
+-- マルチデータベースに対応
++ ユーザ設定の追加
++ 定義の追加
++ セッションの設定
++ クッキーの設定
+
+** 設定
+
+アプリケーション開発において、設定値（Config）は非常に重要な要素です。
+rhaco では、コード内で参照する必要のある設定値は全て project.xml 内に記述します。
+
+設定値は以下のようなものが記述可能です。
+値は、 Rhaco::constant() で参照することができます１。
+
+*** define
+
+定数値。コードでよくありがちな、ステータスと数値の比較を行う際に威力を発揮します
+
+記述例
+>||
+<define name="STATUS_AAA" value="2"/>
+||<
+
+コーディング例
+>||
+class Post extends PostTable{
+	function verifyHoge(){
+		//ステータスがAAAならエラー
+		//return ($this->getStatus()==2);
+		return ($this->getStatus()==Rhaco::constant(VAR_STATUS_AAA));
+	}
+}
+||<
+
+"VAR_"以下は eclipse 等で補完が効きますので、このようにして、コードの見通しが非常に良くなります。
+
+*** input
+
+setup.php で変更可能。
+
+//TODO : 画像
+
+記述例
+>||
+<input type="SMTP_HOST">
+	<title>SMTPホスト</title>
+	<description>使用するSMTPホスト</description>
+	<data>default.example.com</data>
+</input>
+||<
+
+*** password
+
+setup.php で変更可能。
+マスクがかかっている以外は、input と同じ。
+
+//TODO : 画像
+
+記述例
+>||
+<password type="SMTP_HOST">
+	<title>SMTPパスワード</title>
+	<description>パスワード</description>
+	<data>default_password</data>
+</password>
+||<
+
+*** textarea
+
+setup.php で変更可能。
+メールのフッタ設定なんかに使ってます。
+
+//TODO : 画像
+
+>||
+<textarea type="MAIL_FOOTER">
+	<title>メールフッタ</title>
+	<description>送信するメールのフッタ</description>
+	<data>
+--
+ほげシステム
+email : hoge@example.com
+	</data>
+</textarea>
+||<
+
+*** select
+
+setup.php で変更可能。
+
+//TODO : 画像
+
+記述例
+>||
+<select type="SYSTEM_MODE">
+	<title>システム稼働モード</title>
+	<description>モードによって動作を切り替えます</description>
+	<data caption="運用">1</data>
+	<data caption="デモ">2</data>
+</select>
+||<
+
+* 参考
+
+
