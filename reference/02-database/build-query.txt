@@ -1,0 +1,253 @@
+* SQL クエリの組み立て方
+
+rhaco では、クエリの組み立てに、Criteria ( C ) クラス と Criterion ( Q ) クラス という二つのクラスを組み合わせています。
+これらの組み合わせにより、ある程度複雑な条件を含む SQL を発行することができます。
+
+** 一致 / =
+
+>||
+//select * from post where (post.id = 10)
+$c = new C(Q::eq(Post::columnId(),10));
+$db->select(new Post(),$c);
+||<
+
+** 不一致 / <>
+
+>||
+//select * from post where (post.id <> 10)
+$c = new C(Q::neq(Post::columnId(),10));
+$db->select(new Post(),$c);
+||<
+
+** 大なり / >
+
+>||
+//select * from post where (post.id > 10)
+$c = new C(Q::gt(Post::columnId(),10));
+$db->select(new Post(),$c);
+||<
+
+** 以上 / >=
+
+>||
+//select * from post where (post.id >= 10)
+$c = new C(Q::gte(Post::columnId(),10));
+$db->select(new Post(),$c);
+||<
+
+** 小なり / <
+
+>||
+//select * from post where (post.id < 10)
+$c = new C(Q::lt(Post::columnId(),10));
+$db->select(new Post(),$c);
+||<
+
+** 以下 / <=
+
+>||
+//select * from post where (post.id < 10)
+$c = new C(Q::lte(Post::columnId(),10));
+$db->select(new Post(),$c);
+||<
+
+** 一致リスト / in
+
+>||
+//select * from post where (post.name in ('hoge','fuga'))
+$c = new C(Q::in(Post::columnName(),array("hoge","fuga")));
+$db->select(new Post(),$c);
+||<
+
+** 不一致リスト / not in
+
+>||
+//select * from post where (post.name not in ('hoge','fuga'))
+$c = new C(Q::notIn(Post::columnName(),array("hoge","fuga")));
+$db->select(new Post(),$c);
+||<
+
+** 前方一致 / like , ilike
+
+>||
+//select * from post where (post.name like 'hoge%')
+$c = new C(Q::like(Post::columnName(),"hoge","w*"));
+$db->select(new Post(),$c);
+
+//大文字小文字を区別しない場合
+//select * from post where (post.name ilike 'hoge%')
+$c = new C(Q::ilike(Post::columnName(),"hoge","w*"));
+$db->select(new Post(),$c);
+||<
+
+** 前方一致 / startswith, istartswith
+
+>||
+//select * from post where (post.name like 'hoge%')
+$c = new C(Q::startswith(Post::columnName(),"hoge"));
+$db->select(new Post(),$c);
+
+//大文字小文字を区別しない場合
+//select * from post where (post.name ilike 'hoge%')
+$c = new C(Q::istartswith(Post::columnName(),"hoge"));
+$db->select(new Post(),$c);
+||<
+
+** 後方一致 / like, ilike
+
+>||
+//select * from post where (post.name like '%hoge')
+$c = new C(Q::like(Post::columnName(),"hoge","*w"));
+$db->select(new Post(),$c);
+
+//大文字小文字を区別しない場合
+//select * from post where (post.name ilike '%hoge')
+$c = new C(Q::ilike(Post::columnName(),"hoge","*w"));
+$db->select(new Post(),$c);
+||<
+
+** 後方一致 / endswith, iendswith
+
+>||
+//select * from post where (post.name like '%hoge')
+$c = new C(Q::endswith(Post::columnName(),"hoge"));
+$db->select(new Post(),$c);
+
+//大文字小文字を区別しない場合
+//select * from post where (post.name ilike '%hoge')
+$c = new C(Q::iendswith(Post::columnName(),"hoge"));
+$db->select(new Post(),$c);
+||<
+
+** 部分一致 / like, ilike
+
+>||
+//select * from post where (post.name like '%hoge%')
+$c = new C(Q::like(Post::columnName(),"hoge","*"));
+$db->select(new Post(),$c);
+
+//大文字小文字を区別しない場合
+//select * from post where (post.name ilike '%hoge%')
+$c = new C(Q::ilike(Post::columnName(),"hoge","*"));
+$db->select(new Post(),$c);
+||<
+
+** 部分一致 / contains, icontains
+
+>||
+//select * from post where (post.name like '%hoge%')
+$c = new C(Q::contains(Post::columnName(),"hoge"));
+$db->select(new Post(),$c);
+
+//大文字小文字を区別しない場合
+//select * from post where (post.name ilike '%hoge%')
+$c = new C(Q::icontains(Post::columnName(),"hoge"));
+$db->select(new Post(),$c);
+||<
+
+** 前方不一致 / not like , not ilike
+
+>||
+//select * from post where (post.name not like 'hoge%')
+$c = new C(Q::notLike(Post::columnName(),"hoge","w*"));
+$db->select(new Post(),$c);
+
+//大文字小文字を区別しない場合
+//select * from post where (post.name not ilike 'hoge%')
+$c = new C(Q::notiLike(Post::columnName(),"hoge","w*"));
+$db->select(new Post(),$c);
+||<
+
+** 前方不一致 / notStartswith, notiStartswith
+
+>||
+//select * from post where (post.name not like 'hoge%')
+$c = new C(Q::notStartswith(Post::columnName(),"hoge"));
+$db->select(new Post(),$c);
+
+//大文字小文字を区別しない場合
+//select * from post where (post.name not ilike 'hoge%')
+$c = new C(Q::notiStartswith(Post::columnName(),"hoge"));
+$db->select(new Post(),$c);
+||<
+
+** 後方不一致 / not like, not ilike
+
+>||
+//select * from post where (post.name not like '%hoge')
+$c = new C(Q::notLike(Post::columnName(),"hoge","*w"));
+$db->select(new Post(),$c);
+
+//大文字小文字を区別しない場合
+//select * from post where (post.name not ilike '%hoge')
+$c = new C(Q::notiLike(Post::columnName(),"hoge","*w"));
+$db->select(new Post(),$c);
+||<
+
+** 後方不一致 / notEndswith, notiEndswith
+
+>||
+//select * from post where (post.name not like '%hoge')
+$c = new C(Q::notEndswith(Post::columnName(),"hoge"));
+$db->select(new Post(),$c);
+
+//大文字小文字を区別しない場合
+//select * from post where (post.name not ilike '%hoge')
+$c = new C(Q::notiEndswith(Post::columnName(),"hoge"));
+$db->select(new Post(),$c);
+||<
+
+** 部分不一致 / not like, not ilike
+
+>||
+//select * from post where post.name not like '%hoge%'
+$c = new C(Q::notLike(Post::columnName(),"hoge","*"));
+$db->select(new Post(),$c);
+
+//大文字小文字を区別しない場合
+//select * from post where post.name not ilike '%hoge%'
+$c = new C(Q::notiLike(Post::columnName(),"hoge","*"));
+$db->select(new Post(),$c);
+||<
+
+** 部分不一致 / notContains, notiContains
+
+>||
+//select * from post where post.name not like '%hoge%'
+$c = new C(Q::notContains(Post::columnName(),"hoge"));
+$db->select(new Post(),$c);
+
+//大文字小文字を区別しない場合
+//select * from post where post.name not ilike '%hoge%'
+$c = new C(Q::notiContains(Post::columnName(),"hoge"));
+$db->select(new Post(),$c);
+||<
+
+** 並び替え / order, order desc
+
+>||
+//昇順
+//select * from post order by id
+$c = new C(Q::order(Post::columnId()));
+$db->select(new Post(),$c);
+
+//降順
+//select * from post order by id desc
+$c = new C(Q::orderDesc(Post::columnId()));
+$db->select(new Post(),$c);
+
+//複合
+//select * from post order by name, email desc
+$c = new C(Q::order(Post::columnName()),Q::orderDesc(Post::columnEmail()));
+$db->select(new Post(),$c);
+||<
+
+* 参考
+
+- [http://blog.shigepon.com/snippet36:title=データベースから値を取り出す(select)]
+- [http://blog.shigepon.com/snippet37:title=テーブルの操作対象行を絞りこむ(where句をつくる)]
+- [http://blog.shigepon.com/snippet38:title=Criteriaの設定にショートカットを使う]
+- [http://blog.shigepon.com/snippet39:title=OR検索を行う]
+- [http://blog.shigepon.com/snippet41:title=select結果を検索条件に使用する]
+- [http://d.hatena.ne.jp/yabeken/20080313/1205393218:title=dbutilで複雑な条件式のSQLを組んでみる]
+
