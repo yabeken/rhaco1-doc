@@ -1,0 +1,14 @@
+* 複数エントリポイント設定
+
+権限毎や機能毎にエントリポイントを分けたいなんてことがあると思いますので，その設定をば．
+
+>||
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^admin/?(.*)$ admin.php?%{QUERY_STRING}&pathinfo=$1 [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)$ index.php?%{QUERY_STRING}&pathinfo=$1 [L]
+||<
+
+な感じ.

@@ -11,10 +11,17 @@ tutorial/08-mtv-pattern=MTVパターン（２）
 
 reference/=リファレンス
 reference/01-rhaco/=rhaco
+reference/01-rhaco/constructor=コンストラクタ
+reference/01-rhaco/library-import=ライブラリの読み込み
+reference/01-rhaco/setup-framework=セットアップフレームワーク
 reference/02-database/=データベース
+reference/02-database/additional-validation=検証処理の追加
+reference/02-database/build-query=SQLの組み立て
 reference/03-template/=テンプレート
 reference/04-view/=ビュー
 reference/05-project/=プロジェクト
 reference/06-utility/=ユーティリティ
 reference/99-tips/=Tips
+
+reference/99-tips/multi-entry-point=複数エントリポイント設定
 
