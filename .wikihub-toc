@@ -20,6 +20,8 @@ reference/02-database/build-query=SQLの組み立て
 reference/03-template/=テンプレート
 reference/04-view/=ビュー
 reference/05-project/=プロジェクト
+reference/05-project/01-project.xml=project.xmlとは
+reference/05-project/02-divide=project.xmlの分割
 reference/06-utility/=ユーティリティ
 reference/99-tips/=Tips
 
