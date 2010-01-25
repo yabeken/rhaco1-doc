@@ -38,6 +38,8 @@ rhaco では， project.xml を記述するだけで，アプリケーション�
        + status_hoge.xml
      + default/
        + user.xml
+     + ext/
+       + admin.xml
      + project.xml
      + settings.xml
      + define.xml
