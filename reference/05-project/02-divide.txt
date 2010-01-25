@@ -6,7 +6,7 @@ rhaco では， project.xml を記述するだけで，アプリケーション�
 そこで， project.xml を分割し，管理しやすくします．
 
 >|xml|
-<project name="サンプル" version="1.0.0" rhacover="1.6.1"
+<project name="サンプル" version="1.0.0" rhacover="1.6.1">
   <database>
     <table name="user">
        :
@@ -14,17 +14,17 @@ rhaco では， project.xml を記述するだけで，アプリケーション�
         <rt:include href="/choices/status_hoge.xml"/>
       </column>
        :
-      <!-- デフォルトデータ -->
+      &lt;!-- デフォルトデータ --&gt;
       <rt:include href="./default/user.xml"/>
     </table>
     
-    <!-- 処理モデル -->
+    &lt;!-- 処理モデル --&gt;
     <rt:include href="ext/admin.xml" />
   </database>
   
-  <!-- 定義 -->
+  &lt;!-- 定義 --&gt;
   <rt:include href="./define.xml"/>
-  <!-- 設定 -->
+  &lt;!-- 設定 --&gt;
   <rt:include href="./settings.xml"/>
 </project>
 ||<
