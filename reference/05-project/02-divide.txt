@@ -14,17 +14,17 @@ rhaco では， project.xml を記述するだけで，アプリケーション�
         <rt:include href="/choices/status_hoge.xml"/>
       </column>
        :
-      &lt;!-- デフォルトデータ --&gt;
+      <rt:comment>デフォルトデータ</rt:comment>
       <rt:include href="./default/user.xml"/>
     </table>
     
-    &lt;!-- 処理モデル --&gt;
+    <rt:comment>処理モデル</rt:comment>
     <rt:include href="ext/admin.xml" />
   </database>
   
-  &lt;!-- 定義 --&gt;
+  <rt:comment>定義</rt:comment>
   <rt:include href="./define.xml"/>
-  &lt;!-- 設定 --&gt;
+  <rt:comment>設定</rt:comment>
   <rt:include href="./settings.xml"/>
 </project>
 ||<
