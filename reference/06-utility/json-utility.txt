@@ -13,7 +13,7 @@ rhaco では、これらを扱うメソッドを用意していますので、PH
 
 jsonを解析して、連想配列にしちゃいましょう。
 
->||
+>|php|
 <?php
 Rhaco::import("lang.Variable");
 
@@ -24,7 +24,7 @@ $var = Variable::parseJson('{"A":"a","B":[1,2,3],"C":"c"}');
 
 ** 変数を json への変換
 
->||
+>|php|
 <?php
 Rhaco::import("lang.Variable");
 

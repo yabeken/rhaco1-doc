@@ -6,7 +6,7 @@
 ところが、一画面しかないちょっとしたスクリプトでテンプレートエンジンを使おうと思うと大変ですよね。素の PHP で書いても良いのですが、メンテが面倒です。
 そんな時、rhaco では、次のような感じで実装できます。
 
->||
+>|php|
 <?php
 include_once dirname(__FILE__).'/__init__.php';
 Rhaco::import("generic.Flow");
@@ -48,7 +48,7 @@ Rhaco::end();
 
 例えば，[http://code.google.com/p/rhaco/source/browse/#svn/arbo/trunk/generic/ExSetupViews:title=arbo.generic.ExSetupViews] は，リソース（テンプレート）付きのパッケージライブラリです．これは，コードとテンプレートを分離していますが，テンプレートが１つしかない場合には，やろうと思えば１ファイルにまとめることができます．
 
->||
+>|php|
 <?php
 Rhaco::import("network.http.Header");
 Rhaco::import("setup.util.SetupView");

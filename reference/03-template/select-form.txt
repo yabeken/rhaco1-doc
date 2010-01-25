@@ -3,7 +3,7 @@
 rhaco では、セレクトボックスなどで値を選択、制限する処理が非常に簡単に実装できます。
 project.xml に次のように記述するだけです。（一部抜粋）
 
->||
+>|xml|
 <column name="course" type="integer" require="true">
 	<choices>
 		<data caption="入門Aコース">1</data>
@@ -19,7 +19,7 @@ project.xml に次のように記述するだけです。（一部抜粋）
 
 これだけで、HTML は次のように出力されます。（デフォルトテンプレートの場合）
 
->||
+>|html|
 <select name="course">
 	<option value="1">入門Aコース</option>
 	<option value="2">入門Bコース</option>

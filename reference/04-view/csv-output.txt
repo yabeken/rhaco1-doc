@@ -5,7 +5,7 @@ CSVの出力って面倒ですよね。
 
 というわけで、単一テーブル（＋αもできるけど）に対するCSV出力については、次のように行います。
 
->||
+>|php|
 <?php
 Rhaco::import("arbo.generic.FileViews");
 Rhaco::import("model.Post");
@@ -24,7 +24,7 @@ class BlogFile extends FileViews{
 
 出力する情報を制御したい場合がある場合には、次のようにします。
 
->||
+>|php|
 <?php
 Rhaco::import("arbo.generic.FileViews");
 Rhaco::import("model.Post");
@@ -43,7 +43,7 @@ class BlogFile extends FileViews{
 
 出力する列、順番を制御する場合には、次のようにします。
 
->||
+>|php|
 <?php
 Rhaco::import("model.table.PostTable");
 class Post extends PostTable{

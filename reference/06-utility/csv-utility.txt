@@ -6,7 +6,7 @@
 
 解析して、連想配列にしちゃいましょう。
 
->||
+>|php|
 <?php
 Rhaco::import("io.FileUtil");
 Rhaco::import("lang.ArrayUtil");
@@ -20,7 +20,7 @@ $csvList = ArrayUtil::parseCsv(FileUtil::read("hoge.csv"));
 
 配列を CSV へ。
 
->||
+>|php|
 <?php
 Rhaco::import("io.FileUtil");
 Rhaco::import("lang.ArrayUtil");

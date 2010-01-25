@@ -6,7 +6,8 @@ rhaco では、ファイルの読み込みをラップしていますので、re
 
 rhaco のディレクトリからの相対パスで行います。
 
->||
+>|php|
+<?php
 // /rhaco/io/File.php を読み込む
 Rhaco::import("io.File");
 ||<
@@ -16,6 +17,7 @@ Rhaco::import("io.File");
 library ディレクトリからの相対パスで行います。
 
 >||
+<?php
 // /blog/library/view/Blog.php を読み込む
 Rhaco::import("view.Blog");
 ||<

@@ -2,7 +2,7 @@
 
 rhaco では、入力フォーム表示は次のようなコードで行われています。
 
->||
+>|xml|
 <rt:loop param="{$object.models('views','form_display')}" var="column">
 	<tr>
 		<th>{$object.label($column)}</th>

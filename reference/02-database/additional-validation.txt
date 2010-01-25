@@ -8,7 +8,7 @@ rhaco では、そのための方法が用意されています。
 
 モデルに verifyHoge というように、"verify" がつくメソッドがあれば、検証時に自動的に呼び出されます。
 
->||
+>|php|
 <?php
 Rhaco::import("model.table.HogeTable");
 class Hoge extends HogeTable{
@@ -30,7 +30,7 @@ class Hoge extends HogeTable{
 これも、個人情報登録処理ではよくありますね！
 こういう場合には、extra という仮想列を利用します。
 
->||
+>|xml|
 <project>
 	<database name="sample">
 		  <table name="member">
@@ -45,7 +45,7 @@ class Hoge extends HogeTable{
 
 で、モデルに検証のための追加メソッドを宣言します。
 
->||
+>|php|
 <?php
 Rhaco::import("model.table.MemberTable");
 Rhaco::import("exception.ExceptionTrigger");

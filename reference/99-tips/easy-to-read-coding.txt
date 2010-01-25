@@ -2,7 +2,7 @@
 
 例えば，project.xml の choices で，次のような列を作成します．
 
->||
+>|xml|
 <column name="status" type="integer" require="true" label="ステータス">
 	<choices>
 		<data caption="有効">1</data>
@@ -15,29 +15,38 @@
 で，モデルのロジックでこのステータスに依って処理を分岐させる際には，こんな感じになりますよね．
 
 >||
-:
-if($this->getStatus()==2){
-	//なんか処理
-}
-:
+<?php
+class Hoge extends HogeTable{
+  function verifyStatus(){
+     :
+    if($this->getStatus()==2){
+	  //なんか処理
+	   :
+	  return false;
+    }
+     :
+    
+    return true;
+  }
 ||<
 
 で，後で必ず思うのが，「2 ってなんや？」って事です．
 こんな時にわざわざproject.xmlを読むのって面倒ですよね．
 そこで， project.xmlに"&lt;define/&gt;" を用いてあらかじめ，ステータスの値を定義します．
 
->||
+>|xml|
 <define name="STATUS_DRAFT" value="2"/>
 ||<
 
 こうしておくと，次のようなコードになり，その場で処理の内容を完璧に把握することができます．
 
->||
-:
+>|php|
+<?php
+ :
 if($this->getStatus()==Rhaco::constant(VAR_STATUS_DRAFT)){
 	//なんか処理
 }
-:
+ :
 ||<
 
 このとき，"VAR_STATUS_DRAFT" は rhaco の setup で自動的に作成されますので， PDT 等のエディタを用いた際には，自動補完が可能なようになっています．

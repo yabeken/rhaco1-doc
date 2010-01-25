@@ -5,7 +5,7 @@
 
 というわけで以下のようにしたらOK。
 
->||
+>|html|
 <rt:extends href="./main.html" />
 
 <rt:block name="content">
@@ -35,7 +35,7 @@
 
 多すぎてわかりませんね。以下のところです。
 
->||
+>|html|
 <th>{$object.label($column)} <rt:if param="{$column.isRequire()}"><span class="require">※</span></rt:if></th>
 ||<
 
