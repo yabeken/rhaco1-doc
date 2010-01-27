@@ -1,12 +1,12 @@
 * セットアップ
 
-では、ブログアプリケーションのセットアップを行いましょう。
+では，ブログアプリケーションのセットアップを行いましょう．
 
-rhaco はセットアップフレームワークとも呼ばれており、全ての開発作業をGUIから行うことが可能です。
+rhaco はセットアップフレームワークとも呼ばれており，全ての開発作業をGUIから行うことが可能です．
 
 ** 初期設定
 
-まずは、ブログアプリケーションを配置するディレクトリを作成し、rhaco ディレクトリから setup.php をコピーしてきてください。
+まずは，ブログアプリケーションを配置するディレクトリを作成し，rhaco ディレクトリから setup.php をコピーしてきてください．
 
 >|
 /DocumentRoot
@@ -15,13 +15,13 @@ rhaco はセットアップフレームワークとも呼ばれており、全�
     setup.php
 |<
 
-ブラウザから、 http://localhost/blog/setup.php にアクセスしてみてください。
+ブラウザから， http://localhost/blog/setup.php にアクセスしてみてください．
 
 [http://wikihub.org/wiki/rhaco1-doc/tutorial/path-to-rhaco.png:image]
 
-rhaco の場所を聞かれますので、指定します。
+rhaco の場所を聞かれますので，指定します．
 
-セットアップフレームワークが起動し、アプリケーションの初期構造が生成されます。
+セットアップフレームワークが起動し，アプリケーションの初期構造が生成されます．
 
 >|
 /DocumentRoot
@@ -39,13 +39,13 @@ rhaco の場所を聞かれますので、指定します。
     setup.php
 |<
 
-初期構造の生成後、アプリケーション用の設定画面が表示されますが、今は特にいじる必要がありません。
+初期構造の生成後，アプリケーション用の設定画面が表示されますが，今は特にいじる必要がありません．
 
 ** データベース設計
 
-次に、データベースの設計を行います。
-データベース設計の段階では、データベースサーバにアクセスする必要はありません。
-project.xml をエディタで開き、次のようにブログ投稿記事のテーブル定義を記述します。
+次に，データベースの設計を行います．
+データベース設計の段階では，データベースサーバにアクセスする必要はありません．
+project.xml をエディタで開き，次のようにブログ投稿記事のテーブル定義を記述します．
 
 >|xml|
 <project rhacover="1.6.1" version="0.0.1" name="blog" xmlns="http://rhaco.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://rhaco.org http://m.rhaco.org/xsd/project_1_6_x.xsd">
@@ -59,18 +59,18 @@ project.xml をエディタで開き、次のようにブログ投稿記事の�
 			<column name="title" type="string" require="true" max="50" label="タイトル"/>
 			<column name="body" type="text" require="true" label="本文"/>
 			<default>
-				<!-- テスト用に記事をいくつか入れておきます。 -->
+				<!-- テスト用に記事をいくつか入れておきます． -->
 				<data>
 					<column name="title" value="タイトル"/>
-					<column name="body" value="これは、記事の本文です。"/>
+					<column name="body" value="これは，記事の本文です．"/>
 				</data>
 				<data>
 					<column name="title" value="またタイトル"/>
-					<column name="body" value="そこに本文が続きます。"/>
+					<column name="body" value="そこに本文が続きます．"/>
 				</data>
 				<data>
 					<column name="title" value="タイトルの逆襲"/>
-					<column name="body" value="こりゃ本当に面白そう！うそ。"/>
+					<column name="body" value="こりゃ本当に面白そう！うそ．"/>
 				</data>
 			</default>
 		</table>
@@ -78,47 +78,47 @@ project.xml をエディタで開き、次のようにブログ投稿記事の�
 </project>
 ||<
 
-テーブル名とフィールド名は適当です。アプリケーションの都合に合わせて作成してください。
-特に煩雑な命名規則を用いなくても、開発速度には全く影響がありません。
+テーブル名とフィールド名は適当です．アプリケーションの都合に合わせて作成してください．
+特に煩雑な命名規則を用いなくても，開発速度には全く影響がありません．
 
 ** データベース設定
 
-project.xmlを保存したら、 http://localhost/blog/setup.php に再度アクセスしてください。
-「データベース[BLOG]」という設定項目が増えています。ここで、project.xml に記述したテーブルモデルの接続先データベース設定を行うことができます。
+project.xmlを保存したら， http://localhost/blog/setup.php に再度アクセスしてください．
+「データベース[BLOG]」という設定項目が増えています．ここで，project.xml に記述したテーブルモデルの接続先データベース設定を行うことができます．
 
 [http://wikihub.org/wiki/rhaco1-doc/tutorial/database-settings.png:image]
 
-:データベースサーバ:データベースの種類を指定します。 （拡張を有効にしていれば、MySQL、PostgreSQL、Oracle、SQLiteが利用可能です。）
-:データベースサーバのホスト名:データベースサーバが動作しているサーバのアドレスを指定します。SQLiteの場合にはファイルパスを指定します。
-:データベース名:データベース名。project.xml の database で指定した name 属性がデフォルトで使用されます。
+:データベースサーバ:データベースの種類を指定します． （拡張を有効にしていれば，MySQL，PostgreSQL，Oracle，SQLiteが利用可能です．）
+:データベースサーバのホスト名:データベースサーバが動作しているサーバのアドレスを指定します．SQLiteの場合にはファイルパスを指定します．
+:データベース名:データベース名．project.xml の database で指定した name 属性がデフォルトで使用されます．
 :データベースパスワード:データベースパスワード
-:データベースのポート番号:空白の場合には各データベースサーバのデフォルト値が使用されます。
-:エンコード:データベースサーバのエンコードを指定します。デフォルトは UTF8 です。
-:テーブル接頭語:同じデータベースに複数のアプリケーションデータを格納する場合に、テーブル名が衝突しないように接頭語を指定できます。データベース名と同様に、name 属性からデフォルト値が設定されます。
+:データベースのポート番号:空白の場合には各データベースサーバのデフォルト値が使用されます．
+:エンコード:データベースサーバのエンコードを指定します．デフォルトは UTF8 です．
+:テーブル接頭語:同じデータベースに複数のアプリケーションデータを格納する場合に，テーブル名が衝突しないように接頭語を指定できます．データベース名と同様に，name 属性からデフォルト値が設定されます．
 
-設定を入力後、settings をクリックして設定を保存します。
+設定を入力後，settings をクリックして設定を保存します．
 
 *** データベーステーブルの作成
 
-データベース設定が終わると、実際にデータベースの作成を行います。
-rhaco では、project.xml で記述したテーブルモデルから自動的に create 文を作成しますので、専用のデータベース管理ツールを使用する必要はありません。
+データベース設定が終わると，実際にデータベースの作成を行います．
+rhaco では，project.xml で記述したテーブルモデルから自動的に create 文を作成しますので，専用のデータベース管理ツールを使用する必要はありません．
 
-上部に database メニューが現れ、ここから簡易データベース管理を行うことができます。
+上部に database メニューが現れ，ここから簡易データベース管理を行うことができます．
 
 [http://wikihub.org/wiki/rhaco1-doc/tutorial/database-control.png:image]
 
-「作成」をクリックすれば、自動的にテーブルが作成されます。
+「作成」をクリックすれば，自動的にテーブルが作成されます．
 
-以上でブログアプリケーションのデータベース設定が完了です。
+以上でブログアプリケーションのデータベース設定が完了です．
 
 ** mod_rewrite について
 
-rhaco は mod_rewrite を使えなくても動作しますが、クールなURLを実装するためには是非有効にしてください。
+rhaco は mod_rewrite を使えなくても動作しますが，クールなURLを実装するためには是非有効にしてください．
 
-mod_rewrite については [http://www.google.co.jp/search?q=mod_rewrite:title=検索] してください。
+mod_rewrite については [http://www.google.co.jp/search?q=mod_rewrite:title=検索] してください．
 
-後はmod_rewrite の設定を .htaccess に記述するだけですが、これも自分で記述する必要はありません。
-project.xml の project 要素の属性に以下のように pathinfo="index.php" 書き加えてください。
+後はmod_rewrite の設定を .htaccess に記述するだけですが，これも自分で記述する必要はありません．
+project.xml の project 要素の属性に以下のように pathinfo="index.php" 書き加えてください．
 
 >|xml|
 <project pathinfo="index.php" rhacover="1.6.1" version="0.0.1" name="blog" xmlns="http://rhaco.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://rhaco.org http://m.rhaco.org/xsd/project_1_6_x.xsd">
@@ -126,8 +126,8 @@ project.xml の project 要素の属性に以下のように pathinfo="index.php
 </project>
 ||<
 
-書き換えたら、http://localhost/blog/setup.php に再度アクセスしてください。
-「アプリケーションの初期化」という項目が増えていますので、クリックすると自動的に次の .htaccess が生成されます。
+書き換えたら，http://localhost/blog/setup.php に再度アクセスしてください．
+「アプリケーションの初期化」という項目が増えていますので，クリックすると自動的に次の .htaccess が生成されます．
 
 >||
 RewriteEngine On

@@ -1,10 +1,10 @@
 * CSV を扱う
 
-よく使う割になにげに面倒な処理。
+よく使う割になにげに面倒な処理．
 
 ** CSV の解析
 
-解析して、連想配列にしちゃいましょう。
+解析して，連想配列にしちゃいましょう．
 
 >|php|
 <?php
@@ -18,7 +18,7 @@ $csvList = ArrayUtil::parseCsv(FileUtil::read("hoge.csv"));
 
 ** CSV への変換
 
-配列を CSV へ。
+配列を CSV へ．
 
 >|php|
 <?php

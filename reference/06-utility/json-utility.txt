@@ -1,17 +1,17 @@
 * json を扱う
 
-json_encode や json_decode は、[http://jp2.php.net/manual/ja/function.json-encode:title=php.net] 曰く
+json_encode や json_decode は，[http://jp2.php.net/manual/ja/function.json-encode:title=php.net] 曰く
 
 >||
 (PHP 5 >= 5.2.0, PECL json >= 1.2.0)
 ||<
 
-らしいです。しかも、json_decode はなんかうまく変換できないものがあるとか何とか。
-rhaco では、これらを扱うメソッドを用意していますので、PHP のバージョンを気にする必要はありません。
+らしいです．しかも，json_decode はなんかうまく変換できないものがあるとか何とか．
+rhaco では，これらを扱うメソッドを用意していますので，PHP のバージョンを気にする必要はありません．
 
 ** json の解析
 
-jsonを解析して、連想配列にしちゃいましょう。
+jsonを解析して，連想配列にしちゃいましょう．
 
 >|php|
 <?php
