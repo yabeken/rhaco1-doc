@@ -3,8 +3,10 @@
 rhaco 1.x は，既に新機能の開発は行われておらず，バグフィックスを主としたメンテナンスと周辺ユーティリティ開発のみが行われています．
 現在の開発メインストリームは [http://rhaco.org:title=rhaco2] に移っています．
 
-この wiki は [http://twitter.com/yabeken:title=@yabeken] が主に編集しています．
+rhaco1-doc は， [http://twitter.com/yabeken:title=@yabeken] が主に編集しています．
 ですので，独断と偏見が含まれている可能性があります事を了承の上ごらん下さい．
+
+また，編集の都合上，ページの名前や URL が頻繁に変更されることがありますので，ブックマークする際には，[http://wikihub.org/rhaco1-doc/:title=このページ]を登録してください．
 
 ** チュートリアル
 
@@ -16,8 +18,6 @@ rhaco 1.x は，既に新機能の開発は行われておらず，バグフィ�
 ** リファレンス
 
 元は [http://blog.shigepon.com:title=shigepon] さんですが，分散するのもの問題なので，できる限りの情報をここに集約できればいいかなと思っています．
-また，情報整理の過程で，ページが移動することがあります．
-
 
 外部情報も併せてご覧ください．
 
@@ -48,7 +48,6 @@ rhaco 1.x は，既に新機能の開発は行われておらず，バグフィ�
 また，[http://blog.shigepon.com:title=shigepon] による[http://blog.shigepon.com/snippet0:title=逆引きrhaco] で目的別に rhaco の利用法を知ることもできます．
 
 私が作ったライブラリについては，[http://d.hatena.ne.jp/yabeken:title=yabekenのブログ] にて情報を綴っています．
-
 
 ** コミュニティ
 
