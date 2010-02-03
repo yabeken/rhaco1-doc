@@ -17,6 +17,7 @@
 002-model/01-additional-validation=検証処理の追加
 002-model/02-login-conditino-model=ログイン条件のモデル化
 002-model/03-hook-method=フックメソッド
+002-model/04-virtual-column=仮想列
 
 003-template/=テンプレート
 003-template/01-template-engine=テンプレートエンジン
@@ -47,7 +48,7 @@
 008-database/01-build-query=SQLの組み立て
 
 050-arbo/=arbo
-050-arbo/01-arbo.txt=arboとは
+050-arbo/01-install.txt=install
 
 099-tips/=Tips
 099-tips/01-easy-to-read-coding=理解しやすいコード

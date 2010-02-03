@@ -1,0 +1,67 @@
+* FormUtil
+
+Model の column 列や extra 列の HTML 表現を変更する際に，フォーム出力を勘弁に行うためのユーティリティです．
+Model に値がある場合には自動的に入力された状態とします．
+
+** インストール
+
+[[050-arbo/01-install:title=インストール]]にて，"org.rhaco.generic.util.FormUtil" を指定してください．
+
+** text
+
+text タイプの input を出力します．
+
+例
+>|php|
+<?php
+Rhaco::import("model.table.ProfileTabe");
+Rhaco::import("org.rhaco.generic.util.FormUtil");
+/**
+ * プロフィール
+ */
+class Profile extends ProfileTable{
+	/**
+	 * 氏名
+	 * @return string
+	 */
+	function toStringSimei(){
+		return FormUtil::text($this,$this->columnSei()).FormUtil::text($this,$this->columnMei());
+	}
+}
+||<
+
+出力
+>|html|
+<input type="text" class="string" name="sei" value="らこ" /> <input type="text" class="string" name="mei" value="太郎" /> 
+||<
+
+** hidden
+
+hidden タイプの input を出力します．
+
+例
+>|php|
+<?php
+Rhaco::import("model.table.ProfileTabe");
+Rhaco::import("org.rhaco.generic.util.FormUtil");
+/**
+ * プロフィール
+ */
+class Profile extends ProfileTable{
+	/**
+	 * ID
+	 * @return string
+	 */
+	function toStringId(){
+		return FormUtil::hidden($this,$this->columnId());
+	}
+}
+||<
+
+出力
+>|html|
+<input type="hidden" class="serial" name="id" value="1" />
+||<
+
+
+//TODO 続き

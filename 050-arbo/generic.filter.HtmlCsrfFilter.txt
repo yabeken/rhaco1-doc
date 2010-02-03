@@ -1,0 +1,25 @@
+* HtmlCsrfFilter
+
+CSRF 対策を行います．
+Flow や Flow を継承したクラスにフィルターとして組み込むことで利用が可能です．
+
+** インストール
+
+[[050-arbo/01-install:title=インストール]]にて，"org.rhaco.generic.filter.HtmlCsrfFilter" を指定してください．
+
+** Views で使う
+
+>|php|
+<?php
+require_once dirname(__FILE__)."/__init__/.php";
+Rhaco::import("generic.Views");
+Rhaco::import("model.Profile");
+Rhaco::import("database.DbUtil");
+
+$views = new Views(new DbUtil(Profile::connection()),"org.rhaco.generic.filter.HtmlCsrfFilter");
+$views->create(new Profile())->write();
+||<
+
+** Urls で使う
+
+//TODO あとで

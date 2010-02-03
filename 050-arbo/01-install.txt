@@ -1,0 +1,14 @@
+* arbo とは？
+
+rhaco 本体に同梱されていないライブラリ群を指します．
+ライブラリ一覧は[http://code.google.com/p/rhaco/source/browse/#svn/repository_aj/trunk/arbo/org/rhaco:title=こちら]からどうぞ．
+
+** インストール
+
+setup.php を実行して， install ページから行えます．
+
+//TODO 画像
+
+このように，"org.rhaco.generic.filter.HtmlCsrfFilter" と入力することで, library/org/rhaco/generic/filter/HtmlCsrfFilter.php にインストールされます．
+
+
