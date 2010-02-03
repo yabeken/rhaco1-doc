@@ -1,0 +1,148 @@
+* テンプレートの継承
+
+テンプレートの継承は，rhaco の非常に大きな魅力のうちの一つです．
+テンプレートの継承機能により，デザインとコーディングを分離できます．
+一度使うと，この継承機能を持っていないテンプレートエンジンを使用したくなくなるでしょう．
+
+プログラミングでのクラスの継承と同じように，ベースとなるテンプレートを，権限毎のテンプレートで継承しさらに個別ページで継承することが可能となります．
+これによって，各ページは必要最低限の記述のみで実装が可能となります．
+
+[http://twitter.com/yabeken:title=@yabeken] の場合には，次のような継承を利用しています．
+
+- main.html
+-- main_user.html
+--- userprofileupdate_form.html
+--- userprofileupdate_confirm.html
+--- userprofileupdate_complete.html
+-- main_admin.html
+--- adminprofileupdate_form.html
+--- adminprofileupdate_confirm.html
+--- adminprofileupdate_complete.html
+
+main_user.html 等のように，いったん権限毎のテンプレートを継承させます．
+
+** ベーステンプレート
+
+まず，サイト全体のデザインを用意し，リソースディレクトリに配置します．
+
+resoureces/templates/main.html
+>|html|
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>サンプルだよ - トップページ</title>
+</head>
+<body>
+<div id="container">
+	<div id="header">
+		<h1>サンプル</h1>
+		<ul id="navi">
+			<li><a href="#">HOME</a></li>
+			<li><a href="#">NEWS</a></li>
+			<li><a href="#">ABOUT</a></li>
+		</ul>
+	</div>
+	<div id="content">
+		<h2>トップページ</h2>
+		<p>
+			ここに記事を載せたりほげほげ
+		</p>
+	</div>
+	<div id="footer"> Copyright &copy; 2009- Hoge System </div>
+</div>
+</body>
+</html>
+||<
+
+と，こんな感じでデザイナさんから HTML テンプレートをもらいます．
+次に，このテンプレート内で，権限やページ毎に変更したい箇所を探し出し，ブロック化を行います．
+
+>|html|
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>サンプルだよ <rt:block name="subtitle">- トップページ</rt:block></title>
+<link rel="stylesheet" href="default.css" type="text/css" />
+<rt:block name="stylesheet_user"/>
+<rt:block name="stylesheet_admin"/>
+<rt:block name="stylesheet"/>
+<rt:block name="javascript_user"/>
+<rt:block name="javascript_admin"/>
+<rt:block name="javascript"/>
+</head>
+<body>
+<div id="container">
+	<div id="header">
+		<h1>サンプル</h1>
+		<ul id="navi">
+			<li><a href="#">HOME</a></li>
+			<rt:block name="navi"/>
+		</ul>
+	</div>
+	<div id="content">
+		<rt:block name="content"/>
+	</div>
+	<div id="footer"> Copyright &copy; 2009- Hoge System </div>
+</div>
+</body>
+</html>
+||<
+
+** 権限テンプレート
+
+例えば，ユーザ側ではユーザ専用のスタイルシートを読み込ませたい！ということがままあります．
+そんな機能を実現できます．
+
+resoureces/templates/main_user.html
+>|html|
+<rt:extends href="main.html"/>
+
+<rt:block name="stylesheet_user">
+<link rel="stylesheet" href="user.css" type="text/css" />
+</rt:block>
+
+<rt:block name="navi">
+<li><a href="#">ログアウト</a></li>
+</rt:block>
+||<
+
+** 個別ページテンプレート
+
+個別ページには，実際のページ内容の出力やらを記述します．
+あらかじめ，stylesheet や javascript のブロックを用意しておきましたので，この画面用の JavaScript のコーディングも同じテンプレート内で可能となります．
+
+resoureces/templates/generic/userprofileupdate_form.html
+>|html|
+<rt:extends href="../main_user.html"/>
+
+<rt:block name="subtitle">- 登録情報更新(入力)</rt:block>
+
+<rt:block name="stylesheet">
+<style type="style/css">
+
+</style>
+</rt:block>
+
+<rt:block name="javascript">
+<script type="text/javascript" src="/path/to/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	//hogehoge
+});
+</script>
+</rt:block>
+
+<rt:block name="navi">
+<li><a href="#">ログアウト</a></li>
+</rt:block>
+
+<rt:block name="content">
+内容だよ！
+</rt:block>
+||<
+
+* 参考
+
+- [http://d.hatena.ne.jp/yabeken/20090710/1247220042:title=テンプレートの継承]

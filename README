@@ -8,6 +8,14 @@ rhaco1-doc は， [http://twitter.com/yabeken:title=@yabeken] が主に編集し
 
 また，編集の都合上，ページの名前や URL が頻繁に変更されることがありますので，ブックマークする際には，[http://wikihub.org/rhaco1-doc/:title=このページ]を登録してください．
 
+* rhaco とは？
+
+rhaco とは，PEAR に依存せず単独で動作するライブラリ群です．
+rhaco 自体は，フレームワークではなく，組み合わせによってフレームワークとして動作させることが可能です．
+
+このドキュメントでは，チュートリアルを通じてフレームワーク的な動作を説明します．
+また，ライブラリ的な利用については，項目に分けて説明します．
+
 ** チュートリアル
 
 あまり，いいチュートリアルが思いつかなかったので，cakephp の [http://book.cakephp.org/ja/view/219/Blog:title=チュートリアル] をなぞれるだけなぞってみます．
@@ -49,7 +57,7 @@ rhaco1-doc は， [http://twitter.com/yabeken:title=@yabeken] が主に編集し
 
 私が作ったライブラリについては，[http://d.hatena.ne.jp/yabeken:title=yabekenのブログ] にて情報を綴っています．
 
-** コミュニティ
+* コミュニティ
 
 現在，rhaco のコミュニティは <del>IRC チャンネル [http://webchat.freenode.net/:title=#rhaco-ja@freenode] で活動しています．</del> [http://lingr.com/user/signup?letmein=rhaco_ja:title=lingr] で活動しています．
 ぜひ，お気軽に参加ください．

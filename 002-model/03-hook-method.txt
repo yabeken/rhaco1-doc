@@ -1,0 +1,21 @@
+* フックメソッド
+
+project.xml から生成した Model に対して， DbUtil を用いて操作を行った際にその動作をフックメソッドを用いて制御することが可能です．
+
+** beforeInsert
+
+データベースに値を保存する前に呼ばれます．
+false を返せば，保存をやめることが可能です．
+
+>|php|
+<?php
+Rhaco::import("model.table.ProfileTable");
+/**
+ * プロフィール
+ */
+class Profile extends ProfileTable{
+    function beforeInsert(){
+    }
+}
+||<
+

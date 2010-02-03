@@ -1,0 +1,20 @@
+* __init__.php
+
+__init__.php は,デフォルトでは __settings__.php を読み込んでいるだけですが，全てのエントリファイルが必ず読み込むファイルです．
+ですので，アプリケーションの初期化など全体に適用したい事を記述します．
+
+よく設定するのは，エラー出力の制御です．
+
+>|php|
+<?php
+include_once("./__settings__.php");
+//エラー出力制御
+error_reporting(0);
+ini_set("display_errors","off");
+ini_set("display_startup_errors","off");
+?>
+||<
+
+rhaco は，デフォルトでエラーを出力するように設定されていますので，この設定をしなければエラーが出力されてしまいます．
+是非設定しましょう．
+
