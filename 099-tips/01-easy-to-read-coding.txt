@@ -14,7 +14,7 @@
 
 で，モデルのロジックでこのステータスに依って処理を分岐させる際には，こんな感じになりますよね．
 
->||
+>|php|
 <?php
 class Hoge extends HogeTable{
   function verifyStatus(){
