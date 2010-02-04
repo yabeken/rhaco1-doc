@@ -50,11 +50,11 @@ class AdminViews extends Views{
 		$c = new C();
 		//受付番号
 		if($this->getVariable("QOrderId")){
-			$c->q(Q::eq(AdminProfileList::columnId(),$this->getQOrderId()));
+			$c->q(Q::eq(AdminProfileList::columnId(),$this->getVariable("QOrderId")));
 		}
 		//ステータス
 		if($this->getVariable("QStatus")){
-			$c->q(Q::eq(AdminProfileList::columnStatus(),$this->getQStatus()));
+			$c->q(Q::eq(AdminProfileList::columnStatus(),$this->getVariable("QStatus")));
 		}
 		return $this->read(new AdminProfileList(),$c);
 	}
