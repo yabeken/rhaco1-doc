@@ -1,0 +1,117 @@
+* 検索機能とCSV出力
+
+一覧機能で検索して，その条件でCSV出力したいなんてことはよくある要望です．
+arbo に csv 出力はあるのですが，View が分かれてしまいます．
+こんな時にどうしたらいいかという方策です．
+
+** 検索項目列の作成
+
+一覧表示用のモデルを AdminProfileList とした際に，検索項目を仮想列として実装します．
+
+>|xml|
+<project>
+	<database name="sample">
+		:
+		<ext table="admin_profile" class="admin_profile_list">
+			<extra name="q_order_id" type="integer" label="受付番号" />
+			<extra name="q_status" type="integer" label="状態">
+				<choices>
+					<data caption="状態1">1</data>
+					<data caption="状態2">2</data>
+					<data caption="状態3">3</data>
+					<data caption="状態4">4</data>
+				</choices>
+			</extra>
+		</ext>
+		:
+	</database>
+</project>
+||<
+
+こうすることによって，検索項目の実装も非常に簡単になります．
+
+** 実装
+
+まず，Viewに記述するパターンです．
+
+>|php|
+<?php
+Rhaco::import("generic.Views");
+Rhaco::import("model.AdminProfileList");
+/**
+ * 管理者用Views
+ */
+class AdminViews extends Views{
+	/**
+	 * 個人情報一覧
+	 * @return HtmlParser
+	 */
+	function profileList(){
+		$c = new C();
+		//受付番号
+		if($this->getVariable("QOrderId")){
+			$c->q(Q::eq(AdminProfileList::columnId(),$this->getQOrderId()));
+		}
+		//ステータス
+		if($this->getVariable("QStatus")){
+			$c->q(Q::eq(AdminProfileList::columnStatus(),$this->getQStatus()));
+		}
+		return $this->read(new AdminProfileList(),$c);
+	}
+}
+||<
+
+こんな感じになるわけです．
+これをコピーして，CSV出力用の View に記述するのは非常に不毛です．
+というわけで，ロジックをモデルに移しましょう．
+
+>|php|
+<?php
+Rhaco::import("generic.Views");
+Rhaco::import("model.AdminProfileList");
+/**
+ * 管理者用Views
+ */
+class AdminViews extends Views{
+	/**
+	 * 個人情報一覧
+	 * @return HtmlParser
+	 */
+	function profileList(){
+		//検索項目をモデルにコピー
+		$profile = $this->toObject(new AdminProfileList());
+		return $this->read($profile,$profile->getSearchCondition());
+	}
+}
+||<
+
+モデルはこんな感じ．
+
+>|php|
+<?php
+Rhaco::import("model.AdminProfileListTable");
+/**
+ * 個人情報一覧モデル
+ */
+class model.AdminProfileList extends model.AdminProfileListTable{
+	/**
+	 * 検索条件の生成
+	 * @return C
+	 */
+	function getSearchCondition(){
+		$c = new C();
+		//受付番号
+		if($this->getQOrderId()){
+			$c->q(Q::eq($this->columnId(),$this->getQOrderId()));
+		}
+		//ステータス
+		if($this->getQStatus()){
+			$c->q(Q::eq($this->columnStatus(),$this->getQStatus()));
+		}
+		return $c;
+	}
+}
+||<
+
+こうしておけば，View は処理の流れだけになり，どのようにデータを取得するかはモデルに依存するようになるので，非常に明確になります．
+
