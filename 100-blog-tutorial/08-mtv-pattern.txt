@@ -13,7 +13,7 @@ MTV は Django で使われ始めた用語(([http://michilu.com/django/doc-ja/fa
 
 イメージはこんな感じ．ただし，MVC とはそれぞれの持つ役割が大きく異なります．
 
-[http://wikihub.org/wiki/rhaco1-doc/tutorial/mtv-pattern.png:image]
+[http://wikihub.org/wiki/rhaco1-doc/100-blog-tutorial/mtv-pattern.png:image]
 
 *** Model
 

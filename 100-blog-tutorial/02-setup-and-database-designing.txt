@@ -17,7 +17,7 @@ rhaco はセットアップフレームワークとも呼ばれており，全�
 
 ブラウザから， http://localhost/blog/setup.php にアクセスしてみてください．
 
-[http://wikihub.org/wiki/rhaco1-doc/tutorial/path-to-rhaco.png:image]
+[http://wikihub.org/wiki/rhaco1-doc/100-blog-tutorial/path-to-rhaco.png:image]
 
 rhaco の場所を聞かれますので，指定します．
 
