@@ -4,8 +4,8 @@ project.xml から生成した Model に対して， DbUtil を用いて操作�
 
 ** beforeInsert
 
-データベースに値を保存する前に呼ばれます．
-false を返せば，保存をやめることが可能です．
+INSERT前に呼ばれます．
+false を返せば，INSERT処理の中止が可能です．
 
 >|php|
 <?php
@@ -14,8 +14,169 @@ Rhaco::import("model.table.ProfileTable");
  * プロフィール
  */
 class Profile extends ProfileTable{
-    function beforeInsert(){
+	/**
+	 * INSERT 前処理
+	 * @param DbUtil $db
+	 */
+    function beforeInsert($db){
+    	return true;
     }
 }
 ||<
 
+** afterInsert
+
+データベースにINSERTした後に呼ばれます．
+返値は必要ありません．
+
+>|php|
+<?php
+Rhaco::import("model.table.ProfileTable");
+/**
+ * プロフィール
+ */
+class Profile extends ProfileTable{
+	/**
+	 * INSERT 後処理
+	 * @param DbUtil $db
+	 */
+    function afterInsert($db){
+    	return true;
+    }
+}
+||<
+
+** beforeUpdate
+
+UPDATE 前に呼ばれます．
+false を返せばUPDATE処理を中止できます．
+
+>|php|
+<?php
+Rhaco::import("model.table.ProfileTable");
+/**
+ * プロフィール
+ */
+class Profile extends ProfileTable{
+	/**
+	 * UPDATE 前処理
+	 * @param DbUtil $db
+	 */
+    function beforeUpdate($db){
+    	return true;
+    }
+}
+||<
+
+** afterUpdate
+
+UPDATE 後に呼ばれます．
+false を返しても DbUtil は中止処理を行いませんが，update の返値として使用されます．
+
+>|php|
+<?php
+Rhaco::import("model.table.ProfileTable");
+/**
+ * プロフィール
+ */
+class Profile extends ProfileTable{
+	/**
+	 * UPDATE 後処理
+	 * @param DbUtil $db
+	 */
+    function afterUpdate($db){
+    	return true;
+    }
+}
+||<
+
+** beforeDelete
+
+DELETE 前に呼ばれます．
+false を返せばDELETE処理を中止できます．
+Model には標準で beforeDelete メソッドが実装されていますので，オーバーライドした際には，呼ぶ必要があります．
+
+>|php|
+<?php
+Rhaco::import("model.table.ProfileTable");
+/**
+ * プロフィール
+ */
+class Profile extends ProfileTable{
+	/**
+	 * DELETE 前処理
+	 * @param DbUtil $db
+	 */
+    function beforeDelete($db){
+    	if(parent::beforeDelete($db)){
+    		return false;
+    	}
+    	return false;
+    }
+}
+||<
+
+** afterUpdate
+
+DELETE 後に呼ばれます．
+false を返しても DbUtil は中止処理を行いませんが，delete の返値として使用されます．
+
+>|php|
+<?php
+Rhaco::import("model.table.ProfileTable");
+/**
+ * プロフィール
+ */
+class Profile extends ProfileTable{
+	/**
+	 * Delete 後処理
+	 * @param DbUtil $db
+	 */
+    function afterDelete($db){
+    	return true;
+    }
+}
+||<
+
+
+** afterGet
+
+DbUtil::get 後に呼ばれます．
+
+>|php|
+<?php
+Rhaco::import("model.table.ProfileTable");
+/**
+ * プロフィール
+ */
+class Profile extends ProfileTable{
+	/**
+	 * Get 後処理
+	 * @param DbUtil $db
+	 */
+    function afterGet($db){
+
+    }
+}
+||<
+
+** afterGet
+
+DbUtil::select 後に呼ばれます．
+
+>|php|
+<?php
+Rhaco::import("model.table.ProfileTable");
+/**
+ * プロフィール
+ */
+class Profile extends ProfileTable{
+	/**
+	 * Get 後処理
+	 * @param DbUtil $db
+	 */
+    function afterSelect($db){
+    	
+    }
+}
+||<
