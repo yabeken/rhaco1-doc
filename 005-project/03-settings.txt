@@ -1,0 +1,45 @@
+* 定義と設定
+
+システム開発をする上で，開発環境での設定と実機とで利用する値が違うことが結構あります．
+
+- 管理者メールアドレス
+- SMTPホスト
+
+などなど，環境依存な値がたっぷりあります．
+これらをまとめた設定ファイルをまとめても良いかもしれませんが，変更・管理が面倒ですね．
+
+rhaco では，これらを設定として保持し変更する機構も提供することができます．
+
+** 定義
+
+定義は，プログラミングコードにマジックナンバーが紛れ込まないようにするために利用します．
+
+>|xml|
+<project>
+	<define name="STATUS_HOGE" value="3" />
+</project>
+||<
+
+** 設定
+
+可変な設定を提供します．
+
+>|xml|
+<project>
+	<input name="HOGE">
+		<title></title>
+		<description></desciption>
+		<data></data>
+	</input>
+</project>
+||<
+
+*** input
+
+1行テキストの設定を提供します．
+
+>|xml|
+<project>
+	<input name="STATUS_HOGE" value="3">
+</project>
+||<
