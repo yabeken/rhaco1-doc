@@ -160,7 +160,7 @@ class Profile extends ProfileTable{
 }
 ||<
 
-** afterGet
+** afterSelect
 
 DbUtil::select 後に呼ばれます．
 
