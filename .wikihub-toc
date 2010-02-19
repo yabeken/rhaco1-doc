@@ -9,9 +9,9 @@
 100-blog-tutorial/07-template-model-association=テンプレートとモデルの連携
 100-blog-tutorial/08-mtv-pattern=MTVパターン（２）
 
-_01-rhaco/=rhaco
-_01-rhaco/01-library-import=ライブラリの読み込み
-_01-rhaco/02-constructor=コンストラクタ
+001-rhaco/=rhaco
+001-rhaco/01-library-import=ライブラリの読み込み
+001-rhaco/02-constructor=コンストラクタ
 002-model/=モデル
 002-model/01-additional-validation=検証処理の追加
 002-model/02-login-conditino-model=ログイン条件のモデル化
