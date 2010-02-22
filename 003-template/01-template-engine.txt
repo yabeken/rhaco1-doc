@@ -12,7 +12,21 @@ Smarty 等のようにプラグイン機構を持たないため，テンプレ�
 
 をご覧ください．
 
-//TODO ここに書く
+** デフォルトで埋め込まれている変数
+
+テンプレートエンジンには，以下のクラスがデフォルトで埋め込まれています．
+
+- [http://api.rhaco-users.jp/d2/d09/classRhaco.html:title=Rhaco] / {$rhaco}
+- [http://api.rhaco-users.jp/d9/d1e/classTemplateFormatter.html:title=TemplateFormatter] / {$f}
+- [http://api.rhaco-users.jp/db/dcb/classEnv.html:title=Env] / {$env}
+
+これらのクラスメソッドは，それぞれ，以下のように使用します．
+
+>||
+{$rhaco.url()}
+{$f.text2.html()}
+{$env.isSSL()}
+||<
 
 * 参考
 
