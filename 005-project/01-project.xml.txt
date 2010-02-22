@@ -18,7 +18,7 @@ project.xml では，次のようなことができます．
 rhaco では，コード内で参照する必要のある設定値は全て project.xml 内に記述します．
 
 設定値は以下のようなものが記述可能です．
-値は， Rhaco::constant() で参照することができます１．
+値は， Rhaco::constant() で参照することができます．
 
 *** define
 
