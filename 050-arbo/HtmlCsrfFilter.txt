@@ -22,4 +22,17 @@ $views->create(new Profile())->write();
 
 ** Urls で使う
 
-//TODO あとで
+>|php|
+<?php
+Rhaco::import("generic.Urls");
+Rhaco::import("database.Dbutil");
+Rhaco::import("model.Profile");
+
+Urls::parser(array(
+	"^$"=>array("class"=>"generic.Views","method"=>"create")
+),new DbUtil(Profile::connection(),"org.rhaco.generic.filter.HtmlCsrfFilter"))->write();
+||<
+
+と View の場合と同じように渡します．
+これによって，全ての画面において，自動的に HtmlCsrfFilter が有効になります．
+
