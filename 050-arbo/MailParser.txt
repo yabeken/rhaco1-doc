@@ -6,7 +6,7 @@ MailParser は，テンプレートを解析して Mail インスタンスを生
 
 ** インストール
 
-[[050-arbo/01-install:title=インストール]]にて，"org.rhaco.network.mail.MailParser" を指定してください．
+[http://wikihub.org/rhaco1-doc/050-arbo/01-install:title=インストール]にて，"org.rhaco.network.mail.MailParser" を指定してください．
 
 ** テンプレートの形式
 
