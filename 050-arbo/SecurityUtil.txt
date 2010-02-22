@@ -1,0 +1,49 @@
+* SecurityUtil
+
+SecurityUtil は O/R Mapper を使用する際に，出てきがちなデータインジェクション対策を行うためのライブラリです．
+
+** インストール
+
+[http://wikihub.org/rhaco1-doc/050-arbo/01-install:title=インストール]にて，"org.rhaco.generic.util.SecurityUtil" を指定してください．
+
+** 使い方
+
+[http://twitter.com/yabeken:title=@yabeken] は,一処理一モデルを徹底していますので，次のような使い方をしています．
+
+
+Model
+>|php|
+<?php
+Rhaco::import("model.ProfileCreateTable");
+/**
+ * 個人情報作成
+ */
+class ProfileCreate extends ProfileCreateTable{
+	/**
+	 * SecurotyUtil
+	 */
+	function security(){
+		return array("allow"=>"sei,mei,sei_kana,mei_kana,email,......");
+	}
+}
+||<
+
+View
+>|php|
+<?php
+Rhaco::import("generic.Views");
+Rhaco::import("model.ProfileCreate");
+Rhaco::import("org.rhaco.generic.util.SecurityUtil");
+class SampleViews extends Views{
+	/**
+	 * 個人情報作成
+	 * @return HtmlParser
+	 */
+	function profileCreate(){
+		$profile = new ProfileCreate();
+		//ホワイトリストで指定
+		SecurityUtil::allow($this,$profile);
+		return $this->confirmedCreate($profile);
+	}
+}
+||<
