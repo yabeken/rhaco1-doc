@@ -1,0 +1,52 @@
+* MailParser
+
+MailParser は，テンプレートを解析して Mail インスタンスを生成するためのユーティリティです．
+テンプレートは，HTMLテンプレートと同じように変数などを適用できます．
+また，ヘッダと本文を同時に記述しますので非常に管理がしやすくなります．
+
+** インストール
+
+[[050-arbo/01-install:title=インストール]]にて，"org.rhaco.network.mail.MailParser" を指定してください．
+
+** テンプレートの形式
+
+テンプレートの形式は，エンコードされていない eml と考えれば非常にわかりやすいです．
+
+>||
+To: {$profile.getEmail()}
+From: {$rhaco.constant('OFFICE_NAME')} <{$rhaco.constant('OFFICE_EMAIL')}>
+Subject: 登録ありがとう
+Return-Path: {$rhaco.constant('RETURN_PATH')}
+Cc: {$profile.getEmail2()}
+Bcc: {$rhaco.constant('OFFICE_EMAIL')}, {$rhaco.constant('OFFICE_EMAIL2')}
+
+{$profile.getSei()} 様
+
+登録ありがとう．
+
+--
+{$rhaco.constant('MAIL_FOOTER')}
+||<
+
+とこんな感じ．
+
+** コーディング例
+
+>|php|
+<?php
+Rhaco::import("tag.TemplateParser");
+Rhaco::import("network.mail.Mail");
+Rhaco::import("org.rhaco.network.mail.MailParser");
+
+//DBからデータを取得したりとかとか
+//:
+
+$parser = new TemplateParser();
+$parser->setVariable("profile",$profile);
+
+$mailParser = new MailParser();
+$mail = $mailParser->mailer($parser->read("path/to/mail.tpl"));
+
+//送信
+$mail->send();
+||<
