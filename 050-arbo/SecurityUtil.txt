@@ -4,7 +4,7 @@ SecurityUtil は O/R Mapper を使用する際に，出てきがちなデータ�
 
 ** インストール
 
-[http://wikihub.org/rhaco1-doc/050-arbo/01-install:title=インストール]にて，"org.rhaco.generic.util.SecurityUtil" を指定してください．
+[http://wikihub.org/wiki/rhaco1-doc/050-arbo/01-install:title=インストール]にて，"org.rhaco.generic.util.SecurityUtil" を指定してください．
 
 ** 使い方
 

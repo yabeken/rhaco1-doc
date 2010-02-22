@@ -5,7 +5,7 @@ Flow や Flow を継承したクラスにフィルターとして組み込むこ
 
 ** インストール
 
-[http://wikihub.org/rhaco1-doc/050-arbo/01-install:title=インストール]にて，"org.rhaco.generic.filter.HtmlCsrfFilter" を指定してください．
+[http://wikihub.org/wiki/rhaco1-doc/050-arbo/01-install:title=インストール]にて，"org.rhaco.generic.filter.HtmlCsrfFilter" を指定してください．
 
 ** Views で使う
 
