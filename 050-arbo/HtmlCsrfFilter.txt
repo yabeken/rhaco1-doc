@@ -25,7 +25,7 @@ $views->create(new Profile())->write();
 >|php|
 <?php
 Rhaco::import("generic.Urls");
-Rhaco::import("database.Dbutil");
+Rhaco::import("database.DbUtil");
 Rhaco::import("model.Profile");
 
 Urls::parser(array(
