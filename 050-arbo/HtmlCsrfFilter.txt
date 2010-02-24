@@ -30,7 +30,7 @@ Rhaco::import("model.Profile");
 
 Urls::parser(array(
 	"^$"=>array("class"=>"generic.Views","method"=>"create")
-),new DbUtil(Profile::connection(),"org.rhaco.generic.filter.HtmlCsrfFilter"))->write();
+),new DbUtil(Profile::connection()),"org.rhaco.generic.filter.HtmlCsrfFilter")->write();
 ||<
 
 と View の場合と同じように渡します．
