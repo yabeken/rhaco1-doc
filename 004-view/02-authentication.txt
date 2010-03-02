@@ -16,7 +16,7 @@ RequestLogin::loginRequired();
 
 ** データベースを用いた認証
 
-[[http://wikihub.org/wiki/rhaco1-doc/002-model/02-login-condition-model:title=ログイン条件モデル]]を参考にどうぞ．
+[http://wikihub.org/wiki/rhaco1-doc/002-model/02-login-condition-model:title=ログイン条件モデル]を参考にどうぞ．
 
 ** マルチロール対応
 
