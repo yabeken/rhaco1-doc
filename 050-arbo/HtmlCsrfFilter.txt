@@ -36,3 +36,20 @@ Urls::parser(array(
 と View の場合と同じように渡します．
 これによって，全ての画面において，自動的に HtmlCsrfFilter が有効になります．
 
+* RequestLogin との連携
+
+RequestLogin を用いてログイン認証を行う際に，セットアップフレームワークに記述しているコードを使うとログイン後にCSRFエラーが出力されてします．
+ですので，Flow や Views と RequestLogin を連携させるためには以下のようにします．
+
+>|php|
+<?php
+require_once "__init__.php";
+
+Rhaco::import("database.DbUtil");
+Rhaco::import("model.Profile");
+Rhaco::import("generic.Views");
+$view = new Views(new DbUtil(Profile::connection()),"org.rhaco.generic.filter.HtmlCsrfFilter");
+RequestLogin::loginRequired(null,$view);
+$view->confirmedUpdate(new Profile(1),"csrf.php")->write();
+||<
+
