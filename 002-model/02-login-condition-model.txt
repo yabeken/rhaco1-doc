@@ -2,9 +2,15 @@
 
 モデルモデルと言いますが，何もテーブルだけがモデルではありません．
 rhaco では，ログイン条件もモデル化することができます．
-ログイン条件のモデル化によって，複雑なログイン条件でも実装することが可能となる一方，View においては非常に簡便に取り扱うことができます．
+ログイン条件のモデル化によって，複雑なログイン条件でも実装することが可能となる一方，各 View においては非常に簡便に取り扱うことができます．
 
-rhaco では，標準で以下のような
+rhaco では，標準で以下のログインモデルが存在します．
 
-** RequestLoginCondition
+- RequestLoginConditionBrowser
+- RequestLoginConditionDb
+- RequestLoginConditionFile
+
+ここでは，よく使う LoginConditionDb について説明します．
+
+
 
