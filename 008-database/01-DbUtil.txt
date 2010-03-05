@@ -1,0 +1,47 @@
+* DbUtil
+
+rhaco では DbUtil というデータベース操作ライブラリを用います．
+project.xml とセットアップフレームワークを用いることにより連携非常に強力で柔軟なデータベース操作が可能です．
+
+** 接続
+
+データベースへの接続は，セットアップフレームワークで設定し，モデル内に隠蔽されています．
+ですので，コード側ではどこに接続するかということを考える必要がありません．
+
+>|php|
+<?php
+require_once dirname(__FILE__)."/__init__.php";
+Rhaco::import("database.DbUtil");
+Rhaco::import("model.Profile");
+
+//データベースへ接続
+$db = new DbUtil(Profile::connection());
+||<
+
+** select
+
+>|sql|
+select * from profile
+||<
+
+>|php|
+<?php
+//:
+
+$db->select(new Post());
+||<
+
+** get
+
+>|sql|
+select * from profile offset 0 limit 1
+||<
+
+>|php|
+<?php
+//:
+
+$db->get(new Post());
+||<
+
+
