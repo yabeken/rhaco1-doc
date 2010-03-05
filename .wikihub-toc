@@ -14,7 +14,7 @@
 001-rhaco/02-constructor=コンストラクタ
 002-model/=モデル
 002-model/01-additional-validation=検証処理の追加
-002-model/02-login-conditino-model=ログイン条件のモデル化
+002-model/02-login-condition-model=ログイン条件モデル
 002-model/03-hook-method=フックメソッド
 002-model/04-virtual-column=仮想列
 003-template/=テンプレート
