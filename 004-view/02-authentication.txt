@@ -16,11 +16,17 @@ RequestLogin::loginRequired();
 
 ** データベースを用いた認証
 
-TODO
+[http://wikihub.org/wiki/rhaco1-doc/002-model/02-login-condition-model:title=ログイン条件モデル]を参考にどうぞ．
 
 ** マルチロール対応
 
-TODO
+管理者やユーザなどでログインを切り分けて起きたい際には，ログインセッション名を指定してからログイン処理を実行します．
+
+>|php|
+<?php
+RequestLogin::setLoginSessionName("ADMIN");
+RequestLogin::loginRequired();
+||<
 
 * 参考
 
