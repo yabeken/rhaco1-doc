@@ -37,9 +37,10 @@
 007-utility/01-csv=CSVユーティリティ
 007-utility/02-json=JSONユーティリティ
 008-database/=データベース
-008-database/01-build-query=SQLの組み立て
+008-database/01-DbUtil=DbUtil
+008-database/02-build-query=SQLの組み立て
 050-arbo/=arbo
-050-arbo/01-install.txt=install
+050-arbo/01-install=インストール
 099-tips/=Tips
 099-tips/01-easy-to-read-coding=理解しやすいコード
 099-tips/02-one-file-script=一ファイルスクリプト
