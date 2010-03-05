@@ -4,13 +4,61 @@
 rhaco では，ログイン条件もモデル化することができます．
 ログイン条件のモデル化によって，複雑なログイン条件でも実装することが可能となる一方，各 View においては非常に簡便に取り扱うことができます．
 
-rhaco では，標準で以下のログインモデルが存在します．
+** Dbと連携したログイン条件モデル
 
-- RequestLoginConditionBrowser
-- RequestLoginConditionDb
-- RequestLoginConditionFile
+例えばよくあるのが，ログイン ID とパスワードで認証を掛ける方法ですが，以下のように実装します．
 
-ここでは，よく使う LoginConditionDb について説明します．
+>|php|
+<?php
+Rhaco::import("network.http.model.RequestLoginConditionDb");
+Rhaco::import("model.User");
+/**
+ * ユーザ用のログイン条件モデル
+ */
+class RequestLoginConditionUser extends RequestLoginConditionDb{
+	/**
+	 * コンストラクタ
+	 * @param DbUtil $dbUtil
+	 */
+	function RequestLoginConditionUser(&$dbUtil){
+		$this->__init__($dbUtil,new User());
+	}
+	/**
+	 * 認証完了後の処理
+	 */
+	function after(){
+		Header::redirect(Rhaco::url("user"));
+	}
+}
+||<
 
+User モデルには，ログイン処理を実装します．
+>|php|
+<?php
+Rhaco::import("model.table.UserTable");
+class User extends UserTable{
+	/**
+	 * ログイン処理
+	 */
+	function loginCondition(&$db,&$object,$request){
+		$object = $db->get($this,new C(
+									Q::eq($this->columnLogin(),$request->getVariable("login")),
+									Q::eq($this->columnPassword(),md5($request->getVarialbe("password")))
+									)
+							);
+		return Variable::istype("User",$object);
+	}
+}
+||<
 
+View でログイン条件を指定します．
+>|php|
+<?php
+
+//いっぱいコード
+//:
+RequestLogin::loginRequired(new RequestLoginConditionUser($db));
+||<
+
+このようにしてログイン条件モデルを渡すことで実際のログイン処理を隠蔽してしまうことが可能となります．
 
