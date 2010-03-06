@@ -2,7 +2,7 @@
 
 モデルモデルと言いますが，何もテーブルだけがモデルではありません．
 rhaco では，ログイン条件もモデル化することができます．
-ログイン条件のモデル化によって，複雑なログイン条件でも実装することが可能となる一方，View においては非常に簡便に取り扱うことができます．
+ログイン条件のモデル化によって，複雑なログイン条件でも実装することが可能となる一方，各 View においては非常に簡便に取り扱うことができます．
 
 ** Dbと連携したログイン条件モデル
 
@@ -41,11 +41,12 @@ class User extends UserTable{
 	 * ログイン処理
 	 */
 	function loginCondition(&$db,&$object,$request){
-		$object = $db->get($this,new C(
-									Q::eq($this->columnLogin(),$request->getVariable("login")),
-									Q::eq($this->columnPassword(),md5($request->getVarialbe("password")))
-									)
-							);
+		$object = $db->get($this,
+			new C(
+				Q::eq($this->columnLogin(),$request->getVariable("login")),
+				Q::eq($this->columnPassword(),md5($request->getVarialbe("password")))
+				)
+			);
 		return Variable::istype("User",$object);
 	}
 }
