@@ -30,7 +30,7 @@ rhaco は， バージョンという概念が存在しません．
 これは，rhaco のコードはすべてテストが行われており，追加・変更があった際も既存のテストが全て通らない限りコミットが許されていないからです．
 このため必然的に最新版が安定版となります．
 
-最新の rhaco のダウンロードは http://download.rhaco-users.jp より行います．
+最新の rhaco のダウンロードは [http://code.google.com/p/rhaco/downloads/list?q=label%3Arhaco+Featured] より行います．
 また，[http://rhaco.googlecode.com/svn/rhaco_1_x/trunk/:title=SVNリポジトリ]からチェックアウト／エクスポートすることもできます．
 
 rhaco を DocumentRoot 内((実際の運用場面では適当な箇所))に展開してください．

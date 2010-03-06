@@ -2,7 +2,7 @@
 
 では，ブログアプリケーションのセットアップを行いましょう．
 
-rhaco はセットアップフレームワークとも呼ばれており，全ての開発作業をGUIから行うことが可能です．
+rhaco はセットアップフレームワークとも呼ばれており，全ての開発作業を GUI から行うことが可能です．
 
 ** 初期設定
 
@@ -113,7 +113,7 @@ rhaco では，project.xml で記述したテーブルモデルから自動的�
 
 ** mod_rewrite について
 
-rhaco は mod_rewrite を使えなくても動作しますが，クールなURLを実装するためには是非有効にしてください．
+rhaco は mod_rewrite を使えなくても動作しますが，クールな URL を実装するためには是非有効にしてください．
 
 mod_rewrite については [http://www.google.co.jp/search?q=mod_rewrite:title=検索] してください．
 
