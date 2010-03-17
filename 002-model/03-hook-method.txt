@@ -5,7 +5,6 @@ project.xml から生成した Model に対して， DbUtil を用いて操作�
 ** beforeInsert
 
 INSERT前に呼ばれます．
-false を返せば，INSERT処理の中止が可能です．
 
 >|php|
 <?php
@@ -27,7 +26,6 @@ class Profile extends ProfileTable{
 ** afterInsert
 
 データベースにINSERTした後に呼ばれます．
-返値は必要ありません．
 
 >|php|
 <?php
@@ -49,7 +47,6 @@ class Profile extends ProfileTable{
 ** beforeUpdate
 
 UPDATE 前に呼ばれます．
-false を返せばUPDATE処理を中止できます．
 
 >|php|
 <?php
@@ -71,7 +68,6 @@ class Profile extends ProfileTable{
 ** afterUpdate
 
 UPDATE 後に呼ばれます．
-false を返しても DbUtil は中止処理を行いませんが，update の返値として使用されます．
 
 >|php|
 <?php
@@ -93,7 +89,6 @@ class Profile extends ProfileTable{
 ** beforeDelete
 
 DELETE 前に呼ばれます．
-false を返せばDELETE処理を中止できます．
 Model には標準で beforeDelete メソッドが実装されていますので，オーバーライドした際には，呼ぶ必要があります．
 
 >|php|
@@ -119,7 +114,6 @@ class Profile extends ProfileTable{
 ** afterUpdate
 
 DELETE 後に呼ばれます．
-false を返しても DbUtil は中止処理を行いませんが，delete の返値として使用されます．
 
 >|php|
 <?php
