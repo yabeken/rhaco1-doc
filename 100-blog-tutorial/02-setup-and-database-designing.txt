@@ -2,7 +2,7 @@
 
 では，ブログアプリケーションのセットアップを行いましょう．
 
-rhaco はセットアップフレームワークとも呼ばれており，全ての開発作業をGUIから行うことが可能です．
+rhaco はセットアップフレームワークとも呼ばれており，全ての開発作業を GUI から行うことが可能です．
 
 ** 初期設定
 
@@ -86,7 +86,7 @@ project.xml をエディタで開き，次のようにブログ投稿記事の�
 project.xmlを保存したら， http://localhost/blog/setup.php に再度アクセスしてください．
 「データベース[BLOG]」という設定項目が増えています．ここで，project.xml に記述したテーブルモデルの接続先データベース設定を行うことができます．
 
-[http://wikihub.org/wiki/rhaco1-doc/tutorial/database-settings.png:image]
+[http://wikihub.org/wiki/rhaco1-doc/100-blog-tutorial/database-settings.png:image]
 
 :データベースサーバ:データベースの種類を指定します． （拡張を有効にしていれば，MySQL，PostgreSQL，Oracle，SQLiteが利用可能です．）
 :データベースサーバのホスト名:データベースサーバが動作しているサーバのアドレスを指定します．SQLiteの場合にはファイルパスを指定します．
@@ -105,7 +105,7 @@ rhaco では，project.xml で記述したテーブルモデルから自動的�
 
 上部に database メニューが現れ，ここから簡易データベース管理を行うことができます．
 
-[http://wikihub.org/wiki/rhaco1-doc/tutorial/database-control.png:image]
+[http://wikihub.org/wiki/rhaco1-doc/100-blog-tutorial/database-control.png:image]
 
 「作成」をクリックすれば，自動的にテーブルが作成されます．
 
@@ -113,7 +113,7 @@ rhaco では，project.xml で記述したテーブルモデルから自動的�
 
 ** mod_rewrite について
 
-rhaco は mod_rewrite を使えなくても動作しますが，クールなURLを実装するためには是非有効にしてください．
+rhaco は mod_rewrite を使えなくても動作しますが，クールな URL を実装するためには是非有効にしてください．
 
 mod_rewrite については [http://www.google.co.jp/search?q=mod_rewrite:title=検索] してください．
 
