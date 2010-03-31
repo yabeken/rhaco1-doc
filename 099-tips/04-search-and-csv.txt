@@ -93,12 +93,13 @@ Rhaco::import("model.AdminProfileListTable");
 /**
  * 個人情報一覧モデル
  */
-class model.AdminProfileList extends model.AdminProfileListTable{
+class AdminProfileList extends AdminProfileListTable{
 	/**
 	 * 検索条件の生成
-	 * @return C
+	 * @param DbUtil $db
+	 * @return boolean
 	 */
-	function getSearchCondition(){
+	function getSearchCondition($db){
 		$c = new C();
 		//受付番号
 		if($this->getQOrderId()){

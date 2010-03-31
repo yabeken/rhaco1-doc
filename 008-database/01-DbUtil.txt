@@ -3,7 +3,7 @@
 rhaco では DbUtil というデータベース操作ライブラリを用います．
 project.xml とセットアップフレームワークを用いることにより連携非常に強力で柔軟なデータベース操作が可能です．
 
-** 接続
+** インポートと接続
 
 データベースへの接続は，セットアップフレームワークで設定し，モデル内に隠蔽されています．
 ですので，コード側ではどこに接続するかということを考える必要がありません．
@@ -26,12 +26,12 @@ select * from profile
 
 >|php|
 <?php
-//:
-
-$db->select(new Post());
+$db->select(new Profile());
 ||<
 
 ** get
+
+1行目だけを取得します．
 
 >|sql|
 select * from profile offset 0 limit 1
@@ -41,7 +41,7 @@ select * from profile offset 0 limit 1
 <?php
 //:
 
-$db->get(new Post());
+$db->get(new Profile());
 ||<
 
 
