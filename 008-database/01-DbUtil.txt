@@ -3,7 +3,7 @@
 データベースへの接続には，DbUtil というデータベース操作ライブラリを用います．
 データベース接続までの手順は次の通りです．
 
-+ project.xml にデータベース定義を記述．[[005-project/01-project.xml:title=project.xml]]を参照のこと．
++ project.xml にデータベース定義を記述．[[005-project/01-project.xml]]を参照のこと．
 + setup.php より，モデルを生成．
 + setup.php より，接続情報の設定．
 
