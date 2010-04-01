@@ -10,6 +10,21 @@ WHERE句の組み立てには，Criteria ( C ) クラス と Criterion ( Q ) ク
 - update
 - delete
 
+ここでは，次のデータベース定義を用います．
+
+>|xml|
+<project>
+	<database name="sample">
+		  <description>サンプル</description>
+		  <table name="profile">
+		  	 <column name="id" type="serial" />
+			 <column name="name" type="string" label="名前" />
+			 <column name="age" type="integer" label="年齢" />
+		  </table>
+	</database>
+</project>
+||<
+
 ** 一致 / =
 
 >|sql|
@@ -107,7 +122,7 @@ select * from profile where (profile.name in ('hoge','fuga'))
 $c = new C(Q::in(Profile::columnName(),array("hoge","fuga")));
 $db->select(new Profile(),$c);
 ||<
-
+			
 ** 不一致リスト / not in
 
 >|sql|
