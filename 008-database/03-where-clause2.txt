@@ -1,0 +1,101 @@
+* WHERE句（２）
+
+[[008-database/02-where-clause]] では，単純な WHERE句 の発行のみを載せています．
+DbUtil では，もっと複雑な WHERE 句も発行可能です．
+
+ここでは，次のデータベース定義を用います．
+
+>|xml|
+<project>
+	<database name="sample">
+		  <description>サンプル</description>
+		  <table name="profile">
+		  	 <column name="id" type="serial" />
+			 <column name="name" type="string" label="名前" />
+			 <column name="age" type="integer" label="年齢" />
+			 <column name="company_id" type="integer" label="所属"/>
+		  </table>
+		  <table name="company">
+		  	 <column name="id" type="serial"/>
+			 <column name="type" type="integer" require="true">
+			 	 <choices>
+					<data caption="企業">1</data>
+					<data caption="公務員">2</data>
+					<data caption="自営業">3</data>
+				 </choices>
+			 </column>
+			 <column name="name" type="string" require="true" label="組織名"/>
+		  </table>
+	</database>
+</project>
+||<
+
+
+** 副問い合わせ(1)
+
+>|sql|
+select * from profile where profile.company_id = (select id from company where company.name = 'らこシステム開発')
+||<
+
+>|php|
+<?php
+//:
+
+$c = new C(Q::getEqual(Pofile::columnCompanyId(),Company::columnId(),new C(Q::eq(Company::columnName(),"らこシステム開発"))));
+$db->select(new Profile(),$c);
+||<
+
+** 副問い合わせ(2)
+
+>|sql|
+select * from profile where profile.company_id <> (select id from company where company.name = 'らこシステム開発')
+||<
+
+>|php|
+<?php
+//:
+
+$c = new C(Q::getNotEqual(Pofile::columnCompanyId(),Company::columnId(),new C(Q::eq(Company::columnName(),"らこシステム開発"))));
+$db->select(new Profile(),$c);
+||<
+
+** 副問い合わせ(3)
+
+>|sql|
+select * from profile where profile.company_id in (select id from company where company.type = 2)
+||<
+
+>|php|
+<?php
+//:
+
+$c = new C(Q::selectIn(Pofile::columnCompanyId(),Company::columnId(),new C(Q::eq(Company::columnType(),2))));
+$db->select(new Profile(),$c);
+||<
+
+** 副問い合わせ(3)
+
+>|sql|
+select * from profile where profile.company_id not in (select id from company where company.type = 2)
+||<
+
+>|php|
+<?php
+//:
+
+$c = new C(Q::selectNotIn(Pofile::columnCompanyId(),Company::columnId(),new C(Q::eq(Company::columnType(),2))));
+$db->select(new Profile(),$c);
+||<
+
+** ユニーク値の取得
+
+>|sql|
+select distinct age from profile
+||<
+
+>|php|
+<?php
+//:
+$c = new C(Q::distinct(Profile::columnAge()));
+$db->select(new Profile(),$c);
+||<
