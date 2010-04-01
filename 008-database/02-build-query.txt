@@ -18,6 +18,8 @@ select * from profile where (profile.id = 10)
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::eq(Profile::columnId(),10));
 $db->select(new Profile(),$c);
 ||<
@@ -30,6 +32,8 @@ select * from profile where (profile.id <> 10)
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::neq(Profile::columnId(),10));
 $db->select(new Profile(),$c);
 ||<
@@ -42,6 +46,8 @@ select * from profile where (profile.id > 10)
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::gt(Profile::columnId(),10));
 $db->select(new Profile(),$c);
 ||<
@@ -54,6 +60,8 @@ select * from profile where (profile.id >= 10)
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::gte(Profile::columnId(),10));
 $db->select(new Profile(),$c);
 ||<
@@ -66,6 +74,8 @@ select * from profile where (profile.id < 10)
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::lt(Profile::columnId(),10));
 $db->select(new Profile(),$c);
 ||<
@@ -78,6 +88,8 @@ select * from profile where (profile.id < 10)
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::lte(Profile::columnId(),10));
 $db->select(new Profile(),$c);
 ||<
@@ -90,6 +102,8 @@ select * from profile where (profile.name in ('hoge','fuga'))
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::in(Profile::columnName(),array("hoge","fuga")));
 $db->select(new Profile(),$c);
 ||<
@@ -102,6 +116,8 @@ select * from profile where (profile.name not in ('hoge','fuga'))
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::notIn(Profile::columnName(),array("hoge","fuga")));
 $db->select(new Profile(),$c);
 ||<
@@ -114,6 +130,8 @@ select * from profile where (profile.name like 'hoge%')
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::like(Profile::columnName(),"hoge","w*"));
 $db->select(new Profile(),$c);
 ||<
@@ -126,6 +144,8 @@ select * from profile where (profile.name ilike 'hoge%')
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::ilike(Profile::columnName(),"hoge","w*"));
 $db->select(new Profile(),$c);
 ||<
@@ -138,6 +158,8 @@ select * from profile where (profile.name like 'hoge%')
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::startswith(Profile::columnName(),"hoge"));
 $db->select(new Profile(),$c);
 ||<
@@ -150,6 +172,8 @@ select * from profile where (profile.name ilike 'hoge%')
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::istartswith(Profile::columnName(),"hoge"));
 $db->select(new Profile(),$c);
 ||<
@@ -162,6 +186,8 @@ select * from profile where (profile.name like '%hoge')
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::like(Profile::columnName(),"hoge","*w"));
 $db->select(new Profile(),$c);
 ||<
@@ -173,6 +199,8 @@ select * from profile where (profile.name ilike '%hoge')
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::ilike(Profile::columnName(),"hoge","*w"));
 $db->select(new Profile(),$c);
 ||<
@@ -185,6 +213,8 @@ select * from profile where (profile.name like '%hoge')
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::endswith(Profile::columnName(),"hoge"));
 $db->select(new Profile(),$c);
 ||<
@@ -197,6 +227,8 @@ select * from profile where (profile.name ilike '%hoge')
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::iendswith(Profile::columnName(),"hoge"));
 $db->select(new Profile(),$c);
 ||<
@@ -209,6 +241,8 @@ select * from profile where (profile.name like '%hoge%')
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::like(Profile::columnName(),"hoge","*"));
 $db->select(new Profile(),$c);
 ||<
@@ -221,6 +255,8 @@ select * from profile where (profile.name ilike '%hoge%')
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::ilike(Profile::columnName(),"hoge","*"));
 $db->select(new Profile(),$c);
 ||<
@@ -233,6 +269,8 @@ select * from profile where (profile.name like '%hoge%')
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::contains(Profile::columnName(),"hoge"));
 $db->select(new Profile(),$c);
 ||<
@@ -245,6 +283,8 @@ select * from profile where (profile.name ilike '%hoge%')
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::icontains(Profile::columnName(),"hoge"));
 $db->select(new Profile(),$c);
 ||<
@@ -257,6 +297,8 @@ select * from profile where (profile.name not like 'hoge%')
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::notLike(Profile::columnName(),"hoge","w*"));
 $db->select(new Profile(),$c);
 ||<
@@ -269,6 +311,8 @@ select * from profile where (profile.name not ilike 'hoge%')
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::notiLike(Profile::columnName(),"hoge","w*"));
 $db->select(new Profile(),$c);
 ||<
@@ -281,6 +325,8 @@ select * from profile where (profile.name not like 'hoge%')
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::notStartswith(Profile::columnName(),"hoge"));
 $db->select(new Profile(),$c);
 ||<
@@ -293,6 +339,8 @@ select * from profile where (profile.name not ilike 'hoge%')
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::notiStartswith(Profile::columnName(),"hoge"));
 $db->select(new Profile(),$c);
 ||<
@@ -305,6 +353,8 @@ select * from profile where (profile.name not like '%hoge')
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::notLike(Profile::columnName(),"hoge","*w"));
 $db->select(new Profile(),$c);
 ||<
@@ -317,6 +367,8 @@ select * from profile where (profile.name not ilike '%hoge')
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::notiLike(Profile::columnName(),"hoge","*w"));
 $db->select(new Profile(),$c);
 ||<
@@ -329,6 +381,8 @@ select * from profile where (profile.name not like '%hoge')
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::notEndswith(Profile::columnName(),"hoge"));
 $db->select(new Profile(),$c);
 ||<
@@ -341,6 +395,8 @@ select * from profile where (profile.name not ilike '%hoge')
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::notiEndswith(Profile::columnName(),"hoge"));
 $db->select(new Profile(),$c);
 ||<
@@ -353,6 +409,8 @@ select * from profile where profile.name not like '%hoge%'
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::notLike(Profile::columnName(),"hoge","*"));
 $db->select(new Profile(),$c);
 ||<
@@ -365,6 +423,8 @@ select * from profile where profile.name not ilike '%hoge%'
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::notiLike(Profile::columnName(),"hoge","*"));
 $db->select(new Profile(),$c);
 ||<
@@ -377,6 +437,8 @@ select * from profile where profile.name not like '%hoge%'
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::notContains(Profile::columnName(),"hoge"));
 $db->select(new Profile(),$c);
 ||<
@@ -389,6 +451,8 @@ select * from profile where profile.name not ilike '%hoge%'
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::notiContains(Profile::columnName(),"hoge"));
 $db->select(new Profile(),$c);
 ||<
@@ -403,6 +467,8 @@ select * from profile order by id
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::order(Profile::columnId()));
 $db->select(new Profile(),$c);
 ||<
@@ -415,6 +481,8 @@ select * from profile order by id desc
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::orderDesc(Profile::columnId()));
 $db->select(new Profile(),$c);
 ||<
@@ -427,6 +495,8 @@ select * from profile order by name, email desc
 
 >|php|
 <?php
+//:
+
 $c = new C(Q::order(Profile::columnName()),Q::orderDesc(Profile::columnEmail()));
 $db->select(new Profile(),$c);
 ||<
