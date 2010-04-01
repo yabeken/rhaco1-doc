@@ -1,4 +1,4 @@
-﻿* WHERE句（２）
+﻿* WHERE句(2)
 
 [[008-database/02-where-clause]] では，単純な WHERE句 の発行のみを載せています．
 DbUtil では，もっと複雑な WHERE 句も発行可能です．
