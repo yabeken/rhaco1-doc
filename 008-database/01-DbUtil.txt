@@ -1,12 +1,30 @@
-* DbUtil
+* データベース接続
 
-rhaco では DbUtil というデータベース操作ライブラリを用います．
-project.xml とセットアップフレームワークを用いることにより連携非常に強力で柔軟なデータベース操作が可能です．
+データベースへの接続には，DbUtil というデータベース操作ライブラリを用います．
+データベース接続までの手順は次の通りです．
 
-** インポートと接続
++ project.xml にデータベース定義を記述．[[005-project/01-project.xml:title=project.xml]]を参照のこと．
++ setup.php より，モデルを生成．
++ setup.php より，接続情報の設定．
 
-データベースへの接続は，セットアップフレームワークで設定し，モデル内に隠蔽されています．
-ですので，コード側ではどこに接続するかということを考える必要がありません．
+ここでは，次のデータベース定義を用います．
+
+>|xml|
+<project>
+	<database name="sample">
+		  <description>サンプル</description>
+		  <table name="profile">
+		  	 <column name="id" type="serial" />
+			 <column name="name" type="string" label="名前" />
+			 <column name="age" type="integer" label="年齢" />
+		  </table>
+	</database>
+</project>
+||<
+
+** 接続
+
+setup.php にて行った接続情報は，__settings__.php に書き出され，Profile::connection() より取得できます．
 
 >|php|
 <?php
@@ -26,12 +44,14 @@ select * from profile
 
 >|php|
 <?php
-$db->select(new Profile());
+//:
+
+$profileList = $db->select(new Profile());
 ||<
 
-** get
+*** get
 
-1行目だけを取得します．
+1行目だけを取得します
 
 >|sql|
 select * from profile offset 0 limit 1
@@ -41,7 +61,57 @@ select * from profile offset 0 limit 1
 <?php
 //:
 
-$db->get(new Profile());
+$profile = $db->get(new Profile());
 ||<
 
+** insert
 
+>|sql|
+insert into profile (name,age) values ('らこ',18)
+||<
+
+>|php|
+<?php
+//:
+
+$profile = new Profile();
+$profile->setName("らこ");
+$profile->setAge(18);
+
+$db->insert($profile);
+||<
+
+** update
+
+>|sql|
+update profile set name='らこ', age='18'
+||<
+
+>|php|
+<?php
+//:
+
+$profile = new Profile();
+$profile->setName("らこ");
+$profile->setAge(18);
+
+$db->update($profile);
+||<
+
+** delete
+
+>|sql|
+delete from profile
+||<
+
+>|php|
+<?php
+//:
+
+$db->delete(new Profile());
+||<
+
+** というわけで
+
+ここでは，データベースへの接続と単純なSQL文の発行を示しました．
+次は，WHERE句の発行方法を説明します．
