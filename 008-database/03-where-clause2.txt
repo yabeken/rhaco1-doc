@@ -1,65 +1,65 @@
-* WHERE‹åi‚Qj
+ï»¿* WHEREå¥ï¼ˆï¼’ï¼‰
 
-[[008-database/02-where-clause]] ‚Å‚ÍC’Pƒ‚È WHERE‹å ‚Ì”­s‚Ì‚İ‚ğÚ‚¹‚Ä‚¢‚Ü‚·D
-DbUtil ‚Å‚ÍC‚à‚Á‚Æ•¡G‚È WHERE ‹å‚à”­s‰Â”\‚Å‚·D
+[[008-database/02-where-clause]] ã§ã¯ï¼Œå˜ç´”ãª WHEREå¥ ã®ç™ºè¡Œã®ã¿ã‚’è¼‰ã›ã¦ã„ã¾ã™ï¼
+DbUtil ã§ã¯ï¼Œã‚‚ã£ã¨è¤‡é›‘ãª WHERE å¥ã‚‚ç™ºè¡Œå¯èƒ½ã§ã™ï¼
 
-‚±‚±‚Å‚ÍCŸ‚Ìƒf[ƒ^ƒx[ƒX’è‹`‚ğ—p‚¢‚Ü‚·D
+ã“ã“ã§ã¯ï¼Œæ¬¡ã®ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹å®šç¾©ã‚’ç”¨ã„ã¾ã™ï¼
 
 >|xml|
 <project>
 	<database name="sample">
-		  <description>ƒTƒ“ƒvƒ‹</description>
+		  <description>ã‚µãƒ³ãƒ—ãƒ«</description>
 		  <table name="profile">
 		  	 <column name="id" type="serial" />
-			 <column name="name" type="string" label="–¼‘O" />
-			 <column name="age" type="integer" label="”N—î" />
-			 <column name="company_id" type="integer" label="Š‘®"/>
+			 <column name="name" type="string" label="åå‰" />
+			 <column name="age" type="integer" label="å¹´é½¢" />
+			 <column name="company_id" type="integer" label="æ‰€å±"/>
 		  </table>
 		  <table name="company">
 		  	 <column name="id" type="serial"/>
 			 <column name="type" type="integer" require="true">
 			 	 <choices>
-					<data caption="Šé‹Æ">1</data>
-					<data caption="Œö–±ˆõ">2</data>
-					<data caption="©‰c‹Æ">3</data>
+					<data caption="ä¼æ¥­">1</data>
+					<data caption="å…¬å‹™å“¡">2</data>
+					<data caption="è‡ªå–¶æ¥­">3</data>
 				 </choices>
 			 </column>
-			 <column name="name" type="string" require="true" label="‘gD–¼"/>
+			 <column name="name" type="string" require="true" label="çµ„ç¹”å"/>
 		  </table>
 	</database>
 </project>
 ||<
 
 
-** •›–â‚¢‡‚í‚¹(1)
+** å‰¯å•ã„åˆã‚ã›(1)
 
 >|sql|
-select * from profile where profile.company_id = (select id from company where company.name = '‚ç‚±ƒVƒXƒeƒ€ŠJ”­')
+select * from profile where profile.company_id = (select id from company where company.name = 'ã‚‰ã“ã‚·ã‚¹ãƒ†ãƒ é–‹ç™º')
 ||<
 
 >|php|
 <?php
 //:
 
-$c = new C(Q::getEqual(Pofile::columnCompanyId(),Company::columnId(),new C(Q::eq(Company::columnName(),"‚ç‚±ƒVƒXƒeƒ€ŠJ”­"))));
+$c = new C(Q::getEqual(Pofile::columnCompanyId(),Company::columnId(),new C(Q::eq(Company::columnName(),"ã‚‰ã“ã‚·ã‚¹ãƒ†ãƒ é–‹ç™º"))));
 $db->select(new Profile(),$c);
 ||<
 
-** •›–â‚¢‡‚í‚¹(2)
+** å‰¯å•ã„åˆã‚ã›(2)
 
 >|sql|
-select * from profile where profile.company_id <> (select id from company where company.name = '‚ç‚±ƒVƒXƒeƒ€ŠJ”­')
+select * from profile where profile.company_id <> (select id from company where company.name = 'ã‚‰ã“ã‚·ã‚¹ãƒ†ãƒ é–‹ç™º')
 ||<
 
 >|php|
 <?php
 //:
 
-$c = new C(Q::getNotEqual(Pofile::columnCompanyId(),Company::columnId(),new C(Q::eq(Company::columnName(),"‚ç‚±ƒVƒXƒeƒ€ŠJ”­"))));
+$c = new C(Q::getNotEqual(Pofile::columnCompanyId(),Company::columnId(),new C(Q::eq(Company::columnName(),"ã‚‰ã“ã‚·ã‚¹ãƒ†ãƒ é–‹ç™º"))));
 $db->select(new Profile(),$c);
 ||<
 
-** •›–â‚¢‡‚í‚¹(3)
+** å‰¯å•ã„åˆã‚ã›(3)
 
 >|sql|
 select * from profile where profile.company_id in (select id from company where company.type = 2)
@@ -73,7 +73,7 @@ $c = new C(Q::selectIn(Pofile::columnCompanyId(),Company::columnId(),new C(Q::eq
 $db->select(new Profile(),$c);
 ||<
 
-** •›–â‚¢‡‚í‚¹(3)
+** å‰¯å•ã„åˆã‚ã›(3)
 
 >|sql|
 select * from profile where profile.company_id not in (select id from company where company.type = 2)
@@ -87,7 +87,7 @@ $c = new C(Q::selectNotIn(Pofile::columnCompanyId(),Company::columnId(),new C(Q:
 $db->select(new Profile(),$c);
 ||<
 
-** ƒ†ƒj[ƒN’l‚Ìæ“¾
+** ãƒ¦ãƒ‹ãƒ¼ã‚¯å€¤ã®å–å¾—
 
 >|sql|
 select distinct age from profile
