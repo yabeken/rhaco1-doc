@@ -1,7 +1,14 @@
 * SQL クエリの組み立て方
 
-rhaco では，クエリの組み立てに，Criteria ( C ) クラス と Criterion ( Q ) クラス という二つのクラスを組み合わせています．
-これらの組み合わせにより，ある程度複雑な条件を含む SQL を発行することができます．
+WHERE句の組み立てには，Criteria ( C ) クラス と Criterion ( Q ) クラス という二つのクラスを組み合わせます．
+これらの組み合わせにより，複雑な条件を含む SQL を発行することができます．
+
+これらは，DbUtil のメソッドと合わせて使用します．
+
+- select
+- get
+- update
+- delete
 
 ** 一致 / =
 
@@ -10,237 +17,416 @@ select * from profile where (profile.id = 10)
 ||<
 
 >|php|
+<?php
 $c = new C(Q::eq(Profile::columnId(),10));
 $db->select(new Profile(),$c);
 ||<
 
 ** 不一致 / <>
 
+>|sql|
+select * from profile where (profile.id <> 10)
+||<
+
 >|php|
-//select * from profile where (profile.id <> 10)
+<?php
 $c = new C(Q::neq(Profile::columnId(),10));
 $db->select(new Profile(),$c);
 ||<
 
 ** 大なり / >
 
+>|sql|
+select * from profile where (profile.id > 10)
+||<
+
 >|php|
-//select * from profile where (profile.id > 10)
+<?php
 $c = new C(Q::gt(Profile::columnId(),10));
 $db->select(new Profile(),$c);
 ||<
 
 ** 以上 / >=
 
+>|sql|
+select * from profile where (profile.id >= 10)
+||<
+
 >|php|
-//select * from profile where (profile.id >= 10)
+<?php
 $c = new C(Q::gte(Profile::columnId(),10));
 $db->select(new Profile(),$c);
 ||<
 
 ** 小なり / <
 
+>|sql|
+select * from profile where (profile.id < 10)
+||<
+
 >|php|
-//select * from profile where (profile.id < 10)
+<?php
 $c = new C(Q::lt(Profile::columnId(),10));
 $db->select(new Profile(),$c);
 ||<
 
 ** 以下 / <=
 
+>|sql|
+select * from profile where (profile.id < 10)
+||<
+
 >|php|
-//select * from profile where (profile.id < 10)
+<?php
 $c = new C(Q::lte(Profile::columnId(),10));
 $db->select(new Profile(),$c);
 ||<
 
 ** 一致リスト / in
 
+>|sql|
+select * from profile where (profile.name in ('hoge','fuga'))
+||<
+
 >|php|
-//select * from profile where (profile.name in ('hoge','fuga'))
+<?php
 $c = new C(Q::in(Profile::columnName(),array("hoge","fuga")));
 $db->select(new Profile(),$c);
 ||<
 
 ** 不一致リスト / not in
 
+>|sql|
+select * from profile where (profile.name not in ('hoge','fuga'))
+||<
+
 >|php|
-//select * from profile where (profile.name not in ('hoge','fuga'))
+<?php
 $c = new C(Q::notIn(Profile::columnName(),array("hoge","fuga")));
 $db->select(new Profile(),$c);
 ||<
 
 ** 前方一致 / like , ilike
 
+>|sql|
+select * from profile where (profile.name like 'hoge%')
+||<
+
 >|php|
-//select * from profile where (profile.name like 'hoge%')
+<?php
 $c = new C(Q::like(Profile::columnName(),"hoge","w*"));
 $db->select(new Profile(),$c);
+||<
 
-//大文字小文字を区別しない場合
-//select * from profile where (profile.name ilike 'hoge%')
+大文字小文字を区別しない場合
+
+>|sql|
+select * from profile where (profile.name ilike 'hoge%')
+||<
+
+>|php|
+<?php
 $c = new C(Q::ilike(Profile::columnName(),"hoge","w*"));
 $db->select(new Profile(),$c);
 ||<
 
 ** 前方一致 / startswith, istartswith
 
+>|sql|
+select * from profile where (profile.name like 'hoge%')
+||<
+
 >|php|
-//select * from profile where (profile.name like 'hoge%')
+<?php
 $c = new C(Q::startswith(Profile::columnName(),"hoge"));
 $db->select(new Profile(),$c);
+||<
 
-//大文字小文字を区別しない場合
-//select * from profile where (profile.name ilike 'hoge%')
+大文字小文字を区別しない場合
+
+>|sql|
+select * from profile where (profile.name ilike 'hoge%')
+||<
+
+>|php|
+<?php
 $c = new C(Q::istartswith(Profile::columnName(),"hoge"));
 $db->select(new Profile(),$c);
 ||<
 
 ** 後方一致 / like, ilike
 
+>|sql|
+select * from profile where (profile.name like '%hoge')
+||<
+
 >|php|
-//select * from profile where (profile.name like '%hoge')
+<?php
 $c = new C(Q::like(Profile::columnName(),"hoge","*w"));
 $db->select(new Profile(),$c);
+||<
 
-//大文字小文字を区別しない場合
-//select * from profile where (profile.name ilike '%hoge')
+大文字小文字を区別しない場合
+>|sql|
+select * from profile where (profile.name ilike '%hoge')
+||<
+
+>|php|
+<?php
 $c = new C(Q::ilike(Profile::columnName(),"hoge","*w"));
 $db->select(new Profile(),$c);
 ||<
 
 ** 後方一致 / endswith, iendswith
 
+>|sql|
+select * from profile where (profile.name like '%hoge')
+||<
+
 >|php|
-//select * from profile where (profile.name like '%hoge')
+<?php
 $c = new C(Q::endswith(Profile::columnName(),"hoge"));
 $db->select(new Profile(),$c);
+||<
 
-//大文字小文字を区別しない場合
-//select * from profile where (profile.name ilike '%hoge')
+大文字小文字を区別しない場合
+
+>|sql|
+select * from profile where (profile.name ilike '%hoge')
+||<
+
+>|php|
+<?php
 $c = new C(Q::iendswith(Profile::columnName(),"hoge"));
 $db->select(new Profile(),$c);
 ||<
 
 ** 部分一致 / like, ilike
 
+>|sql|
+select * from profile where (profile.name like '%hoge%')
+||<
+
 >|php|
-//select * from profile where (profile.name like '%hoge%')
+<?php
 $c = new C(Q::like(Profile::columnName(),"hoge","*"));
 $db->select(new Profile(),$c);
+||<
 
-//大文字小文字を区別しない場合
-//select * from profile where (profile.name ilike '%hoge%')
+大文字小文字を区別しない場合
+
+>|sql|
+select * from profile where (profile.name ilike '%hoge%')
+||<
+
+>|php|
+<?php
 $c = new C(Q::ilike(Profile::columnName(),"hoge","*"));
 $db->select(new Profile(),$c);
 ||<
 
 ** 部分一致 / contains, icontains
 
+>|sql|
+select * from profile where (profile.name like '%hoge%')
+||<
+
 >|php|
-//select * from profile where (profile.name like '%hoge%')
+<?php
 $c = new C(Q::contains(Profile::columnName(),"hoge"));
 $db->select(new Profile(),$c);
+||<
 
-//大文字小文字を区別しない場合
-//select * from profile where (profile.name ilike '%hoge%')
+大文字小文字を区別しない場合
+
+>|sql|
+select * from profile where (profile.name ilike '%hoge%')
+||<
+
+>|php|
+<?php
 $c = new C(Q::icontains(Profile::columnName(),"hoge"));
 $db->select(new Profile(),$c);
 ||<
 
 ** 前方不一致 / not like , not ilike
 
+>|sql|
+select * from profile where (profile.name not like 'hoge%')
+||<
+
 >|php|
-//select * from profile where (profile.name not like 'hoge%')
+<?php
 $c = new C(Q::notLike(Profile::columnName(),"hoge","w*"));
 $db->select(new Profile(),$c);
+||<
 
-//大文字小文字を区別しない場合
-//select * from profile where (profile.name not ilike 'hoge%')
+大文字小文字を区別しない場合
+
+>|sql|
+select * from profile where (profile.name not ilike 'hoge%')
+||<
+
+>|php|
+<?php
 $c = new C(Q::notiLike(Profile::columnName(),"hoge","w*"));
 $db->select(new Profile(),$c);
 ||<
 
 ** 前方不一致 / notStartswith, notiStartswith
 
+>|sql|
+select * from profile where (profile.name not like 'hoge%')
+||<
+
 >|php|
-//select * from profile where (profile.name not like 'hoge%')
+<?php
 $c = new C(Q::notStartswith(Profile::columnName(),"hoge"));
 $db->select(new Profile(),$c);
+||<
 
-//大文字小文字を区別しない場合
-//select * from profile where (profile.name not ilike 'hoge%')
+大文字小文字を区別しない場合
+
+>|sql|
+select * from profile where (profile.name not ilike 'hoge%')
+||<
+
+>|php|
+<?php
 $c = new C(Q::notiStartswith(Profile::columnName(),"hoge"));
 $db->select(new Profile(),$c);
 ||<
 
 ** 後方不一致 / not like, not ilike
 
+>|sql|
+select * from profile where (profile.name not like '%hoge')
+||<
+
 >|php|
-//select * from profile where (profile.name not like '%hoge')
+<?php
 $c = new C(Q::notLike(Profile::columnName(),"hoge","*w"));
 $db->select(new Profile(),$c);
+||<
 
-//大文字小文字を区別しない場合
-//select * from profile where (profile.name not ilike '%hoge')
+大文字小文字を区別しない場合
+
+>|sql|
+select * from profile where (profile.name not ilike '%hoge')
+||<
+
+>|php|
+<?php
 $c = new C(Q::notiLike(Profile::columnName(),"hoge","*w"));
 $db->select(new Profile(),$c);
 ||<
 
 ** 後方不一致 / notEndswith, notiEndswith
 
+>|sql|
+select * from profile where (profile.name not like '%hoge')
+||<
+
 >|php|
-//select * from profile where (profile.name not like '%hoge')
+<?php
 $c = new C(Q::notEndswith(Profile::columnName(),"hoge"));
 $db->select(new Profile(),$c);
+||<
 
-//大文字小文字を区別しない場合
-//select * from profile where (profile.name not ilike '%hoge')
+大文字小文字を区別しない場合
+
+>|sql|
+select * from profile where (profile.name not ilike '%hoge')
+||<
+
+>|php|
+<?php
 $c = new C(Q::notiEndswith(Profile::columnName(),"hoge"));
 $db->select(new Profile(),$c);
 ||<
 
 ** 部分不一致 / not like, not ilike
 
+>|sql|
+select * from profile where profile.name not like '%hoge%'
+||<
+
 >|php|
-//select * from profile where profile.name not like '%hoge%'
+<?php
 $c = new C(Q::notLike(Profile::columnName(),"hoge","*"));
 $db->select(new Profile(),$c);
+||<
 
-//大文字小文字を区別しない場合
-//select * from profile where profile.name not ilike '%hoge%'
+大文字小文字を区別しない場合
+
+>|sql|
+select * from profile where profile.name not ilike '%hoge%'
+||<
+
+>|php|
+<?php
 $c = new C(Q::notiLike(Profile::columnName(),"hoge","*"));
 $db->select(new Profile(),$c);
 ||<
 
 ** 部分不一致 / notContains, notiContains
 
+>|sql|
+select * from profile where profile.name not like '%hoge%'
+||<
+
 >|php|
-//select * from profile where profile.name not like '%hoge%'
+<?php
 $c = new C(Q::notContains(Profile::columnName(),"hoge"));
 $db->select(new Profile(),$c);
+||<
 
-//大文字小文字を区別しない場合
-//select * from profile where profile.name not ilike '%hoge%'
+大文字小文字を区別しない場合
+
+>|sql|
+select * from profile where profile.name not ilike '%hoge%'
+||<
+
+>|php|
+<?php
 $c = new C(Q::notiContains(Profile::columnName(),"hoge"));
 $db->select(new Profile(),$c);
 ||<
 
-** 並び替え / order, order desc
+** 並び替え / order by * , order by * desc
+
+昇順
+
+>|sql|
+select * from profile order by id
+||<
 
 >|php|
-//昇順
-//select * from profile order by id
+<?php
 $c = new C(Q::order(Profile::columnId()));
 $db->select(new Profile(),$c);
+||<
 
-//降順
-//select * from profile order by id desc
+降順
+
+>|sql|
+select * from profile order by id desc
+||<
+
+>|php|
+<?php
 $c = new C(Q::orderDesc(Profile::columnId()));
 $db->select(new Profile(),$c);
+||<
 
-//複合
-//select * from profile order by name, email desc
+複合
+
+>|sql|
+select * from profile order by name, email desc
+||<
+
+>|php|
+<?php
 $c = new C(Q::order(Profile::columnName()),Q::orderDesc(Profile::columnEmail()));
 $db->select(new Profile(),$c);
 ||<
