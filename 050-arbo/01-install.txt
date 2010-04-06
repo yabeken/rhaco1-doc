@@ -11,4 +11,14 @@ setup.php を実行して， install ページから行えます．
 
 このように，"org.rhaco.generic.filter.HtmlCsrfFilter" と入力することで, library/org/rhaco/generic/filter/HtmlCsrfFilter.php にインストールされます．
 
+** 一覧
 
+|*パッケージ名|*説明|
+|org.rhaco.generic.util.FormUtil|モデル列のHTML表現を簡単に出力する|
+|org.rhaco.generic.util.SecurityUtil|モデルに設定したセキュリティ情報に基づき，データインジェクション対策を行う．|
+|org.rhaco.generic.util.VerifyUtil|よく使うデータ検証処理を行う|
+|org.rhaco.network.mail.MailParser|テンプレートから Mail インスタンスを生成する|
+|org.rhaco.genric.filter.HtmlCsrfFilter|CSRF対策を行うためのフィルタ|
+|org.rhaco.lang.IntDateUtil|birthday型の値を操作するためのライブラリ|
+
+とりあえずよく使うやつだけ．
