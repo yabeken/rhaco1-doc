@@ -33,21 +33,21 @@ Smarty 等のようにプラグイン機構を持たないため，テンプレ�
 テンプレートで使用するタグは，全て "rt" という名前空間を持ったタグで表現されます．
 次のタグが使用できます
 
-- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#template:title=template]
-- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#comment:title=comment]
-- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#include:title=include]
-- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#extends:title=extends]
-- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#block:title=block]
-- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#setblock:title=setblock]
-- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#replace:title=replace]
-- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#plural:title=plural]
-- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#invalid:title=invalid]
-- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#loop:title=loop]
-- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#for:title=for]
-- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#if:title=if]
-- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#ifnot:title=ifnot]
-- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#has:title=has]
-- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#hasnot:title=hasnot]
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/05-tag#template:title=template]
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/05-tag#comment:title=comment]
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/05-tag#include:title=include]
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/05-tag#extends:title=extends]
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/05-tag#block:title=block]
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/05-tag#setblock:title=setblock]
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/05-tag#replace:title=replace]
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/05-tag#plural:title=plural]
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/05-tag#invalid:title=invalid]
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/05-tag#loop:title=loop]
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/05-tag#for:title=for]
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/05-tag#if:title=if]
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/05-tag#ifnot:title=ifnot]
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/05-tag#has:title=has]
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/05-tag#hasnot:title=hasnot]
 
 ** 属性
 
