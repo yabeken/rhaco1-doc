@@ -1,5 +1,146 @@
 * 汎用 Views
 
-チュートリアルでも
+汎用 Views では，アプリケーションを構築する上で頻繁に出てくる CRUD (Create, Read, Update, Delete) の処理をまとめています．
 
+汎用Views には，次のものが用意されています．
 
+|*View|*動作|
+|create|新規作成|
+|confirmedCreate|確認画面付き新規作成|
+|read|ページング付一覧，検索|
+|detail|詳細表示|
+|update|更新|
+|confirmedUpdate|確認画面付き更新|
+|drop|削除 ( 確認画面付き削除にも対応 )|
+|import|CSV形式のデータの取り込み(UTF-8)|
+|export|テーブルをCSV形式で出力(UTF-8)|
+
+各 View は，Views クラスのメソッドとして実装されており，その第一引数にテーブルモデルを渡すという事が基本的な使い方となっています．
+
+>|php|
+<?php
+//:
+$view = new Views(new DbUtil(Profile::connection()));
+$view->create(new Profile())->write();
+||<
+
+** テンプレートとの連携
+
+汎用 Views は，デフォルトのテンプレートを持っており，ロジックを作成する段においては，テンプレートを作成する必要はありません．
+ですが，渡されたモデルに基づいて適切な箇所にテンプレートファイルを配置することによって，簡単にテンプレートを差し替えることが可能です．
+
+例えば， Profile モデルの作成で考えると， resources/templates/gemeric/profile_form.html にテンプレートを配置することで差し替えられます．
+このときテンプレートファイル名は全て小文字である必要があります．
+テンプレートファイルについては， rhaco/resouces/templates/generic/views/ 以下にあるファイルを参考にしてください．
+
+** Views Filter
+
+また，Views を使った際には，デフォルトで ViewsFilter が組み込まれています．
+これらは，create, confirmedCreate, update, confirmedUpdate, drop が成功した際に実行され，各 View に渡されるフィルタ引数の URL へ転送を行います．
+
+>|php|
+//完了後，完了画面へ転送する
+$view->create(new Profile(),Rhaco::url("registration/complete"))->write();
+||<
+
+各 View でフィルタを指定する場合には，自動では組み込まれませんので注意してください．
+
+* API
+
+[http://api.rhaco-users.jp/df/d22/classViews.html]
+
+** create / confirmedCreate
+
+データ作成処理を実装します．
+確認画面があるか無いか以外は同じです．
+
+引数は順に次の通りです．
+
+- モデル
+- フィルター引数
+- フィルター
+
+入力画面の差し替えは "モデル名_form.html"，確認画面の差し替えは "モデル名_confirm.html"
+
+** update /confirmedUpdate
+
+データ更新処理を実装します．
+検索条件にて単一レコードとなるように指定しなければなりません．
+確認画面があるか無いか以外は同じです．
+
+引数は順に次の通りです．
+
+- モデル
+- 検索条件
+- フィルター引数
+- フィルター
+
+入力画面の差し替えは "モデル名_form.html"，確認画面の差し替えは "モデル名_confirm.html"
+
+** read
+
+一覧表示と検索を実装しています．
+
+引数は順に次の通りです．
+
+- モデル
+- 検索条件
+- 設定用モデルメソッド名
+
+一覧画面の差し替えは "モデル名_list.html"
+
+*** 曖昧検索
+
+リクエストに "q" という名前のデータがある場合には，その値を使用して全ての列に対して曖昧検索を実行します．
+
+>|html|
+<form method="get">
+	<input type="text" name="q"/>
+	<input type="submit" value="検索"/>
+</form>
+||<
+
+*** デフォルトのソート順の指定
+
+デフォルトのソート順はデータベースに保存されているままになっています．
+IDが最新のものから並び変えたいという場合には，モデルに次のようなメソッドを実装します．
+
+>|php|
+class Profile extends ProfileTable{
+	function views(){
+		return array(
+				"ordering"=>"-id"
+			);
+	}
+}
+||<
+
+このように，配列の ordering キーの値として"ソート方向+列名"をカンマ区切りで指定します．
+ソート方向については，降順の場合にのみ "-" を指定します．
+
+** detail
+
+詳細表示処理を実装しています．
+検索条件にて単一レコードとなるように指定しなければなりません．
+引数は順に次の通りです．
+
+- モデル
+- 検索条件
+
+詳細表示の差し替えは "モデル名_detail.html"
+
+** drop
+
+確認画面付きの削除処理を実装します．
+検索条件にて単一レコードとなるように指定しなければなりません．
+
+引数は順に次の通りです．
+
+- モデル
+- 検索条件
+- フィルター引数
+- フィルター
+
+確認画面の差し替えは "モデル名_confirm_delete.html"
+
+確認画面が要らない場合には，自分で View を実装するか，post で drop を実行してください．
