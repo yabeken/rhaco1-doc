@@ -21,7 +21,9 @@
 003-template/01-template-engine=テンプレートエンジン
 003-template/02-fill-in-form-values=フォーム入力値の補完
 003-template/03-inheritance=継承
-003-template/04-if=if
+003-template/04-if=必須項目に※をつける
+003-template/05-tag=テンプレートタグ
+
 004-view/=ビュー
 004-view/01-csv=CSV
 004-view/02-authentication=認証
