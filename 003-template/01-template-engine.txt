@@ -38,6 +38,7 @@ Smarty 等のようにプラグイン機構を持たないため，テンプレ�
 - [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#include:title=include]
 - [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#extends:title=extends]
 - [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#block:title=block]
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#setblock:title=setblock]
 - [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#replace:title=replace]
 - [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#plural:title=plural]
 - [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#invalid:title=invalid]
@@ -47,6 +48,10 @@ Smarty 等のようにプラグイン機構を持たないため，テンプレ�
 - [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#ifnot:title=ifnot]
 - [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#has:title=has]
 - [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#hasnot:title=hasnot]
+
+** 属性
+
+//TODO 後で書く
 
 ** 国際化
 
