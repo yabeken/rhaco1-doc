@@ -1,0 +1,339 @@
+* テンプレートタグ
+
+テンプレートエンジンで使用するタグは全て，"rt" という名前空間を持っています．
+
+>||
+<rt:template>
+例
+</rt:template>
+||<
+
+** template
+
+template タグは，ファイル内のうちテンプレートエンジンにテンプレートとして使用して欲しい箇所とそうでない場所が混在する場合に利用します．
+template タグが無い場合には，ファイル全体がテンプレートとして使用されます．
+
+例
+
+テンプレート
+>|html|
+テンプレートとして使用されない．
+
+<rt:template>
+テンプレートとして使用される．
+</rt:template>
+||<
+
+結果
+>|html|
+テンプレートとして使用される．
+||<
+
+と表示されます．
+** comment
+
+comment タグは，そのままコメントです．テンプレートエンジンにて描画時には削除されます．
+
+テンプレート
+>|html|
+こんにちは．
+<rt:comment>ここは描画時には削除される</rt:comment>
+こんばんは．
+||<
+
+結果
+>|html|
+こんにちは．
+
+こんばんは．
+||<
+
+** include
+
+他のテンプレートを取り込みます．
+ファイルは現在のファイルを規定とした相対パスを指定します．
+
+a.html
+>|html|
+aaa
+<rt:include href="./b.html"/>
+||<
+
+b.html
+>|html|
+bbb
+||<
+
+結果
+>|html|
+aaa
+bbb
+||<
+
+** extends / block
+
+extends と block は対で使用します．
+他のテンプレートエンジンにはあまりない機能ですが，非常に便利です．
+詳しくは，[http://wikihub.org/wiki/rhaco1-doc/003-template/03-inheritance:title=テンプレートの継承]をご覧ください．
+
+extends は継承元テンプレートファイルを指定します．
+block は，継承元に記述した場合には，置換されれるべき箇所．継承先に記述した場合には，置き換えるべきデータを指定します．
+block では，デフォルト値も指定できます．
+
+child.html
+>|html|
+<rt:extends href="./parent.html"/>
+
+<rt:block name="a_block">
+aaa
+</rt:block>
+||<
+
+parent.html
+>|html|
+parent
+<rt:block name="a_block">hogehoge</rt:block>
+<rt:block name="b_block">bbb</rt:block>
+||<
+
+結果
+>|html|
+parent
+aaa
+bbb
+||<
+
+** setblock
+
+//TODO 後で書く
+
+** replace
+
+テンプレート無いの文字列を置換します．
+
+テンプレート
+>|html|
+<rt:replace src="aaa" dest="ddd" />
+aaabbbccc
+||<
+
+結果
+>|html|
+dddbbbccc
+||<
+
+** invalid
+
+ExceptionTrigger::raise() にて発生させた例外が存在する場合に，そのメッセージが表示されます．
+タグの中身を書いた場合には，エラーが発生した際にその文字列が表示されます．
+
+次の属性値を指定できます．
+
+- name
+- type
+- var
+
+
+例
+>|html|
+<rt:invalid><p>入力エラーです</p></rt:invalid>
+<rt:invalid />
+||<
+
+結果
+>|html|
+<p>入力エラーです</p>
+<ul class="exceptions">
+	<li>名前を入力してください．</li>
+</ul>
+||<
+
+*** エラーの指定
+
+発生したエラーの内特定のエラーだけを表示する場合には，name 属性にて指定します．
+project.xml で記述した組み込み検証処理の例外については，"モデル名_列変数名"にて指定します．
+
+例
+>|html|
+<rt:invalid name="profile_email"/>
+||<
+
+結果
+>|html|
+メールアドレスを入力してください．
+||<
+
+*** 表示方法
+
+標準では， ul > li にてエラーが出力されます．
+必要ない場合には，type 属性にて"plain"を指定します．
+また，独自に表示処理を行いたい場合には，var 属性にてエラーリストを格納する変数を指定し，loop にて独自に処理を行います．
+
+** loop
+
+配列を一つ一つ取得します．
+次の属性値を指定できます．
+
+-param
+-- 対象の変数名
+- var
+-- 取得された変数を格納する変数名
+- counter
+-- 現在のカウンタ値を格納する変数名(1-)
+- first
+-- 配列の先頭かどうかを格納する変数名
+- last
+-- 配列の最後かどうかを格納する変数名
+- key
+-- 現在のハッシュキーを格納する変数名
+- offset
+-- ループを開始するオフセット値
+- limit
+-- ループを行う回数
+
+>|php|
+$name_list = array("太郎","花子","次郎","梅");
+||< 
+
+として，
+
+テンプレート
+>|html|
+<rt:loop param="name_list" var="name">
+{$name}
+</rt:loop> 
+||<
+
+結果
+>|html|
+太郎
+花子
+次郎
+梅
+||<
+
+** for
+
+for 文とほぼ同じです．
+次の属性値を指定できます．
+マイナスは出来ませんので注意
+
+- counter
+-- カウンタ値を格納する変数名
+- start
+-- 開始値
+- end
+-- 終了値
+- step
+-- 加算値
+
+テンプレート
+>|html|
+<rt:for counter="year" start="1980" end="1990" step="2">
+{$year}
+</rt:for>
+||<
+
+結果
+>|html|
+1980
+1982
+1984
+1986
+1988
+1990
+||<
+
+** if / ifnot
+
+if 文とほぼ同じです．ifnot は if の逆です．
+php の if 文と同様のチェックを行います．
+次の属性値を指定できます．
+
+- param
+-- 検査対象変数名
+- value
+-- 比較対象値．省略した場合には，param が真偽値として扱われます．
+
+else を用いて分岐処理が出来ます．
+
+>|php|
+$a = 1;
+$b = 2;
+||<
+
+として
+
+テンプレート
+>|html|
+<rt:if param="{$a}" value="{$b}">
+aaa
+<rt:else/>
+bbb
+</rt:if>
+||<
+
+結果
+>|html|
+bbb
+||<
+
+テンプレート
+>|html|
+<rt:ifnot param="{$a}" value="{$b}">
+aaa
+<rt:else/>
+bbb
+</rt:ifnot>
+||<
+
+結果
+>|html|
+aaa
+||<
+
+** has / hasnot
+
+if と異なり，空かどうかを検査します．
+hasnot は has の逆です．
+次の属性値を設定できます．
+
+- param
+-- 検査対象変数名
+
+else を用いた分岐処理は行えません．
+
+空とは，次の3つを指します．
+
+>|php|
+$a = array();
+$b = null;
+$c = "";
+||<
+
+テンプレート
+>|html|
+<rt:has param="{$a}">
+aaa
+</rt:has>
+||<
+
+結果
+>||
+||<
+
+テンプレート
+>|html|
+<rt:hasnot param="{$a}">
+aaa
+</rt:hasnot>
+||<
+
+結果
+>||
+aaa
+||<
+
+* 参考
+
+- [http://tokushimakazutaka.com/detail/ref_tag_TemplateParser]
