@@ -28,6 +28,38 @@ Smarty 等のようにプラグイン機構を持たないため，テンプレ�
 {$env.isSSL()}
 ||<
 
+** タグ
+
+テンプレートで使用するタグは，全て "rt" という名前空間を持ったタグで表現されます．
+次のタグが使用できます
+
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#template:title=template]
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#comment:title=comment]
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#include:title=include]
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#extends:title=extends]
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#block:title=block]
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#replace:title=replace]
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#plural:title=plural]
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#invalid:title=invalid]
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#loop:title=loop]
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#for:title=for]
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#if:title=if]
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#ifnot:title=ifnot]
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#has:title=has]
+- [http://wikihub.org/wiki/rhaco1-doc/003-template/tag#hasnot:title=hasnot]
+
+** 国際化
+
+テンプレートにおける国際化は変数やタグとは違った扱いを行います．
+
+>||
+_('save')
+||<
+
+このように国際化したい文字列を囲うことによって，国際化のロケール設定と辞書に基づいて文字列が置換されます．
+
 * 参考
 
+- [http://tokushimakazutaka.com/detail/ref_tag_HtmlParser]
+- [http://tokushimakazutaka.com/detail/ref_tag_TemplateParser]
 - [http://www.sharkpp.net/php/rhaco/template-syntax-memo.html]
