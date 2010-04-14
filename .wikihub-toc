@@ -27,6 +27,8 @@
 004-view/=ビュー
 004-view/01-csv=CSV
 004-view/02-authentication=認証
+004-view/03-generic-views=汎用Views
+
 005-project/=プロジェクト
 005-project/01-project.xml=project.xml
 005-project/02-divide=project.xmlの分割
