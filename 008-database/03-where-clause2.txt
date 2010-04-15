@@ -30,7 +30,6 @@ DbUtil では，もっと複雑な WHERE 句も発行可能です．
 </project>
 ||<
 
-
 ** 副問い合わせ(1)
 
 >|sql|
@@ -73,7 +72,7 @@ $c = new C(Q::selectIn(Pofile::columnCompanyId(),Company::columnId(),new C(Q::eq
 $db->select(new Profile(),$c);
 ||<
 
-** 副問い合わせ(3)
+** 副問い合わせ(4)
 
 >|sql|
 select * from profile where profile.company_id not in (select id from company where company.type = 2)

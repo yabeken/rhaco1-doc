@@ -1,6 +1,6 @@
-* データベース操作
+* データベースユーティリティ
 
-データベースの操作には，DbUtil を使用します．
+データベース操作には，DbUtil を使用します．
 データベース接続までの手順は次の通りです．
 
 + project.xml にデータベース定義を記述．[[005-project/01-project.xml]]を参照のこと．
@@ -22,7 +22,7 @@
 </project>
 ||<
 
-** 接続
+* 接続
 
 setup.php にて行った接続情報は，__settings__.php に書き出され，Profile::connection() より取得できます．
 
@@ -35,6 +35,8 @@ Rhaco::import("model.Profile");
 //データベースへ接続
 $db = new DbUtil(Profile::connection());
 ||<
+
+* 操作
 
 ** select
 
@@ -111,7 +113,7 @@ delete from profile
 $db->delete(new Profile());
 ||<
 
-** というわけで
+* というわけで
 
 ここでは，データベースへの接続と単純なSQL文の発行を示しました．
 次は，WHERE句の発行方法を説明します．
