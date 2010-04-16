@@ -1,4 +1,4 @@
-* project.xml から Model を生成する
+* project.xml からの Model 生成する
 
 project.xml を記述すれば，セットアップを行うことにより，Model が生成されます．
 この際の変換ルールを次の project.xml にて説明します．

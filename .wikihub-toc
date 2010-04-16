@@ -28,6 +28,7 @@
 004-view/01-csv=CSV
 004-view/02-authentication=認証
 004-view/03-generic-views=汎用Views
+004-view/04-multi-model-view=複数モデルを用いる
 
 005-project/=プロジェクト
 005-project/01-project.xml=project.xml
@@ -53,6 +54,5 @@
 099-tips/02-one-file-script=一ファイルスクリプト
 099-tips/03-multi-entry-point=複数エントリの実装
 099-tips/04-search-and-csv=検索とCSV
-099-tips/05-multi-model-process=複数モデルの処理
 
 
