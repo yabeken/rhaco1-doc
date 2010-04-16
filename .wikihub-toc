@@ -28,7 +28,7 @@
 004-view/01-csv=CSV
 004-view/02-authentication=認証
 004-view/03-generic-views=汎用Views
-004-view/04-multi-model-view=複数モデルを用いる
+004-view/04-multi-model-view=複数モデルを用いたView
 
 005-project/=プロジェクト
 005-project/01-project.xml=project.xml
