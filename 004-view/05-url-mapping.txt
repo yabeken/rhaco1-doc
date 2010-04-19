@@ -1,0 +1,64 @@
+* URL マッピング
+
+URLマッピングを行う為には，Apache の設定により mod_rewrite を有効化しておく必要があります．
+
+また，.htaccess にて mod_rewrite の設定を記述する必要があります．
+この設定は，project.xml に次のような設定を記述し setup.php からアプリケーションの初期化を行うと楽です．
+>||
+<project pathinfo="index.php">
+	<database name="sample">
+		<table name="profile">
+			<column name="id" type="serial" />
+			<column name="name" type="string"/>
+		</table>
+	</database>
+</project>
+||<
+
+** マッピングの記述
+
+URL マッピングの設定はURLのパターン正規表現をキーとしたハッシュ用いて設定します．
+
+index.php
+>|php|
+<?php
+require_once dirname(__FILE__)."/__init__.php";
+Rhaco::import("generic.Urls");
+Rhaco::import("database.DbUtil");
+Rhaco::import("model.Profile");
+
+$db = new DbUtil(Profile::connection());
+$parser = Urls::parser(array(
+	//登録画面
+	"^(?:profile/create/?)?$"=>array("class"=>"generic.Views","method"=>"create"),
+),$db);
+$parser->write();
+||<
+
+** マッピング設定
+
+設定は次の通り
+
+|*設定キー|*説明|
+|class|マッピング先の View メソッドを実装しているクラス名．空白の場合 generic.Views が指定される．|
+|method|マッピング先の View メソッド．class を指定していない場合には，グローバル関数へマッピングされる．|
+|template|表示するテンプレートファイルのテンプレートディレクトリからの相対パス．|
+|args|マッピング先の View メソッドへの引数．|
+|default|存在しない URL が指定された場合にデフォルトでマッピングされる View とするかどうか|
+|var|テンプレートに渡される変数名とその値|
+
+** キャプチャ
+
+URL パターンの記述の際に，正規表現のキャプチャ機能を使うことにより，キャプチャされた値が View メソッドの引数として渡されます．
+
+>||
+"^profile/(\d+)/?$"=>array("method"=>"profile_detail")
+||<
+
+とした場合，profile_detail メソッドでは，次のように引数が渡されます．
+
+>|php|
+function profile_detail($id){
+	//:
+}
+||<
