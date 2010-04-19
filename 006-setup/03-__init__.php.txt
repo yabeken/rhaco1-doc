@@ -7,7 +7,7 @@ __init__.php は,デフォルトでは __settings__.php を読み込んでいる
 
 >|php|
 <?php
-include_once("./__settings__.php");
+include_once dirname(__FILE__)."/__settings__.php";
 //エラー出力制御
 error_reporting(0);
 ini_set("display_errors","off");
