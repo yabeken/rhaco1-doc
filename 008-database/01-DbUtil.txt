@@ -51,7 +51,7 @@ select * from profile
 $profileList = $db->select(new Profile());
 ||<
 
-*** get
+** get
 
 1行目だけを取得します
 
