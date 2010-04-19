@@ -48,7 +48,7 @@
 008-database/03-where-clause2=WHERE句(2)
 
 009-test/=テスト
-009-test/01-test.txt=テスト
+009-test/01-test=テスト
 
 050-arbo/=arbo
 050-arbo/01-install=インストール
