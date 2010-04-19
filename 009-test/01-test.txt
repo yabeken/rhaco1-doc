@@ -1,0 +1,60 @@
+* テスト
+
+rhaco では，SimpleTest 等の外部ライブラリに依存せずにテストコードを記述することが可能です．
+テストコードを記述する際には，下記2通りの記述が可能となっています．
+
+- コード内にコメントとして記述する DocTest
+- 外部ファイルに PHP として記述する UnitTest
+
+** DocTest
+
+DocTest は，その名の通りコード内にコメントとして記述するテストです．
+
+例
+>|php|
+<?php
+class Calc{
+	function add($arg1,$arg2){
+		/***
+			$calc = new Calc();
+			eq(1,$hoge->add(1,0));
+			eq(2,$hoge->add(5,-3));
+		*/
+		return $arg1 + $arg2;
+	}
+}
+||<
+
+このように，"/***" から "*/" までのコードをテストコードとして実行します．
+単純なライブラリの場合には DocTest のみテストを記述する事が出来ます．
+場合によっては，そのメソッドの使い方の参考ともなります．
+
+DocTest で使用できるテストメソッドは次の通りです．
+
+- eq
+-- 期待値と返値が等しいことを検証する．
+- neq
+-- 期待値と返値が等しくないことを検証する．
+- assert
+-- 返値が真であることを検証する．
+- unit
+-- ユニットテストを実行する．
+
+>|php|
+/***
+	eq($expected,$result,$comment);
+	neq($expected,$result,$comment);
+	assert($result,$comment);
+	unit("path.to.UnitTestClass");
+*/
+||<
+
+** UnitTest
+
+UnitTest はテストをクラスファイルとして用意します．
+UnitTest は必ず，util.UnitTest を継承している必要があります．
+
+//TODO 続き
+
+
+
