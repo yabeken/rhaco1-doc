@@ -98,7 +98,7 @@ $db = new DbUtil(UserCreate::connection());
 $view = new Views($db);
 $model = new UserCreate();
 //汎用 View はメインとなるモデルのみリクエストデータのセットを行うので自分でデータをセットする．
-$views->toObject($model->profile);
+$model->profile = $views->toObject($model->profile);
 $views->create($model)->write();
 ||<
 
