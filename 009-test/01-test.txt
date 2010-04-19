@@ -57,4 +57,26 @@ UnitTest は必ず，util.UnitTest を継承している必要があります．
 //TODO 続き
 
 
+* テストの実行
 
+テストの実行は，setup.php より test ページにて行います．
+
+//TODO 画像
+
+** 外部ディレクトリのテスト
+
+rhaco は標準では application root 以下のファイルしかテストを行えませんが， project.xml に次の記述を行うことで外部ディレクトリのテストを行うことが可能となります．
+
+>|xml|
+<project>
+	<define name="EX_TESTS_DIR" value="/path/to/external/dir"/>
+</project>
+||<
+
+私は， htdocs, webapp と分けて居ますので次のように記述することが多いです．
+
+>|xml|
+<project>
+	<define name="EX_TESTS_DIR" value="{$rhaco.lib()}"/>
+</project>
+||<
