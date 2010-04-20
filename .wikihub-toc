@@ -32,10 +32,12 @@
 004-view/05-url-mapping=URLマッピング
 
 005-project/=プロジェクト
-005-project/01-project.xml=project.xml
-005-project/02-divide=project.xmlの分割
-005-project/03-settings=定義と設定
-005-project/04-model-generating-rule=モデル生成ルール
+005-project/project.xml=project.xml
+005-project/split-projec.xml=project.xmlの分割
+005-project/definition-and-settings=定義と設定
+005-project/model-generating-rule=モデル生成ルール
+005-project/multi-database=複数データベース
+
 006-setup/=セットアップ
 006-setup/01-setup-framework=セットアップフレームワーク
 006-setup/02-__settings__.php=__settings__.php
