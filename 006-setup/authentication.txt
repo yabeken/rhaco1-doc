@@ -1,0 +1,32 @@
+* 簡易認証機構
+
+rhaco では，セットアップフレームワークに標準で簡易認証機構が実装されています．
+管理者用など，DBと連携する必要のない機能への認証機構として簡単に利用できます．
+setup.php の member ページからユーザの追加・削除を行い，認証を掛けたい View にて次のように記述すれば実装完了です．
+
+>|php|
+Rhaco::import("network.http.RequestLogin");
+RequestLogin::loginRequired();
+||<
+
+Views を継承して居る場合には，次の用にすることも可能です．
+
+>|php|
+class AdminViews extends Views{
+	function __init__($args=null){
+		parent::__init__($args);
+		$this->loginRequired();
+		$this->clearVariable("login","password");
+	}
+}
+||<
+
+ただし，標準の認証機構ではログイン後のリダイレクト処理などは行わないので，POST データがそのまま View に渡ります．
+ですので， Views::read を使用している View の場合には上記のように削除するか，ログインモデルを実装しなければなりません．
+
+また，member が一人も居ない場合には，認証がかからないので注意です．
+
+* setup.php の認証機構
+
+setup.php は簡易データベース管理など重要な機能が詰まってますので，この画面を実行されると大変です．
+setup.php へのアクセス制限は， setup member からユーザを追加することで行うことが出来ます．

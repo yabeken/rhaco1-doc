@@ -39,9 +39,11 @@
 005-project/multi-database=複数データベース
 
 006-setup/=セットアップ
-006-setup/01-setup-framework=セットアップフレームワーク
-006-setup/02-__settings__.php=__settings__.php
-006-setup/03-__init__.php=__init__.php
+006-setup/setup-framework=セットアップフレームワーク
+006-setup/__settings__.php=__settings__.php
+006-setup/__init__.php=__init__.php
+006-setup/authentication=認証機構
+
 007-utility/=ユーティリティ
 007-utility/01-csv=CSVユーティリティ
 007-utility/02-json=JSONユーティリティ
