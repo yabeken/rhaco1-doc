@@ -1,0 +1,35 @@
+* 複数データベース
+
+プロジェクトによっては，複数のデータベースにアクセスする場合もあります．
+rhaco では，project.xmlへの記述だけで簡単に複数データベースを扱うことが出来ます．
+
+
+>|xml|
+<project>
+	<database name="db1">
+		<description>データベース1</description>
+		<table name="tbl1">
+		</table>
+	</database>
+	<database name="db2">
+		<description>データベース2</description>
+		<table name="tbl2">
+		</table>
+	</database>
+</project>
+||<
+
+上記のように project 要素内に複数のデータベース要素を記述することで，同じプロジェクト内で異なるデータベースへの接続が可能となります．
+setup.php にてそれぞれの接続先の設定を行えるようになります．
+
+PHP コードでは，次のようにそれぞれ接続を行います．
+
+>|php|
+$db1 = new DbUtil(Tbl1::connection());
+$db2 = new DbUtil(Tbl2::connection());
+||<
+
+* 注意点
+
+データベース間でテーブル名がかぶっている場合には利用できません．
+そういう場合にはあきらめてプロジェクトを分けてしまいましょう．

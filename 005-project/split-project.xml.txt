@@ -1,0 +1,49 @@
+* project.xml の分割
+
+rhaco では， project.xml を記述するだけで，アプリケーション作成過程の半分が終わったと言って過言ないほどです．
+しかし， table や設定が増えてくるとかなり巨大なファイルになり，手に負えなくなってきます．
+
+そこで， project.xml を分割し，管理しやすくします．
+
+>|xml|
+<project name="サンプル" version="1.0.0" rhacover="1.6.1">
+  <database>
+    <table name="user">
+       :
+      <column name="status_hoge">
+        <rt:include href="/choices/status_hoge.xml"/>
+      </column>
+       :
+      <rt:comment>デフォルトデータ</rt:comment>
+      <rt:include href="./default/user.xml"/>
+    </table>
+    
+    <rt:comment>処理モデル</rt:comment>
+    <rt:include href="ext/admin.xml" />
+  </database>
+  
+  <rt:comment>定義</rt:comment>
+  <rt:include href="./define.xml"/>
+  <rt:comment>設定</rt:comment>
+  <rt:include href="./settings.xml"/>
+</project>
+||<
+
+ファイル構成はこんな感じ
+
+>||
++ webapp/
+   + setup/
+     + choices/
+       + status_hoge.xml
+     + default/
+       + user.xml
+     + ext/
+       + admin.xml
+     + project.xml
+     + settings.xml
+     + define.xml
+||<
+
+上記のような形で， include を活用することによって，とてもすっきりします．
+choices 等は，同じことを何度も記述する必要性が無くなります．

@@ -1,0 +1,34 @@
+* project.xml からの Model 生成する
+
+project.xml を記述すれば，セットアップを行うことにより，Model が生成されます．
+この際の変換ルールを次の project.xml にて説明します．
+
+>|xml|
+<project>
+	<database name="sample">
+		<table name="user_profile">
+			<column name="id" type="serial"/>
+			<column name="name" type="string" />
+			<column name="postal_code" type="string" />
+		</table>
+	</database>
+</project>
+||<
+
+- モデル名は先頭を大文字として，キャメルケースが用いられます．
+- 変数名は先頭を小文字として，キャメルケースが用いられます．
+- setter や getter 等メンバ変数に関連するメソッドは，先頭を小文字としてキャメルケースが用いられます．
+
+>|php|
+<?php
+class UserProfile{
+	var $id;
+	var $name;
+	var $postalCode;
+	
+	function getId(){
+	}
+	//等々・・・
+}
+?>
+||<

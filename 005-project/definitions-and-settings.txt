@@ -1,0 +1,115 @@
+* 定義と設定
+
+システム開発をする上で，開発環境での設定と実機とで利用する値が違うことが結構あります．
+
+- 管理者メールアドレス
+- SMTP設定情報
+
+などなど，実行環境依存な値がたっぷりあります．
+これらをまとめた設定ファイルをまとめても良いかもしれませんが，変更・管理が面倒ですね．
+
+rhaco では，これらを設定として保持し変更する機構も提供することができます．
+
+** 定義
+
+定義は，プログラミングコードにマジックナンバーが紛れ込まないようにするために利用します．
+
+>|xml|
+<project>
+	<define name="STATUS_HOGE" value="3" />
+</project>
+||<
+
+** 設定
+
+setup.php にて変更可能な設定を提供します．
+
+次の種類が使用できます
+
+- input
+- password
+- textarea
+- select
+
+それぞれ，3つのタグを内包します．
+
+- title
+-- setup.php での表示名．
+- description
+-- この項目の説明．省略可能
+- data
+-- デフォルト値．省略可能
+
+*** input
+
+1行テキストの設定を提供します．
+
+>|xml|
+<project>
+	<input name="ADMIN_NAME">
+		<title>管理者名</title>
+		<description>メールの差出人などに使います．</desciption>
+		<data></data>
+	</input>
+</project>
+||<
+
+*** password
+
+基本的には input と同じですが，setup.php ではパスワード入力ボックスとして表示されます．
+
+>|xml|
+<project>
+	<password name="SMTP_PASSWORD">
+		<title>SMTPパスワード</title>
+		<description>SMTPパスワード</desciption>
+		<data></data>
+	</password>
+</project>
+||<
+
+*** textarea
+
+複数行テキストの設定を提供します．
+
+>|xml|
+<project>
+	<input name="MAIL_FOOTER">
+		<title>メールフッタ</title>
+		<description>メールフッタに使います．</desciption>
+		<data></data>
+	</input>
+</project>
+||<
+
+*** select
+
+リストボックスによる選択設定を提供します．
+他の設定と異なり，選択肢については，data タグにて指定します．
+
+>|xml|
+<project>
+	<select name="SYSTEM_MODE">
+		<title>動作</title>
+		<description>システムの動作モード</description>
+		<data caption="デモ">0</data>
+		<data caption="運用">1</data>
+	</select>
+</project>
+||<
+
+** 取得方法
+
+定義と設定は name = "NAME" として次のようにして取得できます．
+VAR_NAME については，__settings__.php にて define されていますので，PDT などのエディタを使っている場合には補完されます．
+
+>|php|
+Rhaco::constant("NAME");
+Rhaco::constant(VAR_NAME);
+||<
+
+テンプレートからも取得できます．
+
+>||
+{$rhaco.constant("NAME")}
+||<
