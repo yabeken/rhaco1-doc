@@ -59,7 +59,7 @@ class Member extends MemberTable{
        */
       function verifyEmail(){
           if($this->getEmail()!=$this->getEmailConfirm()){
-              return ExceptionTrigger(new GenericException("メールアドレスを確認してください"));
+              return ExceptionTrigger::raise(new GenericException("メールアドレスを確認してください"));
 	      }
           return true;
       }
