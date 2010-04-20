@@ -33,8 +33,8 @@
 
 005-project/=プロジェクト
 005-project/project.xml=project.xml
-005-project/split-projec.xml=project.xmlの分割
-005-project/definition-and-settings=定義と設定
+005-project/split-project.xml=project.xmlの分割
+005-project/definitions-and-settings=定義と設定
 005-project/model-generating-rule=モデル生成ルール
 005-project/multi-database=複数データベース
 
