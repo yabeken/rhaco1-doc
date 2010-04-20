@@ -4,7 +4,8 @@ URLマッピングを行う為には，Apache の設定により mod_rewrite を
 
 また，.htaccess にて mod_rewrite の設定を記述する必要があります．
 この設定は，project.xml に次のような設定を記述し setup.php からアプリケーションの初期化を行うと楽です．
->||
+
+>|xml|
 <project pathinfo="index.php">
 	<database name="sample">
 		<table name="profile">
@@ -15,11 +16,19 @@ URLマッピングを行う為には，Apache の設定により mod_rewrite を
 </project>
 ||<
 
-URL マッピングは， generic.Urls を用いて行います．
+次のような設定が出力されます．
+
+>||
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)$ index.php?%{QUERY_STRING}&pathinfo=$1 [L]
+||<
 
 ** マッピングの記述
 
-URL マッピングの設定はURLのパターン正規表現をキーとしたハッシュ用いて設定します．
+ generic.Urls を用いて行います．
+設定はURLのパターン正規表現をキーとしたハッシュ用います．
 
 index.php
 >|php|
