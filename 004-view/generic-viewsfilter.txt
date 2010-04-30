@@ -1,0 +1,79 @@
+* ViewsFilter
+
+汎用 Views を使っている場合には，暗黙的に generic.filter.ViewsFilter が設定されます．
+ViewsFilter は汎用 Views と連携して，Create, Update, Drop 後の処理を行います．
+
+- afterCreate
+- afterUpdate
+- afterDrop
+
+引数はそれぞれ次のものを受け取ります．
+
+- $object
+- $redirectHref
+- $isarg
+
+$object は汎用 View から処理したテーブルオブジェクトが自動的に渡されますので，明示的に記述する必要があるのは，$redirectHref と $isarg です．
+これらの引数は，汎用 Views の $filterargs 引数に渡します．
+
+>|php|
+<?php
+Rhaco::import("generic.Views");
+Rhaco::import("model.Profile");
+/**
+ * Sample
+ */
+class SampleViews extends Views{
+	/**
+	 * 作成
+	 * @return HtmlParser
+	 */
+	function profileCreate(){
+		return $this->create(new Profile(), Rhaco::url('profile/create/complete'));
+	}
+	/**
+	 * 更新
+	 * @return HtmlParser
+	 */
+	function profileUpdate($profileId){
+		return $this->update(new Profile($profileId), null, Rhaco::url('profile/'.$profileId));
+	}
+	/**
+	 * 削除
+	 * @return HtmlParser
+	 */
+	function profileDrop($profileId){
+		return $this->drop(new Profile($profileId), null, Rhaco::url('profile/'.$profileId));
+	}
+}
+||<
+
+** IDと連携した自動転送
+
+create 後に詳細画面へ転送したいという場面が結構あります．
+しかし，詳細画面へ転送するには id が必要です．
+だからといって，モデルの afterInsert で転送を行うのはモデルの役割としてはおかしいですね．
+
+というわけで，そういう場合には次のように指定します．
+
+>|php|
+<?php
+Rhaco::import("generic.Views");
+Rhaco::import("model.Profile");
+/**
+ * Sample
+ */
+class SampleViews extends Views{
+	/**
+	 * 作成
+	 * 完了後詳細画面へ転送
+	 * @return HtmlParser
+	 */
+	function profileCreate(){
+		return $this->create(new Profile(), array(Rhaco::url('profile'), true));
+	}
+}
+||<
+
+"profile/{$profile.id}" と自動的に作成されたレコードのIDを付加したURLへ転送されます．
+
