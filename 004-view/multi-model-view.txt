@@ -1,0 +1,152 @@
+* 複数モデルを用いたView
+
+汎用  View を用いることによって，CRUD の処理は何も考えなくても出来ます．
+しかし，時々複数のテーブルへの入力処理を一括で行いたいという場面があります．
+
+例えば，ユーザと個人情報が別テーブルとなっており，初回登録時に同時に登録させたいという場面を考えます．
+
+** project.xml
+
+>|xml|
+<project>
+	<database name="sample">
+		<table name="user">
+			<description></description>
+			<column name="id" type="serial"/>
+			<column name="username" type="string" unique="true" chartype="[a-zA-Z0-9_-]{5,}"
+			<column name="password" type="string" />
+		</table>
+		<table name="profile">
+			<description>個人情報</description>
+			<column name="id" type="serial" />
+			<column name="user_id" type="integer" reference="user.id"/>
+			<column name="name" type="string" label="名前"/>
+			<column name="email" type="string" label="メールアドレス"/>
+		</table>
+	</database>
+</project>
+||<
+
+setting を行うと，User, Profile モデルが作成されます．
+
+** model
+
+今回は User を継承して，User作成用のモデルを作成します．
+
+library/model/UserCreate.php
+>|php|
+<?php
+Rhaco::import("model.User");
+/**
+ * ユーザ作成モデル
+ */
+class UserCreate extends User{
+	/**
+	 * プロフィール
+	 * @var Profile
+	 */
+	var $profile;
+	
+	/**
+	 * コンストラクタ
+	 */
+	function __init__($args=null){
+		parent::__init__($args);
+		//Profile モデルインスタンスを準備
+		$this->profile = new Profile();
+	}
+	/**
+	 * Profile の入力情報をチェック
+	 * @param DbUtil $db
+	 * @return boolean
+	 */
+	function verifyProfile($db){
+		//Profile の入力情報を検証する
+		return TableObjectVerify::verify($db,$this->profile);
+	}
+	/**
+	 * INSERT後処理
+	 * @param DbUtil $db
+	 * @return boolean
+	 */
+	function afterInsert($db){
+		if(!$this->profile->save($db)){
+			$db->rollback();
+			ExceptionTrigger::raise(new GenericException(Message::_('save failed')));
+			return false;
+		}
+		return true;
+	}
+}
+||<
+
+と，UserCreate モデル内に同時に入力させるProfileのモデルを内包します．
+あとは，その検証処理と保存処理を記述します．
+
+** view
+
+index.php に次のように記述します．
+
+>|php|
+<?php
+require_once dirname(__FILE__)."/__init__.php";
+Rhaco::import("database.DbUtil");
+Rhaco::import("generic.Views");
+Rhaco::import("model.UserCreate");
+
+$db = new DbUtil(UserCreate::connection());
+$view = new Views($db);
+$model = new UserCreate();
+//汎用 View はメインとなるモデルのみリクエストデータのセットを行うので自分でデータをセットする．
+$model->profile = $views->toObject($model->profile);
+$views->create($model)->write();
+||<
+
+** template
+
+rhaco/resources/templates/generic/views/form.html を参考にしてください．
+
+>|html|
+<rt:extends href="./main.html" />
+
+<rt:block name="content">
+<form method="post" name="views_form">
+<table>
+<rt:loop param="{$object.models('views','form_display')}" var="column">
+	<rt:if param="{$column.isSerial()}">
+		{$viewutil.columnString($object,$column)}
+	<rt:else />
+		<tr>
+			<th>{$object.label($column)}</th>
+			<td>
+				{$viewutil.columnString($object,$column,true,true,'views')}
+			</td>
+		</tr>
+	</rt:if>
+</rt:loop>
+<rt:loop param="{$object.profile.models('views','form_display')}" var="column">
+	<rt:if param="{$column.isSerial()}">
+		{$viewutil.columnString($object,$column)}
+	<rt:else />
+		<tr>
+			<th>{$object.profile.label($column)}</th>
+			<td>
+				{$viewutil.columnString($object.profile,$column,true,true,'views')}
+			</td>
+		</tr>
+	</rt:if>
+</rt:loop>
+</table>
+
+<input type="submit" name="save_create" value="{$generic_button}" />
+</form>
+
+<rt:invalid />
+
+</rt:block>
+||<
+
+* 最後に
+
+このようにすることで，複数のテーブルにまたがったデータの CRUD であったとしても，全て中心とするモデルを定め汎用 View に適用できます．
+今回は create view で行いましたので，コンストラクタでProfileモデルをインスタンス化しましたが，更新処理などの際には，afterGet メソッドでデータ取得を行うと良いでしょう．

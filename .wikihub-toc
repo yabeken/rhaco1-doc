@@ -25,12 +25,12 @@
 003-template/05-tag=テンプレートタグ
 
 004-view/=ビュー
-004-view/01-csv=CSV
-004-view/02-authentication=認証
-004-view/03-generic-views=汎用Views
-004-view/04-multi-model-view=複数モデルを用いたView
-004-view/05-url-mapping=URLマッピング
-004-view/generic-viewsfilter.txt
+004-view/csv=CSV
+004-view/authentication=認証
+004-view/generic-views=汎用Views
+004-view/multi-model-view=複数モデルを用いたView
+004-view/url-mapping=URLマッピング
+004-view/generic-viewsfilter=ViewsFilter
 
 005-project/=プロジェクト
 005-project/project.xml=project.xml
