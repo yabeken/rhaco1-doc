@@ -3,12 +3,6 @@
 汎用 Views を使っている場合には，暗黙的に generic.filter.ViewsFilter が設定されます．
 ViewsFilter は汎用 Views と連携して，Create, Update, Drop 後の処理を行います．
 
-- afterCreate
-- afterUpdate
-- afterDrop
-
-引数はそれぞれ次のものを受け取ります．
-
 - $object
 - $redirectHref
 - $isarg
@@ -75,5 +69,5 @@ class SampleViews extends Views{
 }
 ||<
 
-"profile/{$profile.id}" と自動的に作成されたレコードのIDを付加したURLへ転送されます．
+ViewsFilter の $isarg 引数として true を渡すことで "profile/{$profile.id}" と自動的に作成されたレコードのIDを付加したURLへ転送されます．
 
