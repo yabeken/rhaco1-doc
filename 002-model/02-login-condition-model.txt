@@ -6,39 +6,19 @@ rhaco では，ログイン条件もモデル化することができます．
 
 ** Dbと連携したログイン条件モデル
 
-例えばよくあるのが，ログイン ID とパスワードで認証を掛ける方法ですが，以下のように実装します．
+User テーブルにログインIDとハッシュ化されたパスワードが格納されている場合のログイン処理を考えます．
+まず User モデルにログイン処理を実装します．ログイン処理は User モデルの loginCondition メソッドにて行います．
 
->|php|
-<?php
-Rhaco::import("network.http.model.RequestLoginConditionDb");
-Rhaco::import("model.User");
-/**
- * ユーザ用のログイン条件モデル
- */
-class RequestLoginConditionUser extends RequestLoginConditionDb{
-	/**
-	 * コンストラクタ
-	 * @param DbUtil $dbUtil
-	 */
-	function RequestLoginConditionUser(&$dbUtil){
-		$this->__init__($dbUtil,new User());
-	}
-	/**
-	 * 認証完了後の処理
-	 */
-	function after(){
-		Header::redirect(Rhaco::url("user"));
-	}
-}
-||<
-
-User モデルには，ログイン処理を実装します．
 >|php|
 <?php
 Rhaco::import("model.table.UserTable");
 class User extends UserTable{
 	/**
 	 * ログイン処理
+	 * @param DbUtil $db
+	 * @param $object 
+	 * @param Request $request
+	 * @param boolean
 	 */
 	function loginCondition(&$db,&$object,$request){
 		$object = $db->get($this,
@@ -55,11 +35,37 @@ class User extends UserTable{
 View でログイン条件を指定します．
 >|php|
 <?php
-
-//いっぱいコード
-//:
-RequestLogin::loginRequired(new RequestLoginConditionUser($db));
+Rhaco::import("generic.Views");
+class HogeViews extends Views{
+	/**
+	 * ユーザマイページ
+	 */
+	function mypage(){
+		$this->loginRequired(new RequestLoginConditionDb($db, new User()));
+		//処理
+	}
+}
 ||<
 
 このようにしてログイン条件モデルを渡すことで実際のログイン処理を隠蔽してしまうことが可能となります．
 
+*** ログイン情報の取得
+
+User モデルに実装した loginCondition メソッドで第二引数にて参照渡ししたUser インスタンスは，ログイン情報としてセッションに格納されています．
+ですので，この情報は， getLoginSession メソッドにて取得することが可能です．
+
+>|php|
+<?php
+Rhaco::import("generic.Views");
+class HogeViews extends Views{
+	/**
+	 * ユーザマイページ
+	 */
+	function mypage(){
+		$this->loginRequired(new RequestLoginConditionDb($db, new User()));
+		//ログイン情報の取得
+		$user = $this->getLoginSession();
+		//処理
+	}
+}
+||<
