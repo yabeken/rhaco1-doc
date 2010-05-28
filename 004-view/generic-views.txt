@@ -144,3 +144,28 @@ class Profile extends ProfileTable{
 確認画面の差し替えは "モデル名_confirm_delete.html"
 
 確認画面が要らない場合には，自分で View を実装するか，post で drop を実行してください．
+
+* Views の継承関係
+
+Views の継承関係は次のようになっています．
+
+>||
+Views
+  +Flow
+    +RequestLogin
+      +Request 
+||<
+
+それぞれの説明を簡単に行います．
+
+- Request
+-- GET/POST，セッション，クッキーといったデータを扱っています．
+- RequestLogin
+-- ログイン処理を実装しています．
+- Flow
+-- RequestのデータとTempalteの連携を行います．
+- Views
+-- 上で述べてきたような処理を実装しています．
+
+
+
