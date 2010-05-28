@@ -1,0 +1,213 @@
+* フックメソッド
+
+project.xml から生成した Model に対して， DbUtil を用いて操作を行った際にその動作をフックメソッドを用いて制御することが可能です．
+
+** beforeInsert
+
+INSERT前に呼ばれます．
+
+>|php|
+<?php
+Rhaco::import("model.table.ProfileTable");
+/**
+ * プロフィール
+ */
+class Profile extends ProfileTable{
+	/**
+	 * INSERT 前処理
+	 * @param DbUtil $db
+	 */
+    function beforeInsert($db){
+    	return true;
+    }
+}
+||<
+
+** afterInsert
+
+データベースにINSERTした後に呼ばれます．
+
+>|php|
+<?php
+Rhaco::import("model.table.ProfileTable");
+/**
+ * プロフィール
+ */
+class Profile extends ProfileTable{
+	/**
+	 * INSERT 後処理
+	 * @param DbUtil $db
+	 */
+    function afterInsert($db){
+    	return true;
+    }
+}
+||<
+
+** beforeUpdate
+
+UPDATE 前に呼ばれます．
+
+>|php|
+<?php
+Rhaco::import("model.table.ProfileTable");
+/**
+ * プロフィール
+ */
+class Profile extends ProfileTable{
+	/**
+	 * UPDATE 前処理
+	 * @param DbUtil $db
+	 */
+    function beforeUpdate($db){
+    	return true;
+    }
+}
+||<
+
+** afterUpdate
+
+UPDATE 後に呼ばれます．
+
+>|php|
+<?php
+Rhaco::import("model.table.ProfileTable");
+/**
+ * プロフィール
+ */
+class Profile extends ProfileTable{
+	/**
+	 * UPDATE 後処理
+	 * @param DbUtil $db
+	 */
+    function afterUpdate($db){
+    	return true;
+    }
+}
+||<
+
+** beforeDelete
+
+DELETE 前に呼ばれます．
+Model には標準で beforeDelete メソッドが実装されていますので，オーバーライドした際には，呼ぶ必要があります．
+
+>|php|
+<?php
+Rhaco::import("model.table.ProfileTable");
+/**
+ * プロフィール
+ */
+class Profile extends ProfileTable{
+	/**
+	 * DELETE 前処理
+	 * @param DbUtil $db
+	 */
+    function beforeDelete($db){
+    	if(parent::beforeDelete($db)){
+    		return false;
+    	}
+    	return false;
+    }
+}
+||<
+
+** afterUpdate
+
+DELETE 後に呼ばれます．
+
+>|php|
+<?php
+Rhaco::import("model.table.ProfileTable");
+/**
+ * プロフィール
+ */
+class Profile extends ProfileTable{
+	/**
+	 * Delete 後処理
+	 * @param DbUtil $db
+	 */
+    function afterDelete($db){
+    	return true;
+    }
+}
+||<
+
+
+** afterGet
+
+DbUtil::get 後に呼ばれます．
+
+>|php|
+<?php
+Rhaco::import("model.table.ProfileTable");
+/**
+ * プロフィール
+ */
+class Profile extends ProfileTable{
+	/**
+	 * Get 後処理
+	 * @param DbUtil $db
+	 */
+    function afterGet($db){
+
+    }
+}
+||<
+
+** afterSelect
+
+DbUtil::select 後に呼ばれます．
+
+>|php|
+<?php
+Rhaco::import("model.table.ProfileTable");
+/**
+ * プロフィール
+ */
+class Profile extends ProfileTable{
+	/**
+	 * Get 後処理
+	 * @param DbUtil $db
+	 */
+    function afterSelect($db){
+    	
+    }
+}
+||<
+
+** verify
+
+モデルに対してデータの検証を行う為のフックメソッドは verify で始まるメソッドであれば何でもよいです．
+verify メソッドは引数としてそのモデルが存在するデータベースへのコネクションを受け取り，真偽値を返します．
+
+>|php|
+Rhaco::import("model.table.ProfileTable");
+/**
+ * プロフィール情報
+ */
+class Profile extends ProfileTable{
+	/**
+	 * メールアドレスの確認を行う
+	 * @param DbUtil $db
+	 * @return boolean
+	 */
+	function verifyEmail($db){
+		if($this->getEmail() != $this->getEmailConfirm()){
+			ExceptionTrigger::raise(new GenericException("メールアドレスを確認してくださ"));
+			return false;
+		}
+		return true;
+	}
+}
+||<
+
+* フックメソッドの呼ばれる順番
+
+これらのフックメソッドは，
+
++ before
++ verify
++ after
+
+の順番で呼ばれます．
+
