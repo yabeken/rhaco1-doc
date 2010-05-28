@@ -12,11 +12,12 @@
 001-rhaco/=rhaco
 001-rhaco/01-library-import=ライブラリの読み込み
 001-rhaco/02-constructor=コンストラクタ
+
 002-model/=モデル
-002-model/01-additional-validation=検証処理の追加
-002-model/02-login-condition-model=ログイン条件モデル
-002-model/03-hook-method=フックメソッド
-002-model/04-virtual-column=仮想列
+002-model/additional-validation=検証処理の追加
+002-model/login-condition-model=ログイン条件モデル
+002-model/hook-method=フックメソッド
+
 003-template/=テンプレート
 003-template/01-template-engine=テンプレートエンジン
 003-template/02-fill-in-form-values=フォーム入力値の補完
