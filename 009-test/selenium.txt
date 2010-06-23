@@ -83,3 +83,7 @@ class HogeViews extends Views{
 ||<
 
 あとは，setup.php にアクセスして，test ページから HogeViews を選択して実行すればテストが実行されます．
+
+* 参考
+
+- http://blog.shigepon.com/86
