@@ -58,7 +58,7 @@ class HogeTest extends SeleniumTest{
 		$this->assertEquals("タイトル",$this->getTitle(),"タイトルがおかしい");
 	}
 }
-||< 
+||<
 
 SeleniumRC のコマンドは[http://seleniumhq.org/docs/04_selenese_commands.html:title=こちら]を参照するか，メソッドのコメントを参照のこと．
 
