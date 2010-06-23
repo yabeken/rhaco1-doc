@@ -62,7 +62,7 @@ class HogeTest extends SeleniumTest{
 
 SeleniumRC のコマンドは[http://seleniumhq.org/docs/04_selenese_commands.html:title=こちら]を参照するか，メソッドのコメントを参照のこと．
 
-h2. テストを実行するトリガーの記述
+** テストを実行するトリガーの記述
 
 テストをしたいクラスのメソッドに，次のようなコメントを記述します．
 同じクラス内であれば，どこかのメソッドに記述していればOKです．
