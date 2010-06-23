@@ -31,6 +31,7 @@ setup.php の install から， "org.rhaco.util.SeleniumTest" を選択してイ
 基本的には， [[009-test/test]] の UnitTest と同じです．
 
 >|php|
+<?php
 Rhaco::import("org.rhaco.util.SeleniumTest.SeleniumTest");
 /**
  * Hoge をテストする
@@ -67,15 +68,17 @@ h2. テストを実行するトリガーの記述
 同じクラス内であれば，どこかのメソッドに記述していればOKです．
 
 >|php|
+<?php
+Rhaco::import("generic.Views");
 /**
  * Hoge
  */
-class HogeViews{
+class HogeViews extends Views{
 	/**
 	 * fuga
 	 */
 	function fuga(){
-		/*** unit("BbsTest"); */
+		/*** unit("HogeTest"); */
 	}
 }
 ||<
