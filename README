@@ -23,7 +23,7 @@ rhaco 自体は，フレームワークではなく，組み合わせによっ�
 あまり，いいチュートリアルが思いつかなかったので，cakephp の [http://book.cakephp.org/ja/view/219/Blog:title=チュートリアル] をなぞれるだけなぞってみます．
 そこから，さらに追加でいろいろな機能を追加していこうと思う．
 
-まずは，[http://wikihub.org/wiki/rhaco1-doc/tutorial/001-install:title=インストール]からどうぞ．
+まずは，[http://wikihub.org/wiki/rhaco1-doc/100-blog-tutorial/01-install:title=インストール]からどうぞ．
 
 ** リファレンス
 
