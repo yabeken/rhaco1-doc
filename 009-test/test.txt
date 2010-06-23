@@ -54,7 +54,40 @@ DocTest で使用できるテストメソッドは次の通りです．
 UnitTest はテストをクラスファイルとして用意します．
 UnitTest は必ず，util.UnitTest を継承している必要があります．
 
-//TODO 続き
+UnitTest は， setup/tests/ 以下に配置します．
+各テストは，メソッドとして実行しメソッド名が "test" で始まっている必要があります．
+
+setup/tests/HogeTest.php
+>|php|
+class HogeTest extends UnitTest{
+	/**
+	 * ユニットテスト実行前に呼ばれる
+	 */
+	function begin(){
+	}
+	/**
+	 * ユニットテスト実行後に呼ばれる
+	 */
+	function finish(){
+	}
+	/**
+	 * テスト実行前に呼ばれる
+	 */
+	function setUp(){
+	}
+	/**
+	 * テスト実行後に呼ばれる
+	 */
+	function tearDown(){
+	}
+	/**
+	 * hogehoge テスト
+	 */
+	function testHogehoge(){
+		$this->assertEquals(true,false,"失敗");
+	}
+}
+||<
 
 
 * テストの実行
