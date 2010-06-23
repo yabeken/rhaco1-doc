@@ -56,6 +56,7 @@
 
 009-test/=テスト
 009-test/test=テスト
+009-test/selenium=Selenium
 
 050-arbo/=arbo
 050-arbo/01-install=インストール

@@ -1,0 +1,83 @@
+* Selenium
+
+Selenium とは，ブラウザによるテストを自動化するためのツールです．
+詳しくは，[http://seleniumhq.org/:title=本家サイト]を見てください．
+
+rhaco では，SeleniumRC を用いたテストをサポートしています．
+
+
+** 前提条件
+
++ [http://www.java.com/:title=JRE]
++ [http://seleniumhq.org/:title=SeleniumRC]
+
+JRE は，Eclipse 等を入れていたら大概入っているかと思います．
+SeleniumRC については，ダウンロード・解凍後，selenium-server-1.0.X のみが必要です．
+
+** Selenium Server の実行方法
+
+JRE にパスが通っているという前提とします．
+端末から次のコマンドを実行します．
+
+>||
+$ java -jar selenium-server.jar
+||<
+
+** テストの記述
+
+Selenium を用いてテストを実行するためのライブラリをインストールします．
+setup.php の install から， "org.rhaco.util.SeleniumTest" を選択してインストールしてください．
+
+基本的には， [[009-test/test]] の UnitTest と同じです．
+
+>|php|
+Rhaco::import("org.rhaco.util.SeleniumTest.SeleniumTest");
+/**
+ * Hoge をテストする
+ */
+class HogeTest extends SeleniumTest{
+	function begin(){
+		//ブラウザの指定
+		$this->setBrowserName("*firefox");//ieなら*iexplore,operaなら*opera,
+		//テストする対象URLの指定
+		$this->setTargetUrl(Rhaco::url());
+		//SeleniumRC にテスト開始を通知
+		$this->start();
+		//実行時間の制限をなくす
+		set_timelimit(0);
+	}
+	/**
+	 * Hogeをテストする
+	 */
+	function testHoge(){
+		//ブラウザを開く
+		$this->open(Rhaco::url());
+		//後はお好きに・・・
+		
+		$this->assertEquals("タイトル",$this->getTitle(),"タイトルがおかしい");
+	}
+}
+||< 
+
+SeleniumRC のコマンドは[http://seleniumhq.org/docs/04_selenese_commands.html:title=こちら]を参照するか，メソッドのコメントを参照のこと．
+
+h2. テストを実行するトリガーの記述
+
+テストをしたいクラスのメソッドに，次のようなコメントを記述します．
+同じクラス内であれば，どこかのメソッドに記述していればOKです．
+
+<pre>
+/**
+ * Hoge
+ */
+class HogeViews{
+	/**
+	 * fuga
+	 */
+	function fuga(){
+		/*** unit("BbsTest"); */
+	}
+}
+</pre>
+
+あとは，setup.php にアクセスして，test ページから HogeViews を選択して実行すればテストが実行されます．
