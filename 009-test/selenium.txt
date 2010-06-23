@@ -16,7 +16,6 @@ SeleniumRC については，ダウンロード・解凍後，selenium-server-1.
 
 ** Selenium Server の実行方法
 
-JRE にパスが通っているという前提とします．
 端末から次のコマンドを実行します．
 
 >||
