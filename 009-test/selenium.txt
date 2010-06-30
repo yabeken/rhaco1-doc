@@ -44,7 +44,7 @@ class HogeTest extends SeleniumTest{
 		//SeleniumRC にテスト開始を通知
 		$this->start();
 		//実行時間の制限をなくす
-		set_timelimit(0);
+		set_time_limit(0);
 	}
 	/**
 	 * Hogeをテストする
